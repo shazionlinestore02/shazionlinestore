@@ -1,221 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ShaziOnlineStore | Online Shopping Pakistan</title>
+<title>ShaziOnlineStore - Online Shopping Pakistan</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            color: #222;
-        }
+body{
+    font-family:Arial, sans-serif;
+    background:#f6f6f6;
+    color:#222;
+}
 
-        header {
-            background: #111;
-            color: white;
-            padding: 18px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+header{
+    background:#111;
+    color:white;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
 
-        .hero {
-            background: white;
-            text-align: center;
-            padding: 70px 20px;
-        }
+.hero{
+    background:white;
+    text-align:center;
+    padding:70px 20px;
+}
 
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
 
-        .hero p {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 25px;
-        }
+.hero p{
+    color:#666;
+    font-size:18px;
+    margin:8px;
+}
 
-        .shop-btn {
-            display: inline-block;
-            background: #111;
-            color: white;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.shop-btn{
+    display:inline-block;
+    margin-top:20px;
+    background:#111;
+    color:white;
+    padding:14px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
 
-        .section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 50px 20px;
-        }
+.section{
+    max-width:1100px;
+    margin:auto;
+    padding:50px 20px;
+}
 
-        .section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+.section h2{
+    text-align:center;
+    margin-bottom:30px;
+}
 
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
+.categories{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
 
-        .category {
-            background: white;
-            padding: 30px 15px;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        }
+.category{
+    background:white;
+    padding:30px 15px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
 
-        .category h3 {
-            margin-bottom: 10px;
-        }
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
 
-        .products {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+.product{
+    background:white;
+    padding:20px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
 
-        .product {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        }
+.product-image{
+    height:180px;
+    background:#eee;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
+    margin-bottom:15px;
+}
 
-        .product-image {
-            height: 180px;
-            background: #eee;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
+.product h3{
+    margin-bottom:10px;
+}
 
-        .product h3 {
-            margin-bottom: 10px;
-        }
+.price{
+    font-weight:bold;
+    font-size:18px;
+    margin-bottom:15px;
+}
 
-        .price {
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+.order-btn{
+    border:0;
+    background:#111;
+    color:white;
+    padding:12px 22px;
+    border-radius:7px;
+    cursor:pointer;
+    font-size:16px;
+}
 
-        .order-btn {
-            border: none;
-            background: #111;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 7px;
-            cursor: pointer;
-        }
+.info{
+    background:white;
+    text-align:center;
+    padding:40px 20px;
+}
 
-        .info {
-            background: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 30px;
-        }
+.info p{
+    margin:8px;
+}
 
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            margin-top: 30px;
-        }
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
 
-        @media (max-width: 800px) {
-            .categories {
-                grid-template-columns: repeat(2, 1fr);
-            }
+/* ORDER POPUP */
 
-            .products {
-                grid-template-columns: repeat(2, 1fr);
-            }
+.modal{
+    display:none;
+    position:fixed;
+    z-index:999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.65);
+    overflow:auto;
+}
 
-            .hero h1 {
-                font-size: 32px;
-            }
-        }
+.modal-box{
+    background:white;
+    max-width:550px;
+    margin:40px auto;
+    padding:30px;
+    border-radius:15px;
+    position:relative;
+}
 
-        @media (max-width: 500px) {
-            header {
-                flex-direction: column;
-                gap: 12px;
-            }
+.close{
+    position:absolute;
+    right:20px;
+    top:12px;
+    font-size:30px;
+    cursor:pointer;
+}
 
-            nav a {
-                margin: 0 7px;
-            }
+.modal-box h2{
+    text-align:center;
+    margin-bottom:5px;
+}
 
-            .categories,
-            .products {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+.selected-product{
+    text-align:center;
+    background:#f1f1f1;
+    padding:12px;
+    margin:15px 0;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:14px;
+    margin-bottom:6px;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    font-size:16px;
+}
+
+textarea{
+    height:90px;
+    resize:vertical;
+}
+
+.cod{
+    background:#eef8f0;
+    padding:13px;
+    border-radius:8px;
+    text-align:center;
+    margin-top:18px;
+    font-weight:bold;
+}
+
+.submit-btn{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border:0;
+    border-radius:8px;
+    background:#111;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.submit-btn:disabled{
+    background:#888;
+}
+
+#message{
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.success{
+    color:green;
+}
+
+.error{
+    color:red;
+}
+
+@media(max-width:800px){
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+}
+
+@media(max-width:550px){
+
+    header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav a{
+        margin:0 7px;
+    }
+
+    .categories,
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .modal-box{
+        margin:20px;
+        padding:22px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">ShaziOnlineStore</div>
+
+    <div class="logo">
+        ShaziOnlineStore
+    </div>
 
     <nav>
         <a href="#home">Home</a>
         <a href="#shop">Shop</a>
         <a href="#categories">Categories</a>
     </nav>
+
 </header>
+
 
 <section class="hero" id="home">
 
     <h1>Welcome to ShaziOnlineStore</h1>
 
-    <p>
-        Fashion • Beauty • Home Essentials
-    </p>
+    <p>Fashion • Beauty • Home Essentials</p>
 
-    <p>
-        🚚 Fast Delivery | 💵 Cash on Delivery Available
-    </p>
-
-    <br>
+    <p>🚚 Fast Delivery | 💵 Cash on Delivery Available</p>
 
     <a href="#shop" class="shop-btn">
         Shop Now
     </a>
 
 </section>
+
 
 <section class="section" id="categories">
 
@@ -247,6 +361,7 @@
 
 </section>
 
+
 <section class="section" id="shop">
 
     <h2>Featured Products</h2>
@@ -267,11 +382,12 @@
 
             <button
                 class="order-btn"
-                onclick="orderProduct('Fashion Handbag')">
+                onclick="openOrder('Fashion Handbag', '2499')">
                 Order Now
             </button>
 
         </div>
+
 
         <div class="product">
 
@@ -279,7 +395,7 @@
                 👕
             </div>
 
-            <h3>Men's Fashion</h3>
+            <h3>Men Fashion Product</h3>
 
             <p class="price">
                 Rs. 1,999
@@ -287,11 +403,12 @@
 
             <button
                 class="order-btn"
-                onclick="orderProduct('Men Fashion Product')">
+                onclick="openOrder('Men Fashion Product', '1999')">
                 Order Now
             </button>
 
         </div>
+
 
         <div class="product">
 
@@ -307,7 +424,7 @@
 
             <button
                 class="order-btn"
-                onclick="orderProduct('Beauty Product')">
+                onclick="openOrder('Beauty Product', '1499')">
                 Order Now
             </button>
 
@@ -317,11 +434,10 @@
 
 </section>
 
+
 <section class="info">
 
     <h2>Why Shop With Us?</h2>
-
-    <br>
 
     <p>✅ Quality Products</p>
     <p>🚚 Fast Delivery</p>
@@ -330,27 +446,259 @@
 
 </section>
 
+
 <footer>
 
     <p>© 2026 ShaziOnlineStore</p>
 
-    <p>
-        Cash on Delivery Available Across Pakistan 🇵🇰
-    </p>
+    <p>Cash on Delivery Available Across Pakistan 🇵🇰</p>
 
 </footer>
 
+
+<!-- ORDER FORM -->
+
+<div class="modal" id="orderModal">
+
+    <div class="modal-box">
+
+        <span class="close" onclick="closeOrder()">
+            &times;
+        </span>
+
+        <h2>Place Your Order</h2>
+
+        <div class="selected-product" id="selectedProduct">
+            Product
+        </div>
+
+        <form id="orderForm">
+
+            <input
+                type="hidden"
+                id="product"
+            >
+
+            <label>Quantity</label>
+
+            <input
+                type="number"
+                id="quantity"
+                value="1"
+                min="1"
+                required
+            >
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                required
+            >
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="03XXXXXXXXX"
+                required
+            >
+
+            <label>City</label>
+
+            <input
+                type="text"
+                id="city"
+                placeholder="Enter your city"
+                required
+            >
+
+            <label>Complete Address</label>
+
+            <textarea
+                id="address"
+                placeholder="House number, street, area..."
+                required
+            ></textarea>
+
+            <div class="cod">
+                💵 Cash on Delivery
+            </div>
+
+            <button
+                type="submit"
+                class="submit-btn"
+                id="submitBtn">
+
+                Place Order
+
+            </button>
+
+            <div id="message"></div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
 <script>
 
-function orderProduct(productName) {
+/* GOOGLE APPS SCRIPT URL */
 
-    alert(
-        "You selected: " +
-        productName +
-        "\n\nOrder form will open here."
-    );
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbwUcgvB-Otwoqs8wZlBuFVHGF7YQVR9CCPfJLSaLxb8_2giAM6TujhGUAOt9yo4RVihxA/exec";
+
+
+/* OPEN ORDER FORM */
+
+function openOrder(productName, price){
+
+    document.getElementById("orderModal").style.display = "block";
+
+    document.getElementById("product").value = productName;
+
+    document.getElementById("selectedProduct").innerText =
+        productName + " — Rs. " + price;
+
+    document.getElementById("message").innerText = "";
 
 }
+
+
+/* CLOSE ORDER FORM */
+
+function closeOrder(){
+
+    document.getElementById("orderModal").style.display = "none";
+
+}
+
+
+/* CLOSE WHEN CLICKING OUTSIDE */
+
+window.onclick = function(event){
+
+    const modal =
+        document.getElementById("orderModal");
+
+    if(event.target === modal){
+
+        closeOrder();
+
+    }
+
+};
+
+
+/* SUBMIT ORDER */
+
+document.getElementById("orderForm").addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+        const button =
+            document.getElementById("submitBtn");
+
+        const message =
+            document.getElementById("message");
+
+        button.disabled = true;
+
+        button.innerText =
+            "Submitting Order...";
+
+        message.innerText = "";
+
+        const orderData = {
+
+            product:
+                document.getElementById("product").value,
+
+            quantity:
+                document.getElementById("quantity").value,
+
+            name:
+                document.getElementById("name").value,
+
+            phone:
+                document.getElementById("phone").value,
+
+            city:
+                document.getElementById("city").value,
+
+            address:
+                document.getElementById("address").value,
+
+            payment:
+                "Cash on Delivery"
+
+        };
+
+
+        try{
+
+            const response = await fetch(
+                scriptURL,
+                {
+                    method:"POST",
+                    body:JSON.stringify(orderData)
+                }
+            );
+
+
+            const result =
+                await response.json();
+
+
+            if(result.success){
+
+                message.innerText =
+                    "✅ Order submitted successfully!";
+
+                message.className =
+                    "success";
+
+                document.getElementById(
+                    "orderForm"
+                ).reset();
+
+            }else{
+
+                throw new Error(
+                    result.error ||
+                    "Order submission failed"
+                );
+
+            }
+
+
+        }catch(error){
+
+            console.error(error);
+
+            message.innerText =
+                "❌ Order submit nahi ho saka. Please try again.";
+
+            message.className =
+                "error";
+
+        }
+
+
+        button.disabled = false;
+
+        button.innerText =
+            "Place Order";
+
+    }
+);
 
 </script>
 
