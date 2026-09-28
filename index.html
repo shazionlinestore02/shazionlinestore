@@ -1522,10 +1522,12 @@ document.getElementById("orderForm").addEventListener("submit", function(event){
 
     submitBtn.textContent = "Sending Order...";
 
-   const priceText =
-    document.getElementById("price").value.replace(/[^\d.]/g, "");
+  const priceText = document
+    .getElementById("price")
+    .value
+    .replace(/[^0-9]/g, "");
 
-const price = Number(priceText) || 0;
+const price = parseInt(priceText, 10) || 0;
 
 const quantity =
     Number(document.getElementById("quantity").value) || 1;
