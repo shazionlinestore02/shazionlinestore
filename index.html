@@ -1522,30 +1522,46 @@ document.getElementById("orderForm").addEventListener("submit", function(event){
 
     submitBtn.textContent = "Sending Order...";
 
-    const orderData = {
+   const priceText =
+    document.getElementById("price").value.replace(/[^\d.]/g, "");
 
-        product:
-            document.getElementById("product").value,
+const price = Number(priceText) || 0;
 
-        quantity:
-            document.getElementById("quantity").value,
+const quantity =
+    Number(document.getElementById("quantity").value) || 1;
 
-        name:
-            document.getElementById("name").value,
+const total = price * quantity;
 
-        phone:
-            document.getElementById("phone").value,
+const orderData = {
 
-        city:
-            document.getElementById("city").value,
+    product:
+        document.getElementById("product").value,
 
-        address:
-            document.getElementById("address").value,
+    quantity:
+        quantity,
 
-        payment:
-            "Cash on Delivery"
+    price:
+        price,
 
-    };
+    total:
+        total,
+
+    name:
+        document.getElementById("name").value,
+
+    phone:
+        document.getElementById("phone").value,
+
+    city:
+        document.getElementById("city").value,
+
+    address:
+        document.getElementById("address").value,
+
+    payment:
+        "Cash on Delivery"
+
+};
 
 
     fetch(scriptURL, {
