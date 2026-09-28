@@ -1578,35 +1578,83 @@ const orderData = {
         body:JSON.stringify(orderData)
 
     })
-    .then(function(){
+  .then(function(){
 
-        alert(
-            "✅ Order submitted successfully!\n\n" +
-            "Thank you for shopping with ShaziOnlineStore."
-        );
+    const whatsappNumber = "923001234567";
 
-        document.getElementById("orderForm").reset();
+    const product =
+        document.getElementById("product").value;
 
-        closeOrder();
+    const quantity =
+        parseInt(
+            document.getElementById("quantity").value,
+            10
+        ) || 1;
 
-    })
-    .catch(function(error){
+    const price =
+        parseInt(
+            document.getElementById("price").value
+                .replace(/[^0-9]/g, ""),
+            10
+        ) || 0;
 
-        console.error(error);
+    const total = price * quantity;
 
-        alert(
-            "Something went wrong. Please try again."
-        );
+    const name =
+        document.getElementById("name").value;
 
-    })
-    .finally(function(){
+    const phone =
+        document.getElementById("phone").value;
 
-        submitBtn.disabled = false;
+    const city =
+        document.getElementById("city").value;
 
-        submitBtn.textContent = "Confirm Order";
+    const address =
+        document.getElementById("address").value;
 
-    });
+    const message =
+        "🛍️ *New Order - ShaziOnlineStore*\n\n" +
+        "📦 Product: " + product + "\n" +
+        "🔢 Quantity: " + quantity + "\n" +
+        "💰 Price: Rs. " + price.toLocaleString() + "\n" +
+        "💵 Total: Rs. " + total.toLocaleString() + "\n\n" +
+        "👤 Customer: " + name + "\n" +
+        "📞 Phone: " + phone + "\n" +
+        "🏙️ City: " + city + "\n" +
+        "📍 Address: " + address + "\n\n" +
+        "💳 Payment: Cash on Delivery";
 
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+    alert("✅ Order submitted successfully!");
+
+    window.open(whatsappURL, "_blank");
+
+    document.getElementById("orderForm").reset();
+
+    closeOrder();
+
+})
+.catch(function(error){
+
+    console.error(error);
+
+    alert(
+        "Something went wrong. Please try again."
+    );
+
+})
+.finally(function(){
+
+    submitBtn.disabled = false;
+
+    submitBtn.textContent = "Confirm Order";
+
+});
 });
 
 </script>
