@@ -1540,13 +1540,12 @@ const orderData = {
         document.getElementById("product").value,
 
     quantity:
-        quantity,
-
+         parseInt(document.getElementById("quantity").value, 10) || 1,
     price:
         price,
 
     total:
-        total,
+         price * (parseInt(document.getElementById("quantity").value, 10) || 1),
 
     name:
         document.getElementById("name").value,
