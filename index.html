@@ -9,6 +9,7 @@
 <meta name="description" content="Shop fashion, beauty, home essentials and more at ShaziOnlineStore. Cash on Delivery available across Pakistan.">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -35,6 +36,7 @@ button{
     font-family:inherit;
     cursor:pointer;
 }
+
 
 /* ================= HEADER ================= */
 
@@ -105,6 +107,7 @@ header{
     background:none;
     font-size:28px;
 }
+
 
 /* ================= HERO ================= */
 
@@ -241,6 +244,7 @@ header{
     margin:0;
 }
 
+
 /* ================= TRUST ================= */
 
 .trust{
@@ -284,6 +288,7 @@ header{
     font-size:12px;
 }
 
+
 /* ================= GENERAL ================= */
 
 .section{
@@ -314,6 +319,7 @@ header{
 .section-heading p{
     color:#6b7280;
 }
+
 
 /* ================= CATEGORIES ================= */
 
@@ -358,6 +364,7 @@ header{
     color:#777;
     font-size:13px;
 }
+
 
 /* ================= PRODUCTS ================= */
 
@@ -454,6 +461,7 @@ header{
     background:#e11d48;
 }
 
+
 /* ================= OFFER ================= */
 
 .offer{
@@ -481,6 +489,7 @@ header{
 .offer-box p{
     color:#d1d5db;
 }
+
 
 /* ================= WHY US ================= */
 
@@ -511,6 +520,7 @@ header{
     font-size:14px;
 }
 
+
 /* ================= ORDER MODAL ================= */
 
 .modal{
@@ -523,91 +533,204 @@ header{
     overflow-y:auto;
 }
 
-.modal-box{
+.order-modal-content{
     max-width:500px;
-    margin:40px auto;
-    background:white;
-    border-radius:20px;
-    padding:28px;
-    position:relative;
-    box-shadow:0 25px 70px rgba(0,0,0,.25);
+    width:92%;
+    margin:4% auto;
+    background:#ffffff;
+    border-radius:18px;
+    padding:0;
+    overflow:hidden;
+    box-shadow:0 15px 50px rgba(0,0,0,0.20);
 }
 
-.close{
+.order-header{
+    background:linear-gradient(135deg,#111827,#374151);
+    color:white;
+    padding:22px 25px;
+    position:relative;
+}
+
+.order-header h2{
+    margin:0;
+    font-size:24px;
+}
+
+.order-header p{
+    margin:6px 0 0;
+    font-size:14px;
+    opacity:0.85;
+}
+
+.order-close{
     position:absolute;
     right:18px;
-    top:12px;
-    border:0;
-    background:none;
+    top:15px;
     font-size:28px;
-    color:#555;
+    color:white;
+    cursor:pointer;
+    background:none;
+    border:none;
 }
 
-.modal-box h2{
-    margin-bottom:5px;
+.order-body{
+    padding:24px;
 }
 
-.modal-subtitle{
-    color:#777;
-    font-size:13px;
+.order-product-box{
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:15px;
     margin-bottom:20px;
 }
 
-.form-group{
-    margin-bottom:14px;
-}
-
-.form-group label{
+.order-product-box label{
+    font-size:12px;
+    color:#6b7280;
     display:block;
-    font-size:13px;
+    margin-bottom:5px;
+}
+
+.order-product-box input{
+    border:none !important;
+    background:transparent !important;
+    padding:0 !important;
     font-weight:700;
-    margin-bottom:6px;
-}
-
-.form-group input,
-.form-group textarea{
+    font-size:17px;
     width:100%;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:9px;
     outline:none;
+}
+
+.order-price-row{
+    display:flex;
+    gap:12px;
+}
+
+.order-price-row > div{
+    flex:1;
+}
+
+.order-form-group{
+    margin-bottom:16px;
+}
+
+.order-form-group label{
+    display:block;
+    font-weight:600;
     font-size:14px;
+    margin-bottom:7px;
+    color:#374151;
 }
 
-.form-group input:focus,
-.form-group textarea:focus{
-    border-color:#e11d48;
+.order-form-group input,
+.order-form-group textarea,
+.order-form-group select{
+    width:100%;
+    box-sizing:border-box;
+    padding:13px 14px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+    transition:0.2s;
+    background:white;
 }
 
-.form-group textarea{
-    min-height:90px;
+.order-form-group input:focus,
+.order-form-group textarea:focus,
+.order-form-group select:focus{
+    border-color:#111827;
+    box-shadow:0 0 0 3px rgba(17,24,39,0.08);
+}
+
+.order-form-group textarea{
+    min-height:85px;
     resize:vertical;
 }
 
-.payment-box{
-    background:#f0fdf4;
-    color:#166534;
-    padding:12px;
-    border-radius:9px;
-    margin:12px 0 18px;
-    font-size:14px;
-    font-weight:700;
+.order-total-box{
+    background:#f3f4f6;
+    border-radius:12px;
+    padding:15px;
+    margin:5px 0 18px;
 }
 
-.submit-order{
+.order-total-box label{
+    display:block;
+    font-size:13px;
+    color:#6b7280;
+    margin-bottom:5px;
+}
+
+.order-total-box input{
     width:100%;
-    padding:14px;
-    border:0;
-    border-radius:10px;
-    background:#e11d48;
-    color:white;
+    box-sizing:border-box;
+    border:none;
+    background:transparent;
+    font-size:22px;
     font-weight:800;
+    color:#111827;
+    outline:none;
+}
+
+.cod-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#ecfdf5;
+    border:1px solid #bbf7d0;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:18px;
+}
+
+.cod-icon{
+    font-size:25px;
+}
+
+.cod-box strong{
+    display:block;
+    color:#166534;
     font-size:15px;
 }
 
-.submit-order:hover{
-    background:#be123c;
+.cod-box span{
+    color:#15803d;
+    font-size:12px;
 }
+
+.confirm-order-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:11px;
+    background:#111827;
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.confirm-order-btn:hover{
+    background:#000000;
+    transform:translateY(-1px);
+}
+
+.confirm-order-btn:disabled{
+    opacity:.65;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.order-note{
+    text-align:center;
+    color:#6b7280;
+    font-size:12px;
+    margin:12px 0 0;
+}
+
 
 /* ================= FOOTER ================= */
 
@@ -667,6 +790,7 @@ footer{
     font-size:13px;
 }
 
+
 /* ================= MOBILE ================= */
 
 @media(max-width:900px){
@@ -701,6 +825,7 @@ footer{
         grid-template-columns:repeat(2,1fr);
     }
 }
+
 
 @media(max-width:650px){
 
@@ -837,259 +962,103 @@ footer{
         grid-template-columns:1fr;
         gap:25px;
     }
-}
-    /* ===== Professional Order Form ===== */
 
-.order-modal-content {
-    max-width: 500px;
-    width: 92%;
-    margin: 4% auto;
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 0;
-    overflow: hidden;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.20);
-}
-
-.order-header {
-    background: linear-gradient(135deg, #111827, #374151);
-    color: white;
-    padding: 22px 25px;
-    position: relative;
-}
-
-.order-header h2 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.order-header p {
-    margin: 6px 0 0;
-    font-size: 14px;
-    opacity: 0.85;
-}
-
-.order-close {
-    position: absolute;
-    right: 18px;
-    top: 15px;
-    font-size: 28px;
-    color: white;
-    cursor: pointer;
-    background: none;
-    border: none;
-}
-
-.order-body {
-    padding: 24px;
-}
-
-.order-product-box {
-    background: #f8fafc;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-.order-product-box label {
-    font-size: 12px;
-    color: #6b7280;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.order-product-box input {
-    border: none !important;
-    background: transparent !important;
-    padding: 0 !important;
-    font-weight: 700;
-    font-size: 17px;
-}
-
-.order-price-row {
-    display: flex;
-    gap: 12px;
-}
-
-.order-price-row > div {
-    flex: 1;
-}
-
-.order-form-group {
-    margin-bottom: 16px;
-}
-
-.order-form-group label {
-    display: block;
-    font-weight: 600;
-    font-size: 14px;
-    margin-bottom: 7px;
-    color: #374151;
-}
-
-.order-form-group input,
-.order-form-group textarea,
-.order-form-group select {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 13px 14px;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    font-size: 15px;
-    outline: none;
-    transition: 0.2s;
-    background: white;
-}
-
-.order-form-group input:focus,
-.order-form-group textarea:focus,
-.order-form-group select:focus {
-    border-color: #111827;
-    box-shadow: 0 0 0 3px rgba(17,24,39,0.08);
-}
-
-.order-form-group textarea {
-    min-height: 85px;
-    resize: vertical;
-}
-
-.order-total-box {
-    background: #f3f4f6;
-    border-radius: 12px;
-    padding: 15px;
-    margin: 5px 0 18px;
-}
-
-.order-total-box label {
-    display: block;
-    font-size: 13px;
-    color: #6b7280;
-    margin-bottom: 5px;
-}
-
-.order-total-box input {
-    width: 100%;
-    box-sizing: border-box;
-    border: none;
-    background: transparent;
-    font-size: 22px;
-    font-weight: 800;
-    color: #111827;
-    outline: none;
-}
-
-.cod-box {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #ecfdf5;
-    border: 1px solid #bbf7d0;
-    border-radius: 12px;
-    padding: 14px;
-    margin-bottom: 18px;
-}
-
-.cod-icon {
-    font-size: 25px;
-}
-
-.cod-box strong {
-    display: block;
-    color: #166534;
-    font-size: 15px;
-}
-
-.cod-box span {
-    color: #15803d;
-    font-size: 12px;
-}
-
-.confirm-order-btn {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 11px;
-    background: #111827;
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.confirm-order-btn:hover {
-    background: #000000;
-    transform: translateY(-1px);
-}
-
-.order-note {
-    text-align: center;
-    color: #6b7280;
-    font-size: 12px;
-    margin: 12px 0 0;
-}
-
-@media (max-width: 600px) {
-
-    .order-modal-content {
-        width: 94%;
-        margin: 5% auto;
-        border-radius: 15px;
+    .order-modal-content{
+        width:94%;
+        margin:5% auto;
+        border-radius:15px;
     }
 
-    .order-body {
-        padding: 18px;
+    .order-body{
+        padding:18px;
     }
 
-    .order-header {
-        padding: 19px;
+    .order-header{
+        padding:19px;
     }
 
-    .order-header h2 {
-        font-size: 21px;
+    .order-header h2{
+        font-size:21px;
     }
 
-    .order-price-row {
-        display: block;
+    .order-price-row{
+        display:block;
     }
 
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <!-- TOP BAR -->
+
 <div class="top-bar">
-    🚚 Fast Delivery Across Pakistan &nbsp; | &nbsp; 💵 Cash on Delivery Available
+
+    🚚 Fast Delivery Across Pakistan &nbsp; | &nbsp;
+    💵 Cash on Delivery Available
+
 </div>
 
+
 <!-- HEADER -->
+
 <header>
+
     <nav class="navbar">
 
         <a href="#home" class="logo">
             Shazi<span>OnlineStore</span>
         </a>
 
-        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+        <button
+            class="menu-btn"
+            onclick="toggleMenu()">
+            ☰
+        </button>
 
         <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#categories">Categories</a></li>
-            <li><a href="#products">Shop</a></li>
-            <li><a href="#why-us">Why Us</a></li>
-            <li><a href="#contact">Contact</a></li>
+
             <li>
-                <a href="#products" class="nav-order">Shop Now</a>
+                <a href="#home">Home</a>
             </li>
+
+            <li>
+                <a href="#categories">Categories</a>
+            </li>
+
+            <li>
+                <a href="#products">Shop</a>
+            </li>
+
+            <li>
+                <a href="#why-us">Why Us</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+            <li>
+                <a
+                    href="#products"
+                    class="nav-order">
+                    Shop Now
+                </a>
+            </li>
+
         </ul>
 
     </nav>
+
 </header>
 
+
 <!-- HERO -->
+
 <section class="hero" id="home">
 
     <div class="hero-inner">
@@ -1112,11 +1081,15 @@ footer{
 
             <div class="hero-buttons">
 
-                <a href="#products" class="btn-primary">
+                <a
+                    href="#products"
+                    class="btn-primary">
                     🛍️ Shop Now
                 </a>
 
-                <a href="#categories" class="btn-secondary">
+                <a
+                    href="#categories"
+                    class="btn-secondary">
                     Explore Categories
                 </a>
 
@@ -1124,13 +1097,18 @@ footer{
 
         </div>
 
+
         <div class="hero-card">
 
             <div class="hero-card-content">
 
-                <div class="hero-icon">🛍️</div>
+                <div class="hero-icon">
+                    🛍️
+                </div>
 
-                <h2>Quality Products</h2>
+                <h2>
+                    Quality Products
+                </h2>
 
                 <p>
                     Easy ordering • Cash on Delivery • Home Delivery
@@ -1144,55 +1122,116 @@ footer{
 
 </section>
 
+
 <!-- TRUST -->
+
 <section class="trust">
 
     <div class="trust-grid">
 
         <div class="trust-item">
-            <div class="trust-icon">🚚</div>
-            <div>
-                <strong>Fast Delivery</strong>
-                <span>Across Pakistan</span>
+
+            <div class="trust-icon">
+                🚚
             </div>
+
+            <div>
+
+                <strong>
+                    Fast Delivery
+                </strong>
+
+                <span>
+                    Across Pakistan
+                </span>
+
+            </div>
+
         </div>
 
-        <div class="trust-item">
-            <div class="trust-icon">💵</div>
-            <div>
-                <strong>Cash on Delivery</strong>
-                <span>Pay when received</span>
-            </div>
-        </div>
 
         <div class="trust-item">
-            <div class="trust-icon">🛡️</div>
-            <div>
-                <strong>Easy Ordering</strong>
-                <span>Simple online order</span>
+
+            <div class="trust-icon">
+                💵
             </div>
+
+            <div>
+
+                <strong>
+                    Cash on Delivery
+                </strong>
+
+                <span>
+                    Pay when received
+                </span>
+
+            </div>
+
         </div>
 
+
         <div class="trust-item">
-            <div class="trust-icon">⭐</div>
-            <div>
-                <strong>Quality Products</strong>
-                <span>Selected for you</span>
+
+            <div class="trust-icon">
+                🛡️
             </div>
+
+            <div>
+
+                <strong>
+                    Easy Ordering
+                </strong>
+
+                <span>
+                    Simple online order
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <div class="trust-icon">
+                ⭐
+            </div>
+
+            <div>
+
+                <strong>
+                    Quality Products
+                </strong>
+
+                <span>
+                    Selected for you
+                </span>
+
+            </div>
+
         </div>
 
     </div>
 
 </section>
 
+
 <!-- CATEGORIES -->
-<section class="section" id="categories">
+
+<section
+    class="section"
+    id="categories">
 
     <div class="section-heading">
 
-        <span>Shop By Category</span>
+        <span>
+            Shop By Category
+        </span>
 
-        <h2>Explore Our Categories</h2>
+        <h2>
+            Explore Our Categories
+        </h2>
 
         <p>
             Find products for your everyday needs.
@@ -1200,44 +1239,96 @@ footer{
 
     </div>
 
+
     <div class="categories">
 
         <div class="category">
-            <div class="category-icon">👗</div>
-            <h3>Fashion</h3>
-            <p>Stylish products for everyone</p>
+
+            <div class="category-icon">
+                👗
+            </div>
+
+            <h3>
+                Fashion
+            </h3>
+
+            <p>
+                Stylish products for everyone
+            </p>
+
         </div>
 
-        <div class="category">
-            <div class="category-icon">👜</div>
-            <h3>Women</h3>
-            <p>Bags, accessories & more</p>
-        </div>
 
         <div class="category">
-            <div class="category-icon">💄</div>
-            <h3>Beauty</h3>
-            <p>Beauty & personal care</p>
+
+            <div class="category-icon">
+                👜
+            </div>
+
+            <h3>
+                Women
+            </h3>
+
+            <p>
+                Bags, accessories & more
+            </p>
+
         </div>
 
+
         <div class="category">
-            <div class="category-icon">🏠</div>
-            <h3>Home Essentials</h3>
-            <p>Useful products for home</p>
+
+            <div class="category-icon">
+                💄
+            </div>
+
+            <h3>
+                Beauty
+            </h3>
+
+            <p>
+                Beauty & personal care
+            </p>
+
+        </div>
+
+
+        <div class="category">
+
+            <div class="category-icon">
+                🏠
+            </div>
+
+            <h3>
+                Home Essentials
+            </h3>
+
+            <p>
+                Useful products for home
+            </p>
+
         </div>
 
     </div>
 
 </section>
 
+
 <!-- PRODUCTS -->
-<section class="section" id="products">
+
+<section
+    class="section"
+    id="products">
 
     <div class="section-heading">
 
-        <span>Featured Products</span>
+        <span>
+            Featured Products
+        </span>
 
-        <h2>Shop Our Latest Products</h2>
+        <h2>
+            Shop Our Latest Products
+        </h2>
 
         <p>
             Order your favourite product with Cash on Delivery.
@@ -1245,20 +1336,32 @@ footer{
 
     </div>
 
+
     <div class="products">
 
+
         <!-- PRODUCT 1 -->
+
         <div class="product">
 
             <div class="product-image">
-                <div class="product-placeholder">👜</div>
+
+                <div class="product-placeholder">
+                    👜
+                </div>
+
             </div>
+
 
             <div class="product-info">
 
-                <span class="product-tag">Fashion</span>
+                <span class="product-tag">
+                    Fashion
+                </span>
 
-                <h3>Fashion Handbag</h3>
+                <h3>
+                    Fashion Handbag
+                </h3>
 
                 <p class="product-description">
                     Stylish everyday handbag with a modern design.
@@ -1271,25 +1374,38 @@ footer{
                 <button
                     class="order-btn"
                     onclick="openOrder('Fashion Handbag','2499')">
+
                     Order Now
+
                 </button>
 
             </div>
 
         </div>
 
+
         <!-- PRODUCT 2 -->
+
         <div class="product">
 
             <div class="product-image">
-                <div class="product-placeholder">👔</div>
+
+                <div class="product-placeholder">
+                    👔
+                </div>
+
             </div>
+
 
             <div class="product-info">
 
-                <span class="product-tag">Men</span>
+                <span class="product-tag">
+                    Men
+                </span>
 
-                <h3>Men Fashion Product</h3>
+                <h3>
+                    Men Fashion Product
+                </h3>
 
                 <p class="product-description">
                     Modern fashion product for everyday style.
@@ -1302,25 +1418,38 @@ footer{
                 <button
                     class="order-btn"
                     onclick="openOrder('Men Fashion Product','1999')">
+
                     Order Now
+
                 </button>
 
             </div>
 
         </div>
 
+
         <!-- PRODUCT 3 -->
+
         <div class="product">
 
             <div class="product-image">
-                <div class="product-placeholder">💄</div>
+
+                <div class="product-placeholder">
+                    💄
+                </div>
+
             </div>
+
 
             <div class="product-info">
 
-                <span class="product-tag">Beauty</span>
+                <span class="product-tag">
+                    Beauty
+                </span>
 
-                <h3>Beauty Product</h3>
+                <h3>
+                    Beauty Product
+                </h3>
 
                 <p class="product-description">
                     A useful beauty product for your daily routine.
@@ -1333,14 +1462,18 @@ footer{
                 <button
                     class="order-btn"
                     onclick="openOrder('Beauty Product','1499')">
+
                     Order Now
+
                 </button>
 
             </div>
 
         </div>
 
-        <!-- HANDBAG -->
+
+        <!-- PRODUCT 4 -->
+
         <div class="product">
 
             <div class="product-image">
@@ -1352,6 +1485,7 @@ footer{
                 >
 
             </div>
+
 
             <div class="product-info">
 
@@ -1374,7 +1508,9 @@ footer{
                 <button
                     class="order-btn"
                     onclick="openOrder('Women\'s PU Leather Textured Hand Bag','2600')">
+
                     Order Now
+
                 </button>
 
             </div>
@@ -1385,35 +1521,53 @@ footer{
 
 </section>
 
+
 <!-- OFFER -->
+
 <section class="offer">
 
     <div class="offer-box">
 
         <div>
-            <h2>Cash on Delivery Available 💵</h2>
+
+            <h2>
+                Cash on Delivery Available 💵
+            </h2>
 
             <p>
                 Place your order online and pay when your order arrives.
             </p>
+
         </div>
 
-        <a href="#products" class="btn-primary">
+        <a
+            href="#products"
+            class="btn-primary">
+
             Shop Now →
+
         </a>
 
     </div>
 
 </section>
 
+
 <!-- WHY US -->
-<section class="section" id="why-us">
+
+<section
+    class="section"
+    id="why-us">
 
     <div class="section-heading">
 
-        <span>Why ShaziOnlineStore?</span>
+        <span>
+            Why ShaziOnlineStore?
+        </span>
 
-        <h2>Shopping Made Simple</h2>
+        <h2>
+            Shopping Made Simple
+        </h2>
 
         <p>
             We make online shopping easy and convenient.
@@ -1421,13 +1575,19 @@ footer{
 
     </div>
 
+
     <div class="why-grid">
+
 
         <div class="why-card">
 
-            <div class="why-icon">🚚</div>
+            <div class="why-icon">
+                🚚
+            </div>
 
-            <h3>Home Delivery</h3>
+            <h3>
+                Home Delivery
+            </h3>
 
             <p>
                 Order from the comfort of your home and get your products
@@ -1436,11 +1596,16 @@ footer{
 
         </div>
 
+
         <div class="why-card">
 
-            <div class="why-icon">💵</div>
+            <div class="why-icon">
+                💵
+            </div>
 
-            <h3>Cash on Delivery</h3>
+            <h3>
+                Cash on Delivery
+            </h3>
 
             <p>
                 Convenient COD ordering allows you to pay when your order
@@ -1449,11 +1614,16 @@ footer{
 
         </div>
 
+
         <div class="why-card">
 
-            <div class="why-icon">🛍️</div>
+            <div class="why-icon">
+                🛍️
+            </div>
 
-            <h3>Easy Ordering</h3>
+            <h3>
+                Easy Ordering
+            </h3>
 
             <p>
                 Choose your product, enter your details and place your
@@ -1466,10 +1636,13 @@ footer{
 
 </section>
 
+
 <!-- FOOTER -->
+
 <footer id="contact">
 
     <div class="footer-inner">
+
 
         <div class="footer-column">
 
@@ -1484,39 +1657,79 @@ footer{
 
         </div>
 
+
         <div class="footer-column">
 
-            <h3>Quick Links</h3>
+            <h3>
+                Quick Links
+            </h3>
 
-            <a href="#home">Home</a>
-            <a href="#categories">Categories</a>
-            <a href="#products">Shop</a>
-            <a href="#why-us">Why Us</a>
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#categories">
+                Categories
+            </a>
+
+            <a href="#products">
+                Shop
+            </a>
+
+            <a href="#why-us">
+                Why Us
+            </a>
 
         </div>
 
+
         <div class="footer-column">
 
-            <h3>Shopping</h3>
+            <h3>
+                Shopping
+            </h3>
 
-            <a href="#products">Featured Products</a>
-            <a href="#products">Fashion</a>
-            <a href="#products">Beauty</a>
-            <a href="#products">Home Essentials</a>
+            <a href="#products">
+                Featured Products
+            </a>
+
+            <a href="#products">
+                Fashion
+            </a>
+
+            <a href="#products">
+                Beauty
+            </a>
+
+            <a href="#products">
+                Home Essentials
+            </a>
 
         </div>
 
+
         <div class="footer-column">
 
-            <h3>Contact</h3>
+            <h3>
+                Contact
+            </h3>
 
-            <p>🇵🇰 Pakistan</p>
-            <p>💵 Cash on Delivery</p>
-            <p>🚚 Home Delivery</p>
+            <p>
+                🇵🇰 Pakistan
+            </p>
+
+            <p>
+                💵 Cash on Delivery
+            </p>
+
+            <p>
+                🚚 Home Delivery
+            </p>
 
         </div>
 
     </div>
+
 
     <div class="footer-bottom">
 
@@ -1526,35 +1739,53 @@ footer{
 
 </footer>
 
-<!-- ORDER MODAL -->
-<div id="orderModal" class="modal">
+
+<!-- ================= ORDER MODAL ================= -->
+
+<div
+    id="orderModal"
+    class="modal">
+
 
     <div class="order-modal-content">
+
 
         <div class="order-header">
 
             <button
                 type="button"
                 class="order-close"
-                onclick="closeOrder()"
-            >
+                onclick="closeOrder()">
+
                 &times;
+
             </button>
 
-            <h2>🛍️ Place Your Order</h2>
 
-            <p>Complete your details to confirm your order</p>
+            <h2>
+                🛍️ Place Your Order
+            </h2>
+
+            <p>
+                Complete your details to confirm your order
+            </p>
 
         </div>
 
 
         <div class="order-body">
 
+
             <form id="orderForm">
+
+
+                <!-- SELECTED PRODUCT -->
 
                 <div class="order-product-box">
 
-                    <label>SELECTED PRODUCT</label>
+                    <label>
+                        SELECTED PRODUCT
+                    </label>
 
                     <input
                         type="text"
@@ -1565,11 +1796,16 @@ footer{
                 </div>
 
 
+                <!-- PRICE + QUANTITY -->
+
                 <div class="order-price-row">
+
 
                     <div class="order-form-group">
 
-                        <label>Price</label>
+                        <label>
+                            Price
+                        </label>
 
                         <input
                             type="text"
@@ -1582,7 +1818,9 @@ footer{
 
                     <div class="order-form-group">
 
-                        <label>Quantity</label>
+                        <label>
+                            Quantity
+                        </label>
 
                         <input
                             type="number"
@@ -1597,9 +1835,13 @@ footer{
                 </div>
 
 
+                <!-- TOTAL -->
+
                 <div class="order-total-box">
 
-                    <label>ORDER TOTAL</label>
+                    <label>
+                        ORDER TOTAL
+                    </label>
 
                     <input
                         type="text"
@@ -1611,9 +1853,13 @@ footer{
                 </div>
 
 
+                <!-- NAME -->
+
                 <div class="order-form-group">
 
-                    <label>👤 Full Name</label>
+                    <label>
+                        👤 Full Name
+                    </label>
 
                     <input
                         type="text"
@@ -1625,9 +1871,13 @@ footer{
                 </div>
 
 
+                <!-- PHONE -->
+
                 <div class="order-form-group">
 
-                    <label>📱 Phone Number</label>
+                    <label>
+                        📱 Phone Number
+                    </label>
 
                     <input
                         type="tel"
@@ -1639,9 +1889,13 @@ footer{
                 </div>
 
 
+                <!-- CITY -->
+
                 <div class="order-form-group">
 
-                    <label>🏙️ City</label>
+                    <label>
+                        🏙️ City
+                    </label>
 
                     <input
                         type="text"
@@ -1653,9 +1907,13 @@ footer{
                 </div>
 
 
+                <!-- ADDRESS -->
+
                 <div class="order-form-group">
 
-                    <label>📍 Complete Address</label>
+                    <label>
+                        📍 Complete Address
+                    </label>
 
                     <textarea
                         id="address"
@@ -1666,32 +1924,47 @@ footer{
                 </div>
 
 
+                <!-- COD -->
+
                 <div class="cod-box">
 
-                    <div class="cod-icon">💵</div>
+                    <div class="cod-icon">
+                        💵
+                    </div>
 
                     <div>
 
-                        <strong>Cash on Delivery</strong>
+                        <strong>
+                            Cash on Delivery
+                        </strong>
 
-                        <span>Pay when your order arrives</span>
+                        <span>
+                            Pay when your order arrives
+                        </span>
 
                     </div>
 
                 </div>
 
 
+                <!-- SUBMIT -->
+
                 <button
                     type="submit"
                     id="submitBtn"
-                    class="confirm-order-btn"
-                >
+                    class="confirm-order-btn">
+
                     ✅ Confirm Order
+
                 </button>
 
+
                 <p class="order-note">
+
                     🔒 Your information is safe and secure.
+
                 </p>
+
 
             </form>
 
@@ -1700,95 +1973,19 @@ footer{
     </div>
 
 </div>
-            <div class="form-group">
 
-                <label>Quantity</label>
 
-                <input
-                    type="number"
-                    id="quantity"
-                    min="1"
-                    value="1"
-                    required
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Full Name</label>
-
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your full name"
-                    required
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Phone Number</label>
-
-                <input
-                    type="tel"
-                    id="phone"
-                    placeholder="03XXXXXXXXX"
-                    required
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>City</label>
-
-                <input
-                    type="text"
-                    id="city"
-                    placeholder="Your city"
-                    required
-                >
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Complete Address</label>
-
-                <textarea
-                    id="address"
-                    placeholder="House no, street, area..."
-                    required
-                ></textarea>
-
-            </div>
-
-            <div class="payment-box">
-                💵 Payment Method: Cash on Delivery
-            </div>
-
-            <button
-                type="submit"
-                class="submit-order"
-                id="submitBtn">
-                Confirm Order
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
+
 
 /* ================= MOBILE MENU ================= */
 
 function toggleMenu(){
 
-    const nav = document.getElementById("navLinks");
+    const nav =
+        document.getElementById("navLinks");
 
     nav.classList.toggle("active");
 
@@ -1797,47 +1994,131 @@ function toggleMenu(){
 
 /* Close mobile menu after clicking link */
 
-document.querySelectorAll(".nav-links a").forEach(function(link){
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(function(link){
 
-    link.addEventListener("click", function(){
+        link.addEventListener("click", function(){
 
-        document.getElementById("navLinks").classList.remove("active");
+            document
+                .getElementById("navLinks")
+                .classList
+                .remove("active");
+
+        });
 
     });
-
-});
 
 
 /* ================= ORDER MODAL ================= */
 
+
+/* Open order form */
+
 function openOrder(productName, productPrice){
 
-    document.getElementById("product").value = productName;
+    document
+        .getElementById("product")
+        .value = productName;
 
-    document.getElementById("price").value =
-        "Rs. " + Number(productPrice).toLocaleString();
 
-    document.getElementById("orderModal").style.display = "block";
+    document
+        .getElementById("price")
+        .value =
+            "Rs. " +
+            Number(productPrice).toLocaleString();
+
+
+    /* Reset quantity */
+
+    document
+        .getElementById("quantity")
+        .value = 1;
+
+
+    /* Calculate total */
+
+    updateTotal();
+
+
+    /* Open modal */
+
+    document
+        .getElementById("orderModal")
+        .style
+        .display = "block";
+
 
     document.body.style.overflow = "hidden";
 
 }
 
 
+/* ================= UPDATE TOTAL ================= */
+
+function updateTotal(){
+
+    const price =
+        parseInt(
+            document
+                .getElementById("price")
+                .value
+                .replace(/[^0-9]/g, ""),
+            10
+        ) || 0;
+
+
+    const quantity =
+        parseInt(
+            document
+                .getElementById("quantity")
+                .value,
+            10
+        ) || 1;
+
+
+    const total =
+        price * quantity;
+
+
+    document
+        .getElementById("total")
+        .value =
+            "Rs. " +
+            total.toLocaleString();
+
+}
+
+
+/* Update total when quantity changes */
+
+document
+    .getElementById("quantity")
+    .addEventListener("input", updateTotal);
+
+
+/* ================= CLOSE ORDER ================= */
+
 function closeOrder(){
 
-    document.getElementById("orderModal").style.display = "none";
+    document
+        .getElementById("orderModal")
+        .style
+        .display = "none";
+
 
     document.body.style.overflow = "auto";
 
 }
 
 
-/* Close when clicking outside */
+/* Close modal when clicking outside */
 
 window.addEventListener("click", function(event){
 
-    const modal = document.getElementById("orderModal");
+    const modal =
+        document.getElementById("orderModal");
+
 
     if(event.target === modal){
 
@@ -1850,8 +2131,10 @@ window.addEventListener("click", function(event){
 
 /* ================= GOOGLE SHEET ORDER SYSTEM ================= */
 
+
 /*
  IMPORTANT:
+
  This is your existing Google Apps Script Web App URL.
  Do not change it.
 */
@@ -1860,153 +2143,182 @@ const scriptURL =
 "https://script.google.com/macros/s/AKfycbwUcgvB-Otwoqs8wZlBuFVHGF7YQVR9CCPfJLSaLxb8_2giAM6TujhGUAOt9yo4RVihxA/exec";
 
 
-document.getElementById("orderForm").addEventListener("submit", function(event){
+/* ================= ORDER SUBMIT ================= */
 
-    event.preventDefault();
+document
+    .getElementById("orderForm")
+    .addEventListener("submit", function(event){
 
-    const submitBtn =
-        document.getElementById("submitBtn");
-
-    submitBtn.disabled = true;
-
-    submitBtn.textContent = "Sending Order...";
-
-  const priceText = document
-    .getElementById("price")
-    .value
-    .replace(/[^0-9]/g, "");
-
-const price = parseInt(priceText, 10) || 0;
-
-const quantity =
-    Number(document.getElementById("quantity").value) || 1;
-
-const total = price * quantity;
-
-const orderData = {
-
-    product:
-        document.getElementById("product").value,
-
-    quantity:
-         parseInt(document.getElementById("quantity").value, 10) || 1,
-    price:
-        price,
-
-    total:
-         price * (parseInt(document.getElementById("quantity").value, 10) || 1),
-
-    name:
-        document.getElementById("name").value,
-
-    phone:
-        document.getElementById("phone").value,
-
-    city:
-        document.getElementById("city").value,
-
-    address:
-        document.getElementById("address").value,
-
-    payment:
-        "Cash on Delivery"
-
-};
+        event.preventDefault();
 
 
-    fetch(scriptURL, {
+        const submitBtn =
+            document.getElementById("submitBtn");
 
-        method:"POST",
 
-        mode:"no-cors",
+        /* Disable button while sending */
 
-        headers:{
-            "Content-Type":"text/plain;charset=utf-8"
-        },
+        submitBtn.disabled = true;
 
-        body:JSON.stringify(orderData)
+        submitBtn.textContent =
+            "Sending Order...";
 
-    })
-  .then(function(){
 
-    const whatsappNumber = "923411951011";
+        /* Get price */
 
-    const product =
-        document.getElementById("product").value;
+        const priceText =
+            document
+                .getElementById("price")
+                .value
+                .replace(/[^0-9]/g, "");
 
-    const quantity =
-        parseInt(
-            document.getElementById("quantity").value,
-            10
-        ) || 1;
 
-    const price =
-        parseInt(
-            document.getElementById("price").value
-                .replace(/[^0-9]/g, ""),
-            10
-        ) || 0;
+        const price =
+            parseInt(priceText, 10) || 0;
 
-    const total = price * quantity;
 
-    const name =
-        document.getElementById("name").value;
+        /* Get quantity */
 
-    const phone =
-        document.getElementById("phone").value;
+        const quantity =
+            parseInt(
+                document
+                    .getElementById("quantity")
+                    .value,
+                10
+            ) || 1;
 
-    const city =
-        document.getElementById("city").value;
 
-    const address =
-        document.getElementById("address").value;
+        /* Calculate total */
 
-    const message =
-        "🛍️ *New Order - ShaziOnlineStore*\n\n" +
-        "📦 Product: " + product + "\n" +
-        "🔢 Quantity: " + quantity + "\n" +
-        "💰 Price: Rs. " + price.toLocaleString() + "\n" +
-        "💵 Total: Rs. " + total.toLocaleString() + "\n\n" +
-        "👤 Customer: " + name + "\n" +
-        "📞 Phone: " + phone + "\n" +
-        "🏙️ City: " + city + "\n" +
-        "📍 Address: " + address + "\n\n" +
-        "💳 Payment: Cash on Delivery";
+        const total =
+            price * quantity;
 
-    const whatsappURL =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(message);
 
-    alert("✅ Order submitted successfully!");
+        /* Order data */
 
-    window.open(whatsappURL, "_blank");
+        const orderData = {
 
-    document.getElementById("orderForm").reset();
+            product:
+                document
+                    .getElementById("product")
+                    .value,
 
-    closeOrder();
+            quantity:
+                quantity,
 
-})
-.catch(function(error){
+            price:
+                price,
 
-    console.error(error);
+            total:
+                total,
 
-    alert(
-        "Something went wrong. Please try again."
-    );
+            name:
+                document
+                    .getElementById("name")
+                    .value,
 
-})
-.finally(function(){
+            phone:
+                document
+                    .getElementById("phone")
+                    .value,
 
-    submitBtn.disabled = false;
+            city:
+                document
+                    .getElementById("city")
+                    .value,
 
-    submitBtn.textContent = "Confirm Order";
+            address:
+                document
+                    .getElementById("address")
+                    .value,
 
-});
-});
+            payment:
+                "Cash on Delivery"
+
+        };
+
+
+        /* Send order to Google Apps Script */
+
+        fetch(scriptURL, {
+
+            method:"POST",
+
+            mode:"no-cors",
+
+            headers:{
+                "Content-Type":
+                    "text/plain;charset=utf-8"
+            },
+
+            body:
+                JSON.stringify(orderData)
+
+        })
+
+
+        /* ================= SUCCESS ================= */
+
+        .then(function(){
+
+            alert(
+                "✅ Order submitted successfully!\n\n" +
+                "Thank you for shopping with ShaziOnlineStore."
+            );
+
+
+            /* Reset form */
+
+            document
+                .getElementById("orderForm")
+                .reset();
+
+
+            /* Reset total */
+
+            document
+                .getElementById("total")
+                .value = "Rs. 0";
+
+
+            /* Close modal */
+
+            closeOrder();
+
+        })
+
+
+        /* ================= ERROR ================= */
+
+        .catch(function(error){
+
+            console.error(error);
+
+
+            alert(
+                "Something went wrong. " +
+                "Please try again."
+            );
+
+        })
+
+
+        /* ================= FINALLY ================= */
+
+        .finally(function(){
+
+            submitBtn.disabled = false;
+
+            submitBtn.textContent =
+                "✅ Confirm Order";
+
+        });
+
+    });
+
 
 </script>
+
 
 </body>
 </html>
