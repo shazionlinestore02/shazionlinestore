@@ -838,6 +838,223 @@ footer{
         gap:25px;
     }
 }
+    /* ===== Professional Order Form ===== */
+
+.order-modal-content {
+    max-width: 500px;
+    width: 92%;
+    margin: 4% auto;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.20);
+}
+
+.order-header {
+    background: linear-gradient(135deg, #111827, #374151);
+    color: white;
+    padding: 22px 25px;
+    position: relative;
+}
+
+.order-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.order-header p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.order-close {
+    position: absolute;
+    right: 18px;
+    top: 15px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.order-body {
+    padding: 24px;
+}
+
+.order-product-box {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.order-product-box label {
+    font-size: 12px;
+    color: #6b7280;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.order-product-box input {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.order-price-row {
+    display: flex;
+    gap: 12px;
+}
+
+.order-price-row > div {
+    flex: 1;
+}
+
+.order-form-group {
+    margin-bottom: 16px;
+}
+
+.order-form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 7px;
+    color: #374151;
+}
+
+.order-form-group input,
+.order-form-group textarea,
+.order-form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+    background: white;
+}
+
+.order-form-group input:focus,
+.order-form-group textarea:focus,
+.order-form-group select:focus {
+    border-color: #111827;
+    box-shadow: 0 0 0 3px rgba(17,24,39,0.08);
+}
+
+.order-form-group textarea {
+    min-height: 85px;
+    resize: vertical;
+}
+
+.order-total-box {
+    background: #f3f4f6;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 5px 0 18px;
+}
+
+.order-total-box label {
+    display: block;
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+.order-total-box input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    font-weight: 800;
+    color: #111827;
+    outline: none;
+}
+
+.cod-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 18px;
+}
+
+.cod-icon {
+    font-size: 25px;
+}
+
+.cod-box strong {
+    display: block;
+    color: #166534;
+    font-size: 15px;
+}
+
+.cod-box span {
+    color: #15803d;
+    font-size: 12px;
+}
+
+.confirm-order-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 11px;
+    background: #111827;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.confirm-order-btn:hover {
+    background: #000000;
+    transform: translateY(-1px);
+}
+
+.order-note {
+    text-align: center;
+    color: #6b7280;
+    font-size: 12px;
+    margin: 12px 0 0;
+}
+
+@media (max-width: 600px) {
+
+    .order-modal-content {
+        width: 94%;
+        margin: 5% auto;
+        border-radius: 15px;
+    }
+
+    .order-body {
+        padding: 18px;
+    }
+
+    .order-header {
+        padding: 19px;
+    }
+
+    .order-header h2 {
+        font-size: 21px;
+    }
+
+    .order-price-row {
+        display: block;
+    }
+
+}
 </style>
 </head>
 
@@ -1310,47 +1527,179 @@ footer{
 </footer>
 
 <!-- ORDER MODAL -->
-<div class="modal" id="orderModal">
+<div id="orderModal" class="modal">
 
-    <div class="modal-box">
+    <div class="order-modal-content">
 
-        <button class="close" onclick="closeOrder()">
-            ×
-        </button>
+        <div class="order-header">
 
-        <h2>Place Your Order 🛒</h2>
+            <button
+                type="button"
+                class="order-close"
+                onclick="closeOrder()"
+            >
+                &times;
+            </button>
 
-        <p class="modal-subtitle">
-            Enter your details and we will contact you for confirmation.
-        </p>
+            <h2>🛍️ Place Your Order</h2>
 
-        <form id="orderForm">
+            <p>Complete your details to confirm your order</p>
 
-            <div class="form-group">
+        </div>
 
-                <label>Product</label>
 
-                <input
-                    type="text"
-                    id="product"
-                    readonly
-                    required
+        <div class="order-body">
+
+            <form id="orderForm">
+
+                <div class="order-product-box">
+
+                    <label>SELECTED PRODUCT</label>
+
+                    <input
+                        type="text"
+                        id="product"
+                        readonly
+                    >
+
+                </div>
+
+
+                <div class="order-price-row">
+
+                    <div class="order-form-group">
+
+                        <label>Price</label>
+
+                        <input
+                            type="text"
+                            id="price"
+                            readonly
+                        >
+
+                    </div>
+
+
+                    <div class="order-form-group">
+
+                        <label>Quantity</label>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            min="1"
+                            value="1"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="order-total-box">
+
+                    <label>ORDER TOTAL</label>
+
+                    <input
+                        type="text"
+                        id="total"
+                        value="Rs. 0"
+                        readonly
+                    >
+
+                </div>
+
+
+                <div class="order-form-group">
+
+                    <label>👤 Full Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="order-form-group">
+
+                    <label>📱 Phone Number</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="03XXXXXXXXX"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="order-form-group">
+
+                    <label>🏙️ City</label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        placeholder="Enter your city"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="order-form-group">
+
+                    <label>📍 Complete Address</label>
+
+                    <textarea
+                        id="address"
+                        placeholder="House number, street, area..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="cod-box">
+
+                    <div class="cod-icon">💵</div>
+
+                    <div>
+
+                        <strong>Cash on Delivery</strong>
+
+                        <span>Pay when your order arrives</span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="submitBtn"
+                    class="confirm-order-btn"
                 >
+                    ✅ Confirm Order
+                </button>
 
-            </div>
+                <p class="order-note">
+                    🔒 Your information is safe and secure.
+                </p>
 
-            <div class="form-group">
+            </form>
 
-                <label>Price</label>
+        </div>
 
-                <input
-                    type="text"
-                    id="price"
-                    readonly
-                >
+    </div>
 
-            </div>
-
+</div>
             <div class="form-group">
 
                 <label>Quantity</label>
