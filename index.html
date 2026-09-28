@@ -4,263 +4,690 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ShaziOnlineStore - Online Shopping Pakistan</title>
+<title>ShaziOnlineStore | Online Shopping in Pakistan</title>
+
+<meta name="description" content="Shop fashion, beauty, home essentials and more at ShaziOnlineStore. Cash on Delivery available across Pakistan.">
 
 <style>
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial, sans-serif;
-    background:#f6f6f6;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f7f8fc;
     color:#222;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+/* ================= HEADER ================= */
+
+.top-bar{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:9px 15px;
+    font-size:14px;
 }
 
 header{
-    background:#111;
-    color:white;
-    padding:18px 6%;
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    min-height:72px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
 }
 
 .logo{
     font-size:25px;
-    font-weight:bold;
+    font-weight:800;
+    color:#111827;
 }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:20px;
+.logo span{
+    color:#e11d48;
 }
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    list-style:none;
+}
+
+.nav-links a{
+    font-size:15px;
+    font-weight:600;
+    color:#374151;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#e11d48;
+}
+
+.nav-order{
+    background:#e11d48;
+    color:white !important;
+    padding:11px 19px;
+    border-radius:30px;
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:none;
+    font-size:28px;
+}
+
+/* ================= HERO ================= */
 
 .hero{
-    background:white;
-    text-align:center;
+    background:
+        radial-gradient(circle at 85% 20%,rgba(225,29,72,.18),transparent 28%),
+        radial-gradient(circle at 10% 80%,rgba(99,102,241,.15),transparent 28%),
+        linear-gradient(135deg,#fff 0%,#fdf2f8 50%,#eef2ff 100%);
+    min-height:560px;
+    display:flex;
+    align-items:center;
+}
+
+.hero-inner{
+    max-width:1200px;
+    width:100%;
+    margin:auto;
     padding:70px 20px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    gap:50px;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:#ffe4e6;
+    color:#be123c;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:18px;
 }
 
 .hero h1{
-    font-size:42px;
-    margin-bottom:15px;
+    font-size:52px;
+    line-height:1.08;
+    margin-bottom:20px;
+    color:#111827;
+}
+
+.hero h1 span{
+    color:#e11d48;
 }
 
 .hero p{
-    color:#666;
+    max-width:570px;
     font-size:18px;
-    margin:8px;
-}
-
-.shop-btn{
-    display:inline-block;
-    margin-top:20px;
-    background:#111;
-    color:white;
-    padding:14px 30px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.section{
-    max-width:1100px;
-    margin:auto;
-    padding:50px 20px;
-}
-
-.section h2{
-    text-align:center;
+    color:#6b7280;
     margin-bottom:30px;
 }
 
-.categories{
+.hero-buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn-primary,
+.btn-secondary{
+    padding:14px 25px;
+    border-radius:10px;
+    font-weight:700;
+    border:none;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#e11d48;
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#be123c;
+    transform:translateY(-2px);
+}
+
+.btn-secondary{
+    background:white;
+    color:#111827;
+    border:1px solid #e5e7eb;
+}
+
+.btn-secondary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.hero-card{
+    min-height:390px;
+    border-radius:30px;
+    background:linear-gradient(145deg,#111827,#374151);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 25px 60px rgba(17,24,39,.25);
+}
+
+.hero-card::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:#e11d48;
+    opacity:.2;
+    top:-100px;
+    right:-70px;
+}
+
+.hero-card-content{
+    position:relative;
+    text-align:center;
+    color:white;
+    padding:30px;
+}
+
+.hero-icon{
+    font-size:105px;
+    margin-bottom:15px;
+}
+
+.hero-card h2{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.hero-card p{
+    color:#d1d5db;
+    font-size:15px;
+    margin:0;
+}
+
+/* ================= TRUST ================= */
+
+.trust{
+    background:white;
+    border-bottom:1px solid #eee;
+}
+
+.trust-grid{
+    max-width:1200px;
+    margin:auto;
+    padding:25px 20px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:20px;
 }
 
+.trust-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.trust-icon{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#fff1f2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+}
+
+.trust-item strong{
+    display:block;
+    font-size:14px;
+}
+
+.trust-item span{
+    color:#6b7280;
+    font-size:12px;
+}
+
+/* ================= GENERAL ================= */
+
+.section{
+    max-width:1200px;
+    margin:auto;
+    padding:75px 20px;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:42px;
+}
+
+.section-heading span{
+    color:#e11d48;
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.section-heading h2{
+    font-size:36px;
+    margin:8px 0;
+    color:#111827;
+}
+
+.section-heading p{
+    color:#6b7280;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
 .category{
     background:white;
-    padding:30px 15px;
+    border:1px solid #eee;
+    border-radius:18px;
+    padding:28px 20px;
     text-align:center;
-    border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    transition:.3s;
 }
+
+.category:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.category-icon{
+    width:65px;
+    height:65px;
+    margin:0 auto 15px;
+    border-radius:18px;
+    background:#fff1f2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+}
+
+.category h3{
+    font-size:17px;
+    margin-bottom:5px;
+}
+
+.category p{
+    color:#777;
+    font-size:13px;
+}
+
+/* ================= PRODUCTS ================= */
 
 .products{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
 }
 
 .product{
     background:white;
-    padding:20px;
-    text-align:center;
-    border-radius:12px;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid #eee;
+    transition:.3s;
+    position:relative;
+}
+
+.product:hover{
+    transform:translateY(-7px);
+    box-shadow:0 18px 40px rgba(0,0,0,.1);
 }
 
 .product-image{
-    height:180px;
-    background:#eee;
-    border-radius:10px;
+    height:260px;
+    background:#f3f4f6;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:55px;
-    margin-bottom:15px;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.product:hover .product-image img{
+    transform:scale(1.04);
+}
+
+.product-placeholder{
+    font-size:70px;
+}
+
+.product-info{
+    padding:19px;
+}
+
+.product-tag{
+    display:inline-block;
+    background:#fce7f3;
+    color:#be123c;
+    font-size:11px;
+    font-weight:700;
+    padding:5px 9px;
+    border-radius:20px;
+    margin-bottom:9px;
 }
 
 .product h3{
-    margin-bottom:10px;
+    font-size:17px;
+    line-height:1.35;
+    margin-bottom:8px;
+}
+
+.product-description{
+    color:#777;
+    font-size:13px;
+    min-height:42px;
 }
 
 .price{
-    font-weight:bold;
-    font-size:18px;
-    margin-bottom:15px;
+    font-size:21px;
+    font-weight:800;
+    color:#e11d48;
+    margin:12px 0;
 }
 
 .order-btn{
-    border:0;
-    background:#111;
+    width:100%;
+    border:none;
+    background:#111827;
     color:white;
-    padding:12px 22px;
-    border-radius:7px;
-    cursor:pointer;
-    font-size:16px;
+    padding:12px;
+    border-radius:9px;
+    font-weight:700;
+    transition:.3s;
 }
 
-.info{
+.order-btn:hover{
+    background:#e11d48;
+}
+
+/* ================= OFFER ================= */
+
+.offer{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 20px 75px;
+}
+
+.offer-box{
+    background:linear-gradient(120deg,#111827,#1f2937);
+    color:white;
+    border-radius:25px;
+    padding:45px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.offer-box h2{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.offer-box p{
+    color:#d1d5db;
+}
+
+/* ================= WHY US ================= */
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.why-card{
     background:white;
-    text-align:center;
-    padding:40px 20px;
+    padding:30px;
+    border-radius:18px;
+    border:1px solid #eee;
 }
 
-.info p{
-    margin:8px;
+.why-icon{
+    font-size:35px;
+    margin-bottom:15px;
 }
 
-footer{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:25px;
+.why-card h3{
+    margin-bottom:8px;
 }
 
-/* ORDER POPUP */
+.why-card p{
+    color:#6b7280;
+    font-size:14px;
+}
+
+/* ================= ORDER MODAL ================= */
 
 .modal{
     display:none;
     position:fixed;
-    z-index:999;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
+    inset:0;
     background:rgba(0,0,0,.65);
-    overflow:auto;
+    z-index:3000;
+    padding:20px;
+    overflow-y:auto;
 }
 
 .modal-box{
-    background:white;
-    max-width:550px;
+    max-width:500px;
     margin:40px auto;
-    padding:30px;
-    border-radius:15px;
+    background:white;
+    border-radius:20px;
+    padding:28px;
     position:relative;
+    box-shadow:0 25px 70px rgba(0,0,0,.25);
 }
 
 .close{
     position:absolute;
-    right:20px;
+    right:18px;
     top:12px;
-    font-size:30px;
-    cursor:pointer;
+    border:0;
+    background:none;
+    font-size:28px;
+    color:#555;
 }
 
 .modal-box h2{
-    text-align:center;
     margin-bottom:5px;
 }
 
-.selected-product{
-    text-align:center;
-    background:#f1f1f1;
-    padding:12px;
-    margin:15px 0;
-    border-radius:8px;
-    font-weight:bold;
+.modal-subtitle{
+    color:#777;
+    font-size:13px;
+    margin-bottom:20px;
 }
 
-label{
+.form-group{
+    margin-bottom:14px;
+}
+
+.form-group label{
     display:block;
-    font-weight:bold;
-    margin-top:14px;
+    font-size:13px;
+    font-weight:700;
     margin-bottom:6px;
 }
 
-input,
-textarea{
+.form-group input,
+.form-group textarea{
     width:100%;
-    padding:13px;
-    border:1px solid #ccc;
-    border-radius:7px;
-    font-size:16px;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:9px;
+    outline:none;
+    font-size:14px;
 }
 
-textarea{
-    height:90px;
+.form-group input:focus,
+.form-group textarea:focus{
+    border-color:#e11d48;
+}
+
+.form-group textarea{
+    min-height:90px;
     resize:vertical;
 }
 
-.cod{
-    background:#eef8f0;
-    padding:13px;
-    border-radius:8px;
-    text-align:center;
-    margin-top:18px;
-    font-weight:bold;
+.payment-box{
+    background:#f0fdf4;
+    color:#166534;
+    padding:12px;
+    border-radius:9px;
+    margin:12px 0 18px;
+    font-size:14px;
+    font-weight:700;
 }
 
-.submit-btn{
+.submit-order{
     width:100%;
-    margin-top:20px;
-    padding:15px;
+    padding:14px;
     border:0;
-    border-radius:8px;
-    background:#111;
+    border-radius:10px;
+    background:#e11d48;
     color:white;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
+    font-weight:800;
+    font-size:15px;
 }
 
-.submit-btn:disabled{
-    background:#888;
+.submit-order:hover{
+    background:#be123c;
 }
 
-#message{
+/* ================= FOOTER ================= */
+
+footer{
+    background:#111827;
+    color:white;
+    margin-top:20px;
+}
+
+.footer-inner{
+    max-width:1200px;
+    margin:auto;
+    padding:55px 20px 30px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-logo{
+    font-size:25px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.footer-logo span{
+    color:#fb7185;
+}
+
+.footer-column p{
+    color:#9ca3af;
+    font-size:14px;
+}
+
+.footer-column h3{
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+.footer-column a{
+    display:block;
+    color:#9ca3af;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    max-width:1200px;
+    margin:auto;
+    border-top:1px solid #374151;
+    padding:20px;
     text-align:center;
-    margin-top:15px;
-    font-weight:bold;
+    color:#9ca3af;
+    font-size:13px;
 }
 
-.success{
-    color:green;
-}
+/* ================= MOBILE ================= */
 
-.error{
-    color:red;
-}
+@media(max-width:900px){
 
-@media(max-width:800px){
+    .hero-inner{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .trust-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
     .categories{
         grid-template-columns:repeat(2,1fr);
@@ -270,30 +697,145 @@ textarea{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .hero h1{
-        font-size:32px;
+    .footer-inner{
+        grid-template-columns:repeat(2,1fr);
     }
 }
 
-@media(max-width:550px){
+@media(max-width:650px){
 
-    header{
+    .top-bar{
+        font-size:12px;
+    }
+
+    .navbar{
+        min-height:64px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        left:0;
+        right:0;
+        top:64px;
+        background:white;
         flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        box-shadow:0 10px 20px rgba(0,0,0,.08);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links li a{
+        display:block;
+        padding:15px 20px;
+        border-bottom:1px solid #eee;
+    }
+
+    .hero{
+        min-height:auto;
+    }
+
+    .hero-inner{
+        padding:55px 20px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .hero-card{
+        min-height:300px;
+    }
+
+    .trust-grid{
+        grid-template-columns:1fr 1fr;
         gap:15px;
     }
 
-    nav a{
-        margin:0 7px;
+    .trust-item{
+        align-items:flex-start;
     }
 
-    .categories,
+    .section{
+        padding:55px 15px;
+    }
+
+    .section-heading h2{
+        font-size:29px;
+    }
+
+    .categories{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .category{
+        padding:20px 10px;
+    }
+
     .products{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .product-image{
+        height:190px;
+    }
+
+    .product-info{
+        padding:13px;
+    }
+
+    .product h3{
+        font-size:14px;
+    }
+
+    .product-description{
+        font-size:12px;
+    }
+
+    .price{
+        font-size:17px;
+    }
+
+    .order-btn{
+        font-size:12px;
+        padding:10px 5px;
+    }
+
+    .offer{
+        padding:0 15px 55px;
+    }
+
+    .offer-box{
+        padding:30px 22px;
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .offer-box h2{
+        font-size:25px;
+    }
+
+    .why-grid{
         grid-template-columns:1fr;
     }
 
-    .modal-box{
-        margin:20px;
-        padding:22px;
+    .footer-inner{
+        grid-template-columns:1fr;
+        gap:25px;
     }
 }
 </style>
@@ -301,262 +843,589 @@ textarea{
 
 <body>
 
+<!-- TOP BAR -->
+<div class="top-bar">
+    🚚 Fast Delivery Across Pakistan &nbsp; | &nbsp; 💵 Cash on Delivery Available
+</div>
+
+<!-- HEADER -->
 <header>
+    <nav class="navbar">
 
-    <div class="logo">
-        ShaziOnlineStore
-    </div>
+        <a href="#home" class="logo">
+            Shazi<span>OnlineStore</span>
+        </a>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#categories">Categories</a>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+                <a href="#products" class="nav-order">Shop Now</a>
+            </li>
+        </ul>
+
     </nav>
-
 </header>
 
-
+<!-- HERO -->
 <section class="hero" id="home">
 
-    <h1>Welcome to ShaziOnlineStore</h1>
+    <div class="hero-inner">
 
-    <p>Fashion • Beauty • Home Essentials</p>
+        <div>
 
-    <p>🚚 Fast Delivery | 💵 Cash on Delivery Available</p>
+            <span class="hero-badge">
+                ✨ Welcome to ShaziOnlineStore
+            </span>
 
-    <a href="#shop" class="shop-btn">
-        Shop Now
-    </a>
+            <h1>
+                Shop Smart.<br>
+                Shop <span>Shazi.</span>
+            </h1>
+
+            <p>
+                Discover stylish fashion, beauty products, home essentials
+                and more — delivered straight to your doorstep across Pakistan.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#products" class="btn-primary">
+                    🛍️ Shop Now
+                </a>
+
+                <a href="#categories" class="btn-secondary">
+                    Explore Categories
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="hero-card-content">
+
+                <div class="hero-icon">🛍️</div>
+
+                <h2>Quality Products</h2>
+
+                <p>
+                    Easy ordering • Cash on Delivery • Home Delivery
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
+<!-- TRUST -->
+<section class="trust">
 
+    <div class="trust-grid">
+
+        <div class="trust-item">
+            <div class="trust-icon">🚚</div>
+            <div>
+                <strong>Fast Delivery</strong>
+                <span>Across Pakistan</span>
+            </div>
+        </div>
+
+        <div class="trust-item">
+            <div class="trust-icon">💵</div>
+            <div>
+                <strong>Cash on Delivery</strong>
+                <span>Pay when received</span>
+            </div>
+        </div>
+
+        <div class="trust-item">
+            <div class="trust-icon">🛡️</div>
+            <div>
+                <strong>Easy Ordering</strong>
+                <span>Simple online order</span>
+            </div>
+        </div>
+
+        <div class="trust-item">
+            <div class="trust-icon">⭐</div>
+            <div>
+                <strong>Quality Products</strong>
+                <span>Selected for you</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CATEGORIES -->
 <section class="section" id="categories">
 
-    <h2>Shop by Category</h2>
+    <div class="section-heading">
+
+        <span>Shop By Category</span>
+
+        <h2>Explore Our Categories</h2>
+
+        <p>
+            Find products for your everyday needs.
+        </p>
+
+    </div>
 
     <div class="categories">
 
         <div class="category">
-            <h3>👗 Women's Fashion</h3>
-            <p>Latest fashion products</p>
+            <div class="category-icon">👗</div>
+            <h3>Fashion</h3>
+            <p>Stylish products for everyone</p>
         </div>
 
         <div class="category">
-            <h3>👔 Men's Fashion</h3>
-            <p>Quality men's products</p>
+            <div class="category-icon">👜</div>
+            <h3>Women</h3>
+            <p>Bags, accessories & more</p>
         </div>
 
         <div class="category">
-            <h3>💄 Beauty</h3>
+            <div class="category-icon">💄</div>
+            <h3>Beauty</h3>
             <p>Beauty & personal care</p>
         </div>
 
         <div class="category">
-            <h3>🏡 Home Essentials</h3>
-            <p>Useful home products</p>
+            <div class="category-icon">🏠</div>
+            <h3>Home Essentials</h3>
+            <p>Useful products for home</p>
         </div>
 
     </div>
 
-
 </section>
 
+<!-- PRODUCTS -->
+<section class="section" id="products">
 
-<section class="section" id="shop">
+    <div class="section-heading">
 
-    <h2>Featured Products</h2>
+        <span>Featured Products</span>
+
+        <h2>Shop Our Latest Products</h2>
+
+        <p>
+            Order your favourite product with Cash on Delivery.
+        </p>
+
+    </div>
 
     <div class="products">
 
+        <!-- PRODUCT 1 -->
         <div class="product">
 
             <div class="product-image">
-                👜
+                <div class="product-placeholder">👜</div>
             </div>
 
-            <h3>Fashion Handbag</h3>
+            <div class="product-info">
 
-            <p class="price">
-                Rs. 2,499
-            </p>
+                <span class="product-tag">Fashion</span>
 
-            <button
-                class="order-btn"
-                onclick="openOrder('Fashion Handbag', '2499')">
-                Order Now
-            </button>
+                <h3>Fashion Handbag</h3>
+
+                <p class="product-description">
+                    Stylish everyday handbag with a modern design.
+                </p>
+
+                <div class="price">
+                    Rs. 2,499
+                </div>
+
+                <button
+                    class="order-btn"
+                    onclick="openOrder('Fashion Handbag','2499')">
+                    Order Now
+                </button>
+
+            </div>
 
         </div>
 
-
+        <!-- PRODUCT 2 -->
         <div class="product">
 
             <div class="product-image">
-                👕
+                <div class="product-placeholder">👔</div>
             </div>
 
-            <h3>Men Fashion Product</h3>
+            <div class="product-info">
 
-            <p class="price">
-                Rs. 1,999
-            </p>
+                <span class="product-tag">Men</span>
 
-            <button
-                class="order-btn"
-                onclick="openOrder('Men Fashion Product', '1999')">
-                Order Now
-            </button>
+                <h3>Men Fashion Product</h3>
+
+                <p class="product-description">
+                    Modern fashion product for everyday style.
+                </p>
+
+                <div class="price">
+                    Rs. 1,999
+                </div>
+
+                <button
+                    class="order-btn"
+                    onclick="openOrder('Men Fashion Product','1999')">
+                    Order Now
+                </button>
+
+            </div>
 
         </div>
 
-
+        <!-- PRODUCT 3 -->
         <div class="product">
 
             <div class="product-image">
-                💄
+                <div class="product-placeholder">💄</div>
             </div>
 
-            <h3>Beauty Product</h3>
+            <div class="product-info">
 
-            <p class="price">
-                Rs. 1,499
-            </p>
+                <span class="product-tag">Beauty</span>
 
-            <button
-                class="order-btn"
-                onclick="openOrder('Beauty Product', '1499')">
-                Order Now
-            </button>
+                <h3>Beauty Product</h3>
+
+                <p class="product-description">
+                    A useful beauty product for your daily routine.
+                </p>
+
+                <div class="price">
+                    Rs. 1,499
+                </div>
+
+                <button
+                    class="order-btn"
+                    onclick="openOrder('Beauty Product','1499')">
+                    Order Now
+                </button>
+
+            </div>
 
         </div>
-          <div class="product">
-  <img 
-    src="handbag-1.webp.webp" 
-    alt="Women's PU Leather Textured Hand Bag"
-    style="width:100%; height:220px; object-fit:contain; border-radius:10px;"
-  >
 
-  <h3>Women's PU Leather Textured Hand Bag</h3>
+        <!-- HANDBAG -->
+        <div class="product">
 
-  <p class="price">Rs. 2,600</p>
+            <div class="product-image">
 
-  <button
-    class="order-btn"
-    onclick="openOrder('Women\'s PU Leather Textured Hand Bag', '2600')">
-    Order Now
-  </button>
-</div>
+                <img
+                    src="handbag-1.webp.webp"
+                    alt="Women's PU Leather Textured Hand Bag"
+                    onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'product-placeholder\'>👜</div>';"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-tag">
+                    Women's Fashion
+                </span>
+
+                <h3>
+                    Women's PU Leather Textured Hand Bag
+                </h3>
+
+                <p class="product-description">
+                    Elegant textured PU leather handbag with a stylish design.
+                </p>
+
+                <div class="price">
+                    Rs. 2,600
+                </div>
+
+                <button
+                    class="order-btn"
+                    onclick="openOrder('Women\'s PU Leather Textured Hand Bag','2600')">
+                    Order Now
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
-  
 
 </section>
 
+<!-- OFFER -->
+<section class="offer">
 
-<section class="info">
+    <div class="offer-box">
 
-    <h2>Why Shop With Us?</h2>
+        <div>
+            <h2>Cash on Delivery Available 💵</h2>
 
-    <p>✅ Quality Products</p>
-    <p>🚚 Fast Delivery</p>
-    <p>💵 Cash on Delivery</p>
-    <p>📦 Easy Ordering</p>
+            <p>
+                Place your order online and pay when your order arrives.
+            </p>
+        </div>
+
+        <a href="#products" class="btn-primary">
+            Shop Now →
+        </a>
+
+    </div>
 
 </section>
 
+<!-- WHY US -->
+<section class="section" id="why-us">
 
-<footer>
+    <div class="section-heading">
 
-    <p>© 2026 ShaziOnlineStore</p>
+        <span>Why ShaziOnlineStore?</span>
 
-    <p>Cash on Delivery Available Across Pakistan 🇵🇰</p>
+        <h2>Shopping Made Simple</h2>
+
+        <p>
+            We make online shopping easy and convenient.
+        </p>
+
+    </div>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <div class="why-icon">🚚</div>
+
+            <h3>Home Delivery</h3>
+
+            <p>
+                Order from the comfort of your home and get your products
+                delivered to your doorstep.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <div class="why-icon">💵</div>
+
+            <h3>Cash on Delivery</h3>
+
+            <p>
+                Convenient COD ordering allows you to pay when your order
+                is delivered.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <div class="why-icon">🛍️</div>
+
+            <h3>Easy Ordering</h3>
+
+            <p>
+                Choose your product, enter your details and place your
+                order in just a few steps.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+
+    <div class="footer-inner">
+
+        <div class="footer-column">
+
+            <div class="footer-logo">
+                Shazi<span>OnlineStore</span>
+            </div>
+
+            <p>
+                Your online shopping destination for fashion, beauty,
+                home essentials and more.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#products">Shop</a>
+            <a href="#why-us">Why Us</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Shopping</h3>
+
+            <a href="#products">Featured Products</a>
+            <a href="#products">Fashion</a>
+            <a href="#products">Beauty</a>
+            <a href="#products">Home Essentials</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>🇵🇰 Pakistan</p>
+            <p>💵 Cash on Delivery</p>
+            <p>🚚 Home Delivery</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        © 2026 ShaziOnlineStore. All Rights Reserved.
+
+    </div>
 
 </footer>
 
-
-<!-- ORDER FORM -->
-
+<!-- ORDER MODAL -->
 <div class="modal" id="orderModal">
 
     <div class="modal-box">
 
-        <span class="close" onclick="closeOrder()">
-            &times;
-        </span>
+        <button class="close" onclick="closeOrder()">
+            ×
+        </button>
 
-        <h2>Place Your Order</h2>
+        <h2>Place Your Order 🛒</h2>
 
-        <div class="selected-product" id="selectedProduct">
-            Product
-        </div>
+        <p class="modal-subtitle">
+            Enter your details and we will contact you for confirmation.
+        </p>
 
         <form id="orderForm">
 
-            <input
-                type="hidden"
-                id="product"
-            >
+            <div class="form-group">
 
-            <label>Quantity</label>
+                <label>Product</label>
 
-            <input
-                type="number"
-                id="quantity"
-                value="1"
-                min="1"
-                required
-            >
+                <input
+                    type="text"
+                    id="product"
+                    readonly
+                    required
+                >
 
-            <label>Full Name</label>
+            </div>
 
-            <input
-                type="text"
-                id="name"
-                placeholder="Enter your full name"
-                required
-            >
+            <div class="form-group">
 
-            <label>Phone Number</label>
+                <label>Price</label>
 
-            <input
-                type="tel"
-                id="phone"
-                placeholder="03XXXXXXXXX"
-                required
-            >
+                <input
+                    type="text"
+                    id="price"
+                    readonly
+                >
 
-            <label>City</label>
+            </div>
 
-            <input
-                type="text"
-                id="city"
-                placeholder="Enter your city"
-                required
-            >
+            <div class="form-group">
 
-            <label>Complete Address</label>
+                <label>Quantity</label>
 
-            <textarea
-                id="address"
-                placeholder="House number, street, area..."
-                required
-            ></textarea>
+                <input
+                    type="number"
+                    id="quantity"
+                    min="1"
+                    value="1"
+                    required
+                >
 
-            <div class="cod">
-                💵 Cash on Delivery
+            </div>
+
+            <div class="form-group">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="03XXXXXXXXX"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>City</label>
+
+                <input
+                    type="text"
+                    id="city"
+                    placeholder="Your city"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Complete Address</label>
+
+                <textarea
+                    id="address"
+                    placeholder="House no, street, area..."
+                    required
+                ></textarea>
+
+            </div>
+
+            <div class="payment-box">
+                💵 Payment Method: Cash on Delivery
             </div>
 
             <button
                 type="submit"
-                class="submit-btn"
+                class="submit-order"
                 id="submitBtn">
-
-                Place Order
-
+                Confirm Order
             </button>
-
-            <div id="message"></div>
 
         </form>
 
@@ -564,46 +1433,62 @@ textarea{
 
 </div>
 
-
 <script>
 
-/* GOOGLE APPS SCRIPT URL */
+/* ================= MOBILE MENU ================= */
 
-const scriptURL =
-"https://script.google.com/macros/s/AKfycbwUcgvB-Otwoqs8wZlBuFVHGF7YQVR9CCPfJLSaLxb8_2giAM6TujhGUAOt9yo4RVihxA/exec";
+function toggleMenu(){
 
+    const nav = document.getElementById("navLinks");
 
-/* OPEN ORDER FORM */
-
-function openOrder(productName, price){
-
-    document.getElementById("orderModal").style.display = "block";
-
-    document.getElementById("product").value = productName;
-
-    document.getElementById("selectedProduct").innerText =
-        productName + " — Rs. " + price;
-
-    document.getElementById("message").innerText = "";
+    nav.classList.toggle("active");
 
 }
 
 
-/* CLOSE ORDER FORM */
+/* Close mobile menu after clicking link */
+
+document.querySelectorAll(".nav-links a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+        document.getElementById("navLinks").classList.remove("active");
+
+    });
+
+});
+
+
+/* ================= ORDER MODAL ================= */
+
+function openOrder(productName, productPrice){
+
+    document.getElementById("product").value = productName;
+
+    document.getElementById("price").value =
+        "Rs. " + Number(productPrice).toLocaleString();
+
+    document.getElementById("orderModal").style.display = "block";
+
+    document.body.style.overflow = "hidden";
+
+}
+
 
 function closeOrder(){
 
     document.getElementById("orderModal").style.display = "none";
 
+    document.body.style.overflow = "auto";
+
 }
 
 
-/* CLOSE WHEN CLICKING OUTSIDE */
+/* Close when clicking outside */
 
-window.onclick = function(event){
+window.addEventListener("click", function(event){
 
-    const modal =
-        document.getElementById("orderModal");
+    const modal = document.getElementById("orderModal");
 
     if(event.target === modal){
 
@@ -611,113 +1496,101 @@ window.onclick = function(event){
 
     }
 
-};
+});
 
 
-/* SUBMIT ORDER */
+/* ================= GOOGLE SHEET ORDER SYSTEM ================= */
 
-document.getElementById("orderForm").addEventListener(
-    "submit",
-    async function(event){
+/*
+ IMPORTANT:
+ This is your existing Google Apps Script Web App URL.
+ Do not change it.
+*/
 
-        event.preventDefault();
-
-        const button =
-            document.getElementById("submitBtn");
-
-        const message =
-            document.getElementById("message");
-
-        button.disabled = true;
-
-        button.innerText =
-            "Submitting Order...";
-
-        message.innerText = "";
-
-        const orderData = {
-
-            product:
-                document.getElementById("product").value,
-
-            quantity:
-                document.getElementById("quantity").value,
-
-            name:
-                document.getElementById("name").value,
-
-            phone:
-                document.getElementById("phone").value,
-
-            city:
-                document.getElementById("city").value,
-
-            address:
-                document.getElementById("address").value,
-
-            payment:
-                "Cash on Delivery"
-
-        };
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbwUcgvB-Otwoqs8wZlBuFVHGF7YQVR9CCPfJLSaLxb8_2giAM6TujhGUAOt9yo4RVihxA/exec";
 
 
-        try{
+document.getElementById("orderForm").addEventListener("submit", function(event){
 
-            const response = await fetch(
-                scriptURL,
-                {
-                    method:"POST",
-                    body:JSON.stringify(orderData)
-                }
-            );
+    event.preventDefault();
 
+    const submitBtn =
+        document.getElementById("submitBtn");
 
-            const result =
-                await response.json();
+    submitBtn.disabled = true;
 
+    submitBtn.textContent = "Sending Order...";
 
-            if(result.success){
+    const orderData = {
 
-                message.innerText =
-                    "✅ Order submitted successfully!";
+        product:
+            document.getElementById("product").value,
 
-                message.className =
-                    "success";
+        quantity:
+            document.getElementById("quantity").value,
 
-                document.getElementById(
-                    "orderForm"
-                ).reset();
+        name:
+            document.getElementById("name").value,
 
-            }else{
+        phone:
+            document.getElementById("phone").value,
 
-                throw new Error(
-                    result.error ||
-                    "Order submission failed"
-                );
+        city:
+            document.getElementById("city").value,
 
-            }
+        address:
+            document.getElementById("address").value,
 
+        payment:
+            "Cash on Delivery"
 
-        }catch(error){
-
-            console.error(error);
-
-            message.innerText =
-                "❌ Order submit nahi ho saka. Please try again.";
-
-            message.className =
-                "error";
-
-        }
+    };
 
 
-        button.disabled = false;
+    fetch(scriptURL, {
 
-        button.innerText =
-            "Place Order";
+        method:"POST",
 
-    }
-);
+        mode:"no-cors",
+
+        headers:{
+            "Content-Type":"text/plain;charset=utf-8"
+        },
+
+        body:JSON.stringify(orderData)
+
+    })
+    .then(function(){
+
+        alert(
+            "✅ Order submitted successfully!\n\n" +
+            "Thank you for shopping with ShaziOnlineStore."
+        );
+
+        document.getElementById("orderForm").reset();
+
+        closeOrder();
+
+    })
+    .catch(function(error){
+
+        console.error(error);
+
+        alert(
+            "Something went wrong. Please try again."
+        );
+
+    })
+    .finally(function(){
+
+        submitBtn.disabled = false;
+
+        submitBtn.textContent = "Confirm Order";
+
+    });
+
+});
 
 </script>
 
