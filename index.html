@@ -2415,8 +2415,11 @@ async function loadProducts() {
             }
 
 
-            const priceNumber = Number(
-                sellingPrice.replace(/[^\d.]/g, "")
+           const priceNumber = Math.round(
+    parseFloat(
+        sellingPrice.replace(/[^\d]/g, "")
+    )
+);
             );
 
 
