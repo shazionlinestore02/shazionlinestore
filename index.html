@@ -2318,7 +2318,209 @@ document
 
 
 </script>
+<script>
 
+const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vREeyHHgihiRFsAor20cpMuLnyXs23-KhjRaQAIAiePrzdbBwWvlghF3umw-H2fRc58GERaoV0o9UtQ/pub?gid=121911969&single=true&output=csv";
+
+
+function parseCSV(csv) {
+
+    const rows = [];
+    let row = [];
+    let value = "";
+    let insideQuotes = false;
+
+    for (let i = 0; i < csv.length; i++) {
+
+        const char = csv[i];
+        const next = csv[i + 1];
+
+        if (char === '"' && insideQuotes && next === '"') {
+            value += '"';
+            i++;
+        }
+
+        else if (char === '"') {
+            insideQuotes = !insideQuotes;
+        }
+
+        else if (char === "," && !insideQuotes) {
+            row.push(value);
+            value = "";
+        }
+
+        else if ((char === "\n" || char === "\r") && !insideQuotes) {
+
+            if (value !== "" || row.length > 0) {
+                row.push(value);
+                rows.push(row);
+            }
+
+            value = "";
+            row = [];
+
+            if (char === "\r" && next === "\n") {
+                i++;
+            }
+
+        }
+
+        else {
+            value += char;
+        }
+    }
+
+    if (value !== "" || row.length > 0) {
+        row.push(value);
+        rows.push(row);
+    }
+
+    return rows;
+}
+
+
+async function loadProducts() {
+
+    try {
+
+        const response = await fetch(productsCSV);
+
+        const csv = await response.text();
+
+        const rows = parseCSV(csv);
+
+        const productsContainer =
+            document.querySelector(".products");
+
+
+        if (!productsContainer) {
+            console.error("Products container not found.");
+            return;
+        }
+
+
+        productsContainer.innerHTML = "";
+
+
+        rows.slice(1).forEach(function(row) {
+
+            const productName = (row[0] || "").trim();
+            const category = (row[1] || "").trim();
+            const sellingPrice = (row[5] || "").trim();
+            const imageURL = (row[8] || "").trim();
+
+
+            if (!productName) {
+                return;
+            }
+
+
+            const priceNumber = Number(
+                sellingPrice.replace(/[^\d.]/g, "")
+            );
+
+
+            const product = document.createElement("div");
+
+            product.className = "product";
+
+
+            const imageHTML = imageURL
+
+                ? `
+                    <img
+                        src="${imageURL}"
+                        alt="${productName}"
+                        onerror="this.style.display='none';"
+                    >
+                  `
+
+                : `
+                    <div class="product-placeholder">
+                        🛍️
+                    </div>
+                  `;
+
+
+            product.innerHTML = `
+
+                <div class="product-image">
+
+                    ${imageHTML}
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span class="product-tag">
+                        ${category || "New"}
+                    </span>
+
+
+                    <h3>
+                        ${productName}
+                    </h3>
+
+
+                    <p class="product-description">
+                        Brand new quality product.
+                    </p>
+
+
+                    <div class="price">
+                        Rs. ${priceNumber.toLocaleString()}
+                    </div>
+
+
+                    <button
+                        class="order-btn"
+                        type="button">
+
+                        Order Now
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+            const orderButton =
+                product.querySelector(".order-btn");
+
+
+            orderButton.addEventListener("click", function() {
+
+                openOrder(
+                    productName,
+                    priceNumber
+                );
+
+            });
+
+
+            productsContainer.appendChild(product);
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Products loading error:",
+            error
+        );
+
+    }
+
+}
+
+
+loadProducts();
+
+</script>
 
 </body>
 </html>
