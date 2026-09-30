@@ -1215,10 +1215,16 @@ function displayProduct(product){
 
     /* PRICE */
 
-    const cleanPrice =
-        product.price
-        .replace(/[^\d.]/g,"");
+   const rawPrice = String(product.price || "");
 
+const numericPrice =
+    parseInt(rawPrice.replace(/\D/g, ""), 10) || 0;
+
+document.getElementById("productPrice")
+    .textContent =
+    numericPrice > 0
+    ? "Rs " + numericPrice.toLocaleString("en-PK")
+    : rawPrice || "Price available";
 
     const numericPrice =
         parseFloat(cleanPrice) || 0;
