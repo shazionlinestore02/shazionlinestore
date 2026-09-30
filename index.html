@@ -1435,12 +1435,13 @@ footer{
 
 .shop-controls{
     max-width:1200px;
-    margin:0 auto 30px;
+    margin:0 auto 32px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:15px;
+    gap:14px;
     flex-wrap:wrap;
+    padding:4px;
 }
 
 .search-box{
@@ -1451,72 +1452,90 @@ footer{
 
 .search-box input{
     width:100%;
-    height:48px;
-    padding:0 18px 0 46px;
+    height:50px;
+    padding:0 20px 0 48px;
     border:1px solid #e5e7eb;
-    border-radius:12px;
+    border-radius:14px;
     background:#fff;
+    color:#111827;
     font-size:14px;
     outline:none;
-    transition:.25s;
+    transition:all .25s ease;
+    box-shadow:0 4px 14px rgba(17,24,39,.04);
+}
+
+.search-box input::placeholder{
+    color:#9ca3af;
 }
 
 .search-box input:focus{
     border-color:#e11d48;
-    box-shadow:0 0 0 3px rgba(225,29,72,.08);
+    box-shadow:0 0 0 4px rgba(225,29,72,.08);
 }
 
 .search-icon{
     position:absolute;
-    left:16px;
+    left:17px;
     top:50%;
     transform:translateY(-50%);
     font-size:18px;
     color:#6b7280;
+    pointer-events:none;
 }
 
 .category-filter{
-    height:48px;
-    min-width:190px;
-    padding:0 15px;
+    height:50px;
+    min-width:200px;
+    padding:0 40px 0 16px;
     border:1px solid #e5e7eb;
-    border-radius:12px;
+    border-radius:14px;
     background:#fff;
     color:#111827;
     font-size:14px;
-    font-weight:600;
+    font-weight:700;
     outline:none;
     cursor:pointer;
+    transition:all .25s ease;
+    box-shadow:0 4px 14px rgba(17,24,39,.04);
+}
+
+.category-filter:hover{
+    border-color:#fda4af;
 }
 
 .category-filter:focus{
     border-color:#e11d48;
+    box-shadow:0 0 0 4px rgba(225,29,72,.08);
 }
 
 .products-count{
     width:100%;
     color:#6b7280;
     font-size:12px;
-    margin-top:2px;
+    font-weight:600;
+    margin-top:3px;
+    padding-left:4px;
 }
 
 .no-products{
     grid-column:1/-1;
     text-align:center;
-    padding:60px 20px;
+    padding:65px 20px;
     background:#fff;
     border:1px solid #e5e7eb;
-    border-radius:18px;
+    border-radius:20px;
+    box-shadow:0 6px 20px rgba(17,24,39,.04);
 }
 
 .no-products-icon{
     font-size:50px;
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .no-products h3{
     font-size:20px;
-    margin-bottom:5px;
+    margin-bottom:6px;
+    color:#111827;
 }
 
 .no-products p{
