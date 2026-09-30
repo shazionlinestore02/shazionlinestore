@@ -1505,53 +1505,59 @@ footer{
 ========================================================= -->
 
 <header>
+    <nav class="navbar">
 
-<nav class="navbar">
+        <a href="#home" class="logo">
+            Shazi<span>OnlineStore</span>
+        </a>
 
-    <a href="#home" class="logo">
-        Shazi<span>OnlineStore</span>
-    </a>
+        <div class="nav-search">
+            <input
+                type="text"
+                placeholder="Search products..."
+                onkeyup="document.getElementById('productSearch').value=this.value; document.getElementById('productSearch').dispatchEvent(new Event('input'))"
+            >
+            <span>🔍</span>
+        </div>
 
-    <button
-        class="menu-btn"
-        onclick="toggleMenu()">
-        ☰
-    </button>
+        <button
+            class="menu-btn"
+            onclick="toggleMenu()">
+            ☰
+        </button>
 
-    <ul class="nav-links" id="navLinks">
+        <ul class="nav-links" id="navLinks">
 
-        <li>
-            <a href="#home">Home</a>
-        </li>
+            <li>
+                <a href="#home">Home</a>
+            </li>
 
-        <li>
-            <a href="#categories">Categories</a>
-        </li>
+            <li>
+                <a href="#categories">Categories</a>
+            </li>
 
-        <li>
-            <a href="#products">Shop</a>
-        </li>
+            <li>
+                <a href="#products">Shop</a>
+            </li>
 
-        <li>
-            <a href="#why-us">Why Us</a>
-        </li>
+            <li>
+                <a href="#why-us">Why Us</a>
+            </li>
 
-        <li>
-            <a href="#contact">Contact</a>
-        </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
 
-        <li>
-            <a href="#products" class="nav-order">
-                Shop Now
-            </a>
-        </li>
+            <li>
+                <a href="#products" class="nav-order">
+                    Shop Now
+                </a>
+            </li>
 
-    </ul>
+        </ul>
 
-</nav>
-
+    </nav>
 </header>
-
 
 <!-- =========================================================
      HERO
