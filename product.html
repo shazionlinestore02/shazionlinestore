@@ -1215,7 +1215,9 @@ function displayProduct(product){
 
     /* PRICE */
 
-   const rawPrice = String(product.price || "");
+  /* PRICE */
+
+const rawPrice = String(product.price || "");
 
 const numericPrice =
     parseInt(rawPrice.replace(/\D/g, ""), 10) || 0;
@@ -1225,17 +1227,6 @@ document.getElementById("productPrice")
     numericPrice > 0
     ? "Rs " + numericPrice.toLocaleString("en-PK")
     : rawPrice || "Price available";
-
-    const numericPrice =
-        parseFloat(cleanPrice) || 0;
-
-
-    document.getElementById("productPrice")
-        .textContent =
-        numericPrice > 0
-        ? "Rs " + numericPrice.toLocaleString()
-        : product.price || "Price available";
-
 
     /* IMAGES */
 
