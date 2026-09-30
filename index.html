@@ -1134,14 +1134,38 @@ footer{
     .navbar{
         min-height:64px;
         padding:0 15px;
+        gap:10px;
+        position:relative;
     }
 
     .logo{
         font-size:21px;
+        white-space:nowrap;
+    }
+
+    /* Mobile Search */
+    .nav-search{
+        position:absolute;
+        left:15px;
+        right:15px;
+        top:72px;
+        max-width:none;
+        margin:0;
+        z-index:20;
+    }
+
+    .nav-search input{
+        height:42px;
+        font-size:13px;
+        background:#fff;
+        box-shadow:0 4px 15px rgba(0,0,0,.06);
     }
 
     .menu-btn{
         display:block;
+        margin-left:auto;
+        position:relative;
+        z-index:30;
     }
 
     .nav-links{
@@ -1155,6 +1179,7 @@ footer{
         align-items:stretch;
         gap:0;
         box-shadow:0 12px 25px rgba(0,0,0,.08);
+        z-index:25;
     }
 
     .nav-links.active{
@@ -1172,9 +1197,10 @@ footer{
         text-align:center;
     }
 
+    /* Hero */
     .hero-inner{
         min-height:auto;
-        padding:50px 16px;
+        padding:70px 16px 50px;
     }
 
     .hero h1{
@@ -1220,6 +1246,7 @@ footer{
         top:25px;
     }
 
+    /* Trust */
     .trust-grid{
         grid-template-columns:1fr 1fr;
         gap:13px;
@@ -1244,6 +1271,7 @@ footer{
         font-size:9px;
     }
 
+    /* Sections */
     .section{
         padding:55px 15px;
     }
@@ -1260,6 +1288,7 @@ footer{
         font-size:12px;
     }
 
+    /* Categories */
     .categories{
         grid-template-columns:1fr 1fr;
         gap:11px;
@@ -1284,6 +1313,7 @@ footer{
         font-size:10px;
     }
 
+    /* Products */
     .products{
         grid-template-columns:1fr 1fr;
         gap:10px;
@@ -1337,6 +1367,7 @@ footer{
         font-size:16px;
     }
 
+    /* Offer */
     .offer{
         padding:0 15px 55px;
     }
@@ -1355,6 +1386,7 @@ footer{
         font-size:11px;
     }
 
+    /* Why Us */
     .why-grid{
         grid-template-columns:1fr;
         gap:13px;
@@ -1364,12 +1396,14 @@ footer{
         padding:22px;
     }
 
+    /* Footer */
     .footer-inner{
         grid-template-columns:1fr;
         gap:27px;
         padding:45px 20px 30px;
     }
 
+    /* Order Modal */
     .order-modal-content{
         width:94%;
         margin:5% auto;
@@ -1390,7 +1424,6 @@ footer{
     .order-price-row{
         display:block;
     }
-
 }
    /* =========================================================
    SHOP CONTROLS
