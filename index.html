@@ -2960,17 +2960,30 @@ categories.forEach(function(category){
 
 });
 
-setupProductFilters();
+option.value =
+    category.toLowerCase();
+
+option.textContent =
+    category;
+
+categoryFilter.appendChild(option);
+
+});
 
 setupProductFilters();
-            );
 
-        });
+} catch (error) {
 
-    }
+    console.error(
+        "Products loading error:",
+        error
+    );
 
-    catch (error) {
+}
 
+}
+
+function setupProductFilters(){
         console.error(
             "Products loading error:",
             error
