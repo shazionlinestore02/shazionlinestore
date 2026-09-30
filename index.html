@@ -2984,15 +2984,6 @@ setupProductFilters();
 }
 
 function setupProductFilters(){
-        console.error(
-            "Products loading error:",
-            error
-        );
-
-    }
-
-}
-   function setupProductFilters(){
 
     const searchInput =
         document.getElementById("productSearch");
@@ -3006,7 +2997,6 @@ function setupProductFilters(){
     const productsCount =
         document.getElementById("productsCount");
 
-
     function filterProducts(){
 
         const searchText =
@@ -3018,13 +3008,10 @@ function setupProductFilters(){
             categoryFilter.value
                 .toLowerCase();
 
-
         const products =
             productsContainer.querySelectorAll(".product");
 
-
         let visibleProducts = 0;
-
 
         products.forEach(function(product){
 
@@ -3034,15 +3021,12 @@ function setupProductFilters(){
             const productCategory =
                 product.dataset.category || "";
 
-
             const matchesSearch =
                 productName.includes(searchText);
-
 
             const matchesCategory =
                 selectedCategory === "all" ||
                 productCategory === selectedCategory;
-
 
             if(
                 matchesSearch &&
@@ -3061,19 +3045,16 @@ function setupProductFilters(){
 
         });
 
-
         productsCount.textContent =
             visibleProducts +
             " product" +
             (visibleProducts === 1 ? "" : "s") +
             " found";
 
-
         let noProducts =
             productsContainer.querySelector(
                 ".no-products"
             );
-
 
         if(visibleProducts === 0){
 
@@ -3119,23 +3100,19 @@ function setupProductFilters(){
 
     }
 
-
     searchInput.addEventListener(
         "input",
         filterProducts
     );
-
 
     categoryFilter.addEventListener(
         "change",
         filterProducts
     );
 
-
     filterProducts();
 
 }
-
 
 loadProducts();
 
