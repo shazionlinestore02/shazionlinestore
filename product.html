@@ -2223,6 +2223,237 @@ function orderProduct(){
    ERROR
 ========================================= */
 
+
+async function loadSimilarProducts(currentProduct){
+
+    const section = document.querySelector(".similar-section");
+    const container = document.getElementById("similarProducts");
+
+    if(!section || !container) return;
+
+    try{
+
+        const response = await fetch(sheetURL);
+        const csvText = await response.text();
+
+        const rows = parseCSV(csvText);
+
+        if(!rows || rows.length < 2){
+            section.style.display = "none";
+            return;
+        }
+
+        const headers = rows[0].map(h => normalizeHeader(h));
+
+        const idCol = findColumn(headers, [
+            "SKU",
+            "Product ID",
+            "ID"
+        ]);
+
+        const nameCol = findColumn(headers, [
+            "Product",
+            "Product Name",
+            "Name",
+            "Title"
+        ]);
+
+        const categoryCol = findColumn(headers, [
+            "Category",
+            "Categories"
+        ]);
+
+        const priceCol = findColumn(headers, [
+            "Selling Price",
+            "Price",
+            "Sale Price"
+        ]);
+
+        let imageCol = -1;
+
+        for(let i = 0; i < headers.length; i++){
+
+            if(
+                headers[i].includes("image") ||
+                headers[i].includes("photo") ||
+                headers[i].includes("picture")
+            ){
+                imageCol = i;
+                break;
+            }
+
+        }
+
+        if(
+            categoryCol === -1 ||
+            nameCol === -1
+        ){
+
+            section.style.display = "none";
+            return;
+
+        }
+
+        const currentCategory = String(
+            currentProduct.category || ""
+        ).trim().toLowerCase();
+
+        const currentId = String(
+            currentProduct.id || ""
+        ).trim().toLowerCase();
+
+        const similarProducts = [];
+
+        for(let i = 1; i < rows.length; i++){
+
+            const row = rows[i];
+
+            const productName = String(
+                row[nameCol] || ""
+            ).trim();
+
+            const category = String(
+                row[categoryCol] || ""
+            ).trim().toLowerCase();
+
+            const productId = idCol !== -1
+                ? String(row[idCol] || "").trim()
+                : productName;
+
+            if(!productName) continue;
+
+            if(category !== currentCategory) continue;
+
+            if(
+                productId.toLowerCase() === currentId
+            ){
+                continue;
+            }
+
+            let image = "";
+
+            if(imageCol !== -1){
+                image = String(
+                    row[imageCol] || ""
+                ).trim();
+            }
+
+            if(!image){
+
+                for(let c = 0; c < headers.length; c++){
+
+                    if(
+                        headers[c].includes("image") ||
+                        headers[c].includes("photo") ||
+                        headers[c].includes("picture")
+                    ){
+
+                        const possibleImage = String(
+                            row[c] || ""
+                        ).trim();
+
+                        if(possibleImage){
+                            image = possibleImage;
+                            break;
+                        }
+
+                    }
+
+                }
+
+            }
+
+            const price = priceCol !== -1
+                ? String(row[priceCol] || "").trim()
+                : "";
+
+            similarProducts.push({
+                id: productId,
+                name: productName,
+                image: image,
+                price: price
+            });
+
+            if(similarProducts.length >= 4){
+                break;
+            }
+
+        }
+
+        if(similarProducts.length === 0){
+
+            section.style.display = "none";
+            return;
+
+        }
+
+        container.innerHTML = "";
+
+        similarProducts.forEach(product => {
+
+            const card = document.createElement("div");
+            card.className = "similar-card";
+
+            card.addEventListener("click", function(){
+
+                window.location.href =
+                    "product.html?id=" +
+                    encodeURIComponent(product.id);
+
+            });
+
+            const img = document.createElement("img");
+
+            img.src = product.image ||
+                "https://via.placeholder.com/400x400?text=Product";
+
+            img.alt = product.name;
+
+            img.onerror = function(){
+                this.src =
+                    "https://via.placeholder.com/400x400?text=Product";
+            };
+
+            const info = document.createElement("div");
+            info.className = "similar-card-info";
+
+            const title = document.createElement("div");
+            title.className = "similar-card-title";
+            title.textContent = product.name;
+
+            const price = document.createElement("div");
+            price.className = "similar-card-price";
+
+            if(product.price){
+                price.textContent = "Rs. " + product.price;
+            }
+
+            info.appendChild(title);
+            info.appendChild(price);
+
+            card.appendChild(img);
+            card.appendChild(info);
+
+            container.appendChild(card);
+
+        });
+
+        section.style.display = "block";
+
+    }catch(error){
+
+        console.error(
+            "Similar products error:",
+            error
+        );
+
+        section.style.display = "none";
+
+    }
+
+}
+
+    
 function showError(message){
 
     document.getElementById(
