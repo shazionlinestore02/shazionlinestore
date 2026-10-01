@@ -311,7 +311,7 @@ header{
     margin-bottom:15px;
 }
 
-.details-box p{
+.details-box #productDescription{
     color:#6b7280;
     line-height:1.8;
     font-size:14px;
@@ -598,9 +598,9 @@ header{
                 Product Details
             </h2>
 
-            <p id="productDescription">
-                Product details will appear here.
-            </p>
+           <div id="productDescription">
+    Product details will appear here.
+</div>
 
         </div>
 
@@ -1150,12 +1150,16 @@ async function loadProduct(){
             : "Available";
 
 
-        const description =
-            descriptionCol !== -1
-            ? String(
-                productRow[descriptionCol] || ""
-              ).trim()
-            : "Product details will be updated soon.";
+       const description =
+    descriptionCol !== -1
+    ? String(
+        productRow[descriptionCol] || ""
+      )
+        .replace(/\\n/g, "\n")
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n")
+        .trim()
+    : "Product details will be updated soon.";
 
 
         /* IMAGES */
