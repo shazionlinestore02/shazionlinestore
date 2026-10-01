@@ -2873,6 +2873,10 @@ document
 const productsCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vREeyHHgihiRFsAor20cpMuLnyXs23-KhjRaQAIAiePrzdbBwWvlghF3umw-H2fRc58GERaoV0o9UtQ/pub?gid=121911969&single=true&output=csv";
 
 
+/* =========================
+   CSV PARSER
+========================= */
+
 function parseCSV(csv) {
 
     const rows = [];
@@ -2921,8 +2925,8 @@ function parseCSV(csv) {
             row = [];
 
             if (
-                char === "\r"
-                && next === "\n"
+                char === "\r" &&
+                next === "\n"
             ) {
 
                 i++;
@@ -2947,26 +2951,49 @@ function parseCSV(csv) {
 
     }
 
-
     return rows;
 
 }
 
 
+/* =========================
+   HTML SAFE TEXT
+========================= */
+
+function escapeHTML(text) {
+
+    return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================
+   MAIN PRODUCT LOADER
+========================= */
+
 async function loadProducts() {
 
     try {
 
-        const response =
-            await fetch(productsCSV);
+        const response = await fetch(productsCSV);
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Google Sheet could not be loaded."
+            );
+
+        }
 
 
-        const csv =
-            await response.text();
+        const csv = await response.text();
 
-
-        const rows =
-            parseCSV(csv);
+        const rows = parseCSV(csv);
 
 
         const productsContainer =
@@ -2985,7 +3012,29 @@ async function loadProducts() {
 
 
         productsContainer.innerHTML = "";
-       const categories = new Set();
+
+
+        /*
+
+        YOUR GOOGLE SHEET COLUMNS:
+
+        A = Product Name
+        B = Category
+        C = Markaz Price
+        D = Delivery + COD
+        E = Profit
+        F = Selling Price
+        G = Customer Door Price
+        H = SKU
+        I = Image URL
+        J = Image 2
+        K = Image 3
+        L = Image 4
+        M = Image 5
+
+        */
+
+        const categories = new Set();
 
 
         rows.slice(1).forEach(function(row) {
@@ -2996,13 +3045,14 @@ async function loadProducts() {
 
             const category =
                 (row[1] || "").trim();
-           if (category) {
-    categories.add(category);
-}
 
 
             const sellingPrice =
                 (row[5] || "").trim();
+
+
+            const sku =
+                (row[7] || "").trim();
 
 
             const imageURL =
@@ -3016,46 +3066,84 @@ async function loadProducts() {
             }
 
 
-            const priceNumber =
-                Math.round(
-                    parseFloat(
-                        sellingPrice.replace(
-                            /[^\d]/g,
-                            ""
-                        )
-                    )
-                );
+            if (category) {
 
+                categories.add(category);
+
+            }
+
+
+            /* =========================
+               PRICE
+            ========================= */
+
+            const priceNumber =
+                parseInt(
+                    sellingPrice.replace(
+                        /[^\d]/g,
+                        ""
+                    ),
+                    10
+                ) || 0;
+
+
+            /* =========================
+               PRODUCT CARD
+            ========================= */
 
             const product =
                 document.createElement("div");
 
 
-          product.className = "product";
+            product.className = "product";
 
-product.dataset.name =
-    productName.toLowerCase();
 
-product.dataset.category =
-    category.toLowerCase();
+            product.dataset.name =
+                productName.toLowerCase();
 
-            const imageHTML =
-                imageURL
 
-                ? `
+            product.dataset.category =
+                category.toLowerCase();
+
+
+            product.dataset.sku =
+                sku;
+
+
+            /* =========================
+               IMAGE
+            ========================= */
+
+            let imageHTML = "";
+
+
+            if (imageURL) {
+
+                imageHTML = `
                     <img
-                        src="${imageURL}"
-                        alt="${productName}"
+                        src="${escapeHTML(imageURL)}"
+                        alt="${escapeHTML(productName)}"
+                        loading="lazy"
                         onerror="this.style.display='none';"
                     >
-                  `
+                `;
 
-                : `
+            }
+
+            else {
+
+                imageHTML = `
                     <div class="product-placeholder">
                         🛍️
                     </div>
-                  `;
+                `;
 
+            }
+
+
+            /* =========================
+               PRODUCT CARD HTML
+            ========================= */
 
             product.innerHTML = `
 
@@ -3069,12 +3157,12 @@ product.dataset.category =
                 <div class="product-info">
 
                     <span class="product-tag">
-                        ${category || "New"}
+                        ${escapeHTML(category || "New")}
                     </span>
 
 
                     <h3>
-                        ${productName}
+                        ${escapeHTML(productName)}
                     </h3>
 
 
@@ -3084,40 +3172,75 @@ product.dataset.category =
 
 
                     <div class="price">
-                        Rs. ${priceNumber.toLocaleString()}
+
+                        Rs.
+                        ${priceNumber.toLocaleString("en-PK")}
+
                     </div>
 
 
-                    <button
-                        class="order-btn"
-                        type="button">
+                    <div
+                        style="
+                            display:flex;
+                            gap:8px;
+                            margin-top:12px;
+                            flex-wrap:wrap;
+                        "
+                    >
 
-                        Order Now
+                        <a
+                            href="product.html?id=${encodeURIComponent(sku)}"
+                            class="order-btn"
+                            style="
+                                text-decoration:none;
+                                text-align:center;
+                                flex:1;
+                            "
+                        >
+                            View Details
+                        </a>
 
-                    </button>
+
+                        <button
+                            class="order-btn"
+                            type="button"
+                            style="flex:1;"
+                        >
+                            Order Now
+                        </button>
+
+                    </div>
 
                 </div>
 
             `;
 
 
+            /* =========================
+               ORDER BUTTON
+            ========================= */
+
             const orderButton =
                 product.querySelector(
-                    ".order-btn"
+                    "button.order-btn"
                 );
 
 
-            orderButton.addEventListener(
-                "click",
-                function() {
+            if (orderButton) {
 
-                    openOrder(
-                        productName,
-                        priceNumber
-                    );
+                orderButton.addEventListener(
+                    "click",
+                    function() {
 
-                }
-            );
+                        openOrder(
+                            productName,
+                            priceNumber
+                        );
+
+                    }
+                );
+
+            }
 
 
             productsContainer.appendChild(
@@ -3126,119 +3249,284 @@ product.dataset.category =
 
         });
 
+
+        /* =========================
+           CATEGORY FILTER
+        ========================= */
+
         const categoryFilter =
-            document.getElementById("categoryFilter");
+            document.getElementById(
+                "categoryFilter"
+            );
 
-        categories.forEach(function(category){
 
-            const option =
+        if (categoryFilter) {
+
+            /* Remove old options */
+
+            categoryFilter.innerHTML = "";
+
+
+            /* All Products */
+
+            const allOption =
                 document.createElement("option");
 
-            option.value =
-                category.toLowerCase();
+            allOption.value = "all";
 
-            option.textContent =
-                category;
+            allOption.textContent =
+                "All Categories";
 
-            categoryFilter.appendChild(option);
+            categoryFilter.appendChild(
+                allOption
+            );
 
-        });
+
+            /* Our 7 Main Categories */
+
+            const mainCategories = [
+
+                "Women's Fashion",
+
+                "Men's Fashion",
+
+                "Beauty & Personal Care",
+
+                "Electronics & Accessories",
+
+                "Watches & Accessories",
+
+                "Kids & Baby",
+
+                "Trending / Best Sellers"
+
+            ];
+
+
+            mainCategories.forEach(
+                function(category) {
+
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
+
+                    option.value =
+                        category.toLowerCase();
+
+                    option.textContent =
+                        category;
+
+                    categoryFilter.appendChild(
+                        option
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           FILTER SYSTEM
+        ========================= */
 
         setupProductFilters();
 
-    } catch (error) {
+
+        /* =========================
+           CATEGORY CARDS
+        ========================= */
+
+        setupCategoryCards();
+
+
+    }
+
+    catch (error) {
 
         console.error(
             "Products loading error:",
             error
         );
 
+
+        const productsContainer =
+            document.querySelector(".products");
+
+
+        if (productsContainer) {
+
+            productsContainer.innerHTML = `
+
+                <div class="no-products">
+
+                    <div class="no-products-icon">
+                        ⚠️
+                    </div>
+
+                    <h3>
+                        Products Could Not Load
+                    </h3>
+
+                    <p>
+                        Please try again later.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
     }
 
 }
 
-function setupProductFilters(){
+
+/* =========================
+   PRODUCT SEARCH + FILTER
+========================= */
+
+function setupProductFilters() {
 
     const searchInput =
-        document.getElementById("productSearch");
+        document.getElementById(
+            "productSearch"
+        );
+
 
     const categoryFilter =
-        document.getElementById("categoryFilter");
+        document.getElementById(
+            "categoryFilter"
+        );
+
 
     const productsContainer =
-        document.querySelector(".products");
+        document.querySelector(
+            ".products"
+        );
+
 
     const productsCount =
-        document.getElementById("productsCount");
+        document.getElementById(
+            "productsCount"
+        );
 
-    function filterProducts(){
+
+    if (
+        !searchInput ||
+        !categoryFilter ||
+        !productsContainer
+    ) {
+
+        return;
+
+    }
+
+
+    function filterProducts() {
 
         const searchText =
             searchInput.value
                 .toLowerCase()
                 .trim();
 
+
         const selectedCategory =
             categoryFilter.value
                 .toLowerCase();
 
+
         const products =
-            productsContainer.querySelectorAll(".product");
+            productsContainer.querySelectorAll(
+                ".product"
+            );
+
 
         let visibleProducts = 0;
 
-        products.forEach(function(product){
 
-            const productName =
-                product.dataset.name || "";
+        products.forEach(
+            function(product) {
 
-            const productCategory =
-                product.dataset.category || "";
+                const productName =
+                    product.dataset.name || "";
 
-            const matchesSearch =
-                productName.includes(searchText);
 
-            const matchesCategory =
-                selectedCategory === "all" ||
-                productCategory === selectedCategory;
+                const productCategory =
+                    product.dataset.category || "";
 
-            if(
-                matchesSearch &&
-                matchesCategory
-            ){
 
-                product.style.display = "flex";
+                const matchesSearch =
+                    productName.includes(
+                        searchText
+                    );
 
-                visibleProducts++;
 
-            }else{
+                const matchesCategory =
+                    selectedCategory === "all" ||
+                    productCategory ===
+                    selectedCategory;
 
-                product.style.display = "none";
+
+                if (
+                    matchesSearch &&
+                    matchesCategory
+                ) {
+
+                    product.style.display =
+                        "flex";
+
+                    visibleProducts++;
+
+                }
+
+                else {
+
+                    product.style.display =
+                        "none";
+
+                }
 
             }
+        );
 
-        });
 
-        productsCount.textContent =
-            visibleProducts +
-            " product" +
-            (visibleProducts === 1 ? "" : "s") +
-            " found";
+        if (productsCount) {
+
+            productsCount.textContent =
+                visibleProducts +
+                " product" +
+                (
+                    visibleProducts === 1
+                    ? ""
+                    : "s"
+                ) +
+                " found";
+
+        }
+
 
         let noProducts =
             productsContainer.querySelector(
                 ".no-products"
             );
 
-        if(visibleProducts === 0){
 
-            if(!noProducts){
+        if (visibleProducts === 0) {
+
+            if (!noProducts) {
 
                 noProducts =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 noProducts.className =
                     "no-products";
+
 
                 noProducts.innerHTML = `
 
@@ -3256,15 +3544,18 @@ function setupProductFilters(){
 
                 `;
 
+
                 productsContainer.appendChild(
                     noProducts
                 );
 
             }
 
-        }else{
+        }
 
-            if(noProducts){
+        else {
+
+            if (noProducts) {
 
                 noProducts.remove();
 
@@ -3274,24 +3565,115 @@ function setupProductFilters(){
 
     }
 
+
     searchInput.addEventListener(
         "input",
         filterProducts
     );
+
 
     categoryFilter.addEventListener(
         "change",
         filterProducts
     );
 
+
     filterProducts();
 
 }
 
+
+/* =========================
+   CATEGORY CARD CLICK
+========================= */
+
+function setupCategoryCards() {
+
+    const categoryCards =
+        document.querySelectorAll(
+            ".category"
+        );
+
+
+    const categoryFilter =
+        document.getElementById(
+            "categoryFilter"
+        );
+
+
+    if (!categoryFilter) {
+
+        return;
+
+    }
+
+
+    categoryCards.forEach(
+        function(card) {
+
+            card.addEventListener(
+                "click",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    const title =
+                        card.querySelector("h3");
+
+
+                    if (!title) {
+
+                        return;
+
+                    }
+
+
+                    const categoryName =
+                        title.textContent
+                            .trim()
+                            .toLowerCase();
+
+
+                    categoryFilter.value =
+                        categoryName;
+
+
+                    const productsSection =
+                        document.getElementById(
+                            "products"
+                        );
+
+
+                    if (productsSection) {
+
+                        productsSection.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    }
+
+
+                    categoryFilter.dispatchEvent(
+                        new Event("change")
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
 loadProducts();
 
 </script>
-
 
 </body>
 </html>
