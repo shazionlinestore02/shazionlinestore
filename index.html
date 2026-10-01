@@ -3149,8 +3149,12 @@ async function loadProducts() {
 
                 <div class="product-image">
 
-                    ${imageHTML}
-
+                  <a
+    href="product.html?id=${encodeURIComponent(sku)}"
+    style="display:block;text-decoration:none;"
+>
+    ${imageHTML}
+</a>
                 </div>
 
 
