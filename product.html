@@ -1429,62 +1429,397 @@ function orderProduct(){
         return;
     }
 
-
-    const product =
-        window.currentProduct;
-
+    const product = window.currentProduct;
 
     const selectedSize =
-        document.querySelector(
-            ".size-option.active"
-        );
-
+        document.querySelector(".size-option.active");
 
     const size =
         selectedSize
         ? selectedSize.textContent
         : "";
 
-
     const price =
-        product.price;
+        parseInt(
+            String(product.price || "").replace(/\D/g, ""),
+            10
+        ) || 0;
+
+    const total =
+        price * quantity;
+
+    const oldModal =
+        document.getElementById("productOrderModal");
+
+    if(oldModal){
+        oldModal.remove();
+    }
+
+    const modal =
+        document.createElement("div");
+
+    modal.id = "productOrderModal";
+
+    modal.innerHTML = `
+        <div style="
+            position:fixed;
+            inset:0;
+            background:rgba(17,24,39,.65);
+            z-index:9999;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+        ">
+
+            <div style="
+                width:100%;
+                max-width:520px;
+                max-height:90vh;
+                overflow-y:auto;
+                background:#fff;
+                border-radius:20px;
+                padding:25px;
+                box-shadow:0 20px 60px rgba(0,0,0,.25);
+            ">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:20px;
+                ">
+
+                    <h2 style="
+                        margin:0;
+                        color:#111827;
+                        font-size:22px;
+                    ">
+                        Complete Your Order
+                    </h2>
+
+                    <button
+                        type="button"
+                        onclick="document.getElementById('productOrderModal').remove()"
+                        style="
+                            border:none;
+                            background:#f3f4f6;
+                            width:36px;
+                            height:36px;
+                            border-radius:50%;
+                            font-size:20px;
+                            cursor:pointer;
+                        "
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+                <div style="
+                    background:#f8fafc;
+                    border:1px solid #e5e7eb;
+                    border-radius:12px;
+                    padding:15px;
+                    margin-bottom:18px;
+                ">
+
+                    <strong style="
+                        display:block;
+                        color:#111827;
+                        margin-bottom:6px;
+                    ">
+                        ${product.name}
+                    </strong>
+
+                    <span style="
+                        color:#e11d48;
+                        font-weight:800;
+                    ">
+                        Rs ${price.toLocaleString("en-PK")}
+                    </span>
+
+                    ${
+                        size
+                        ? `<span style="
+                            display:block;
+                            color:#6b7280;
+                            font-size:13px;
+                            margin-top:5px;
+                        ">
+                            Size: ${size}
+                        </span>`
+                        : ""
+                    }
+
+                    <span style="
+                        display:block;
+                        color:#6b7280;
+                        font-size:13px;
+                        margin-top:5px;
+                    ">
+                        Quantity: ${quantity}
+                    </span>
+
+                    <strong style="
+                        display:block;
+                        margin-top:8px;
+                        color:#111827;
+                    ">
+                        Total: Rs ${total.toLocaleString("en-PK")}
+                    </strong>
+
+                </div>
+
+                <form id="productOrderForm">
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Full Name"
+                        required
+                        style="
+                            width:100%;
+                            padding:13px;
+                            margin-bottom:12px;
+                            border:1px solid #d1d5db;
+                            border-radius:10px;
+                            font-size:14px;
+                            outline:none;
+                        "
+                    >
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="Phone Number"
+                        required
+                        style="
+                            width:100%;
+                            padding:13px;
+                            margin-bottom:12px;
+                            border:1px solid #d1d5db;
+                            border-radius:10px;
+                            font-size:14px;
+                            outline:none;
+                        "
+                    >
+
+                    <input
+                        type="text"
+                        id="customerCity"
+                        placeholder="City"
+                        required
+                        style="
+                            width:100%;
+                            padding:13px;
+                            margin-bottom:12px;
+                            border:1px solid #d1d5db;
+                            border-radius:10px;
+                            font-size:14px;
+                            outline:none;
+                        "
+                    >
+
+                    <textarea
+                        id="customerAddress"
+                        placeholder="Complete Delivery Address"
+                        required
+                        rows="4"
+                        style="
+                            width:100%;
+                            padding:13px;
+                            margin-bottom:15px;
+                            border:1px solid #d1d5db;
+                            border-radius:10px;
+                            font-size:14px;
+                            resize:vertical;
+                            outline:none;
+                            font-family:Arial, sans-serif;
+                        "
+                    ></textarea>
+
+                    <button
+                        type="submit"
+                        style="
+                            width:100%;
+                            border:none;
+                            background:#e11d48;
+                            color:#fff;
+                            padding:15px;
+                            border-radius:11px;
+                            font-size:15px;
+                            font-weight:900;
+                            cursor:pointer;
+                        "
+                    >
+                        🛒 Place Order — Cash on Delivery
+                    </button>
+
+                </form>
+
+                <p style="
+                    text-align:center;
+                    color:#6b7280;
+                    font-size:12px;
+                    margin-top:12px;
+                ">
+                    Cash on Delivery available across Pakistan
+                </p>
+
+            </div>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
 
 
-    const message =
-        "Product: " +
-        product.name +
-        "\n" +
+    document.getElementById("productOrderForm")
+        .addEventListener("submit", async function(event){
 
-        "Product ID: " +
-        product.id +
-        "\n" +
+            event.preventDefault();
 
-        "Quantity: " +
-        quantity +
-        "\n" +
+            const submitButton =
+                this.querySelector("button[type='submit']");
 
-        (size
-        ? "Size: " + size + "\n"
-        : "") +
+            submitButton.disabled = true;
 
-        "Price: " +
-        price +
-        "\n\n" +
-
-        "Cash on Delivery available.";
+            submitButton.textContent =
+                "Submitting Order...";
 
 
-    /*
-       Abhi temporary alert.
-       Next step mein is button ko
-       aapke existing order modal ke
-       saath connect karenge.
-    */
+            const orderData = {
 
-    alert(message);
+                product: product.name,
+
+                quantity: quantity,
+
+                price: price,
+
+                total: total,
+
+                name:
+                    document.getElementById("customerName").value.trim(),
+
+                phone:
+                    document.getElementById("customerPhone").value.trim(),
+
+                city:
+                    document.getElementById("customerCity").value.trim(),
+
+                address:
+                    document.getElementById("customerAddress").value.trim(),
+
+                payment:
+                    "Cash on Delivery"
+
+            };
+
+
+            try{
+
+                await fetch(
+                    "https://script.google.com/macros/s/AKfycbwUcgvB-Otwoqs8wZlBuFVHGF7YVR9CCPfJLSaLxb8_2giAM6TujhGUAOt9yo4RVihxA/exec",
+                    {
+                        method:"POST",
+                        mode:"no-cors",
+                        headers:{
+                            "Content-Type":"text/plain;charset=utf-8"
+                        },
+                        body:JSON.stringify(orderData)
+                    }
+                );
+
+
+                document.getElementById(
+                    "productOrderModal"
+                ).innerHTML = `
+
+                    <div style="
+                        position:fixed;
+                        inset:0;
+                        background:rgba(17,24,39,.65);
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        padding:20px;
+                    ">
+
+                        <div style="
+                            width:100%;
+                            max-width:450px;
+                            background:#fff;
+                            border-radius:20px;
+                            padding:35px 25px;
+                            text-align:center;
+                        ">
+
+                            <div style="
+                                font-size:55px;
+                                margin-bottom:15px;
+                            ">
+                                ✅
+                            </div>
+
+                            <h2 style="
+                                color:#111827;
+                                margin-bottom:10px;
+                            ">
+                                Order Received!
+                            </h2>
+
+                            <p style="
+                                color:#6b7280;
+                                line-height:1.6;
+                                margin-bottom:22px;
+                            ">
+                                Thank you for your order.
+                                We will contact you soon to confirm
+                                your Cash on Delivery order.
+                            </p>
+
+                            <button
+                                onclick="
+                                    document.getElementById('productOrderModal').remove()
+                                "
+                                style="
+                                    border:none;
+                                    background:#111827;
+                                    color:#fff;
+                                    padding:13px 25px;
+                                    border-radius:10px;
+                                    font-weight:800;
+                                    cursor:pointer;
+                                "
+                            >
+                                Continue Shopping
+                            </button>
+
+                        </div>
+
+                    </div>
+                `;
+
+            }
+            catch(error){
+
+                console.error(error);
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    "Try Again — Place Order";
+
+                alert(
+                    "Order submit nahi ho saka. Please dobara try karein."
+                );
+
+            }
+
+        });
 
 }
-
 
 /* =========================================
    ERROR
