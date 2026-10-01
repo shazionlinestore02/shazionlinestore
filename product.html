@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,12 +27,8 @@ body{
     color:#111827;
 }
 
-/* =========================
-   HEADER
-========================= */
-
 header{
-    background:#ffffff;
+    background:#fff;
     border-bottom:1px solid #e5e7eb;
     position:sticky;
     top:0;
@@ -70,7 +67,6 @@ header{
     border-radius:10px;
     font-size:13px;
     font-weight:700;
-    transition:.2s;
 }
 
 .back-btn:hover{
@@ -78,10 +74,6 @@ header{
     color:#fff;
     border-color:#e11d48;
 }
-
-/* =========================
-   PRODUCT PAGE
-========================= */
 
 .product-page{
     max-width:1200px;
@@ -99,10 +91,6 @@ header{
     gap:45px;
     box-shadow:0 10px 35px rgba(17,24,39,.06);
 }
-
-/* =========================
-   GALLERY
-========================= */
 
 .gallery{
     display:grid;
@@ -124,7 +112,6 @@ header{
     overflow:hidden;
     cursor:pointer;
     background:#f8fafc;
-    transition:.2s;
 }
 
 .thumbnail.active{
@@ -153,10 +140,6 @@ header{
     height:100%;
     object-fit:contain;
 }
-
-/* =========================
-   PRODUCT INFORMATION
-========================= */
 
 .product-info{
     padding:10px 5px;
@@ -214,10 +197,6 @@ header{
     margin:22px 0;
 }
 
-/* =========================
-   SIZE
-========================= */
-
 .option-title{
     font-size:14px;
     font-weight:800;
@@ -239,7 +218,6 @@ header{
     border-radius:9px;
     font-size:13px;
     cursor:pointer;
-    transition:.2s;
 }
 
 .size-option:hover,
@@ -248,10 +226,6 @@ header{
     color:#fff;
     border-color:#111827;
 }
-
-/* =========================
-   QUANTITY
-========================= */
 
 .quantity-box{
     display:flex;
@@ -279,10 +253,6 @@ header{
     font-weight:800;
 }
 
-/* =========================
-   ORDER BUTTON
-========================= */
-
 .order-now{
     width:100%;
     border:none;
@@ -293,18 +263,11 @@ header{
     font-size:15px;
     font-weight:900;
     cursor:pointer;
-    transition:.25s;
 }
 
 .order-now:hover{
     background:#be123c;
-    transform:translateY(-2px);
-    box-shadow:0 10px 25px rgba(225,29,72,.22);
 }
-
-/* =========================
-   DELIVERY BOX
-========================= */
 
 .delivery-box{
     margin-top:18px;
@@ -330,10 +293,6 @@ header{
     color:#111827;
 }
 
-/* =========================
-   DETAILS
-========================= */
-
 .details-section{
     max-width:1200px;
     margin:30px auto 60px;
@@ -350,7 +309,6 @@ header{
 .details-box h2{
     font-size:23px;
     margin-bottom:15px;
-    color:#111827;
 }
 
 .details-box p{
@@ -359,10 +317,6 @@ header{
     font-size:14px;
     white-space:pre-line;
 }
-
-/* =========================
-   LOADING / ERROR
-========================= */
 
 .loading{
     max-width:1200px;
@@ -392,10 +346,6 @@ header{
     color:#6b7280;
     line-height:1.6;
 }
-
-/* =========================
-   MOBILE
-========================= */
 
 @media(max-width:800px){
 
@@ -437,7 +387,6 @@ header{
 
     .main-image{
         height:390px;
-        border-radius:14px;
     }
 
     .product-title{
@@ -482,10 +431,6 @@ header{
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
     <nav class="navbar">
@@ -503,21 +448,16 @@ header{
 </header>
 
 
-<!-- =========================
-     PRODUCT CONTENT
-========================= -->
-
 <div id="loading" class="loading">
     Loading product...
 </div>
+
 
 <div id="productContent" style="display:none;">
 
     <main class="product-page">
 
         <div class="product-box">
-
-            <!-- GALLERY -->
 
             <div class="gallery">
 
@@ -535,8 +475,6 @@ header{
 
             </div>
 
-
-            <!-- PRODUCT INFO -->
 
             <div class="product-info">
 
@@ -556,22 +494,20 @@ header{
                     class="product-price">
                 </div>
 
-                
-
                 <div class="info-line">
+
                     <strong>Stock:</strong>
+
                     <span
                         id="productStock"
                         class="stock">
                         Available
                     </span>
-                </div>
 
+                </div>
 
                 <div class="divider"></div>
 
-
-                <!-- SIZE -->
 
                 <div id="sizeSection">
 
@@ -586,8 +522,6 @@ header{
 
                 </div>
 
-
-                <!-- QUANTITY -->
 
                 <div class="option-title">
                     Quantity
@@ -614,16 +548,12 @@ header{
                 </div>
 
 
-                <!-- ORDER -->
-
                 <button
                     class="order-now"
                     onclick="orderProduct()">
                     🛒 Order Now
                 </button>
 
-
-                <!-- DELIVERY -->
 
                 <div class="delivery-box">
 
@@ -659,8 +589,6 @@ header{
 
     </main>
 
-
-    <!-- PRODUCT DESCRIPTION -->
 
     <section class="details-section">
 
@@ -708,15 +636,22 @@ const sheetURL =
 
 
 /* =========================================
-   GET PRODUCT ID FROM URL
+   GOOGLE APPS SCRIPT
 ========================================= */
 
-const urlParams = new URLSearchParams(
-    window.location.search
-);
+const orderScriptURL =
+"https://script.google.com/macros/s/AKfycbwUcgvB-Otwoqs8wZlBuFVHGF7YQVR9CCPfJLSaLxb8_2giAM6TujhGUAOt9yo4RVihxA/exec";
+
+
+/* =========================================
+   PRODUCT ID
+========================================= */
+
+const urlParams =
+new URLSearchParams(window.location.search);
 
 const productIdFromURL =
-    urlParams.get("id");
+urlParams.get("id");
 
 
 /* =========================================
@@ -741,28 +676,48 @@ function parseCSV(text){
             value += '"';
             i++;
 
-        }else if(char === '"'){
+        }
+        else if(char === '"'){
 
             insideQuotes = !insideQuotes;
 
-        }else if(char === "," && !insideQuotes){
+        }
+        else if(char === "," && !insideQuotes){
 
             row.push(value);
             value = "";
 
-        }else if((char === "\n" || char === "\r") && !insideQuotes){
+        }
+        else if(
+            (char === "\n" || char === "\r") &&
+            !insideQuotes
+        ){
 
-            if(char === "\r" && next === "\n"){
+            if(
+                char === "\r" &&
+                next === "\n"
+            ){
                 i++;
             }
 
             row.push(value);
-            rows.push(row);
+
+            if(
+                row.some(
+                    cell =>
+                    String(cell).trim() !== ""
+                )
+            ){
+
+                rows.push(row);
+
+            }
 
             row = [];
             value = "";
 
-        }else{
+        }
+        else{
 
             value += char;
 
@@ -770,10 +725,23 @@ function parseCSV(text){
 
     }
 
-    if(value !== "" || row.length > 0){
+    if(
+        value !== "" ||
+        row.length > 0
+    ){
 
         row.push(value);
-        rows.push(row);
+
+        if(
+            row.some(
+                cell =>
+                String(cell).trim() !== ""
+            )
+        ){
+
+            rows.push(row);
+
+        }
 
     }
 
@@ -800,17 +768,26 @@ function normalizeHeader(value){
    FIND COLUMN
 ========================================= */
 
-function findColumn(headers, possibleNames){
+function findColumn(headers, names){
 
-    for(let i = 0; i < headers.length; i++){
+    for(
+        let i = 0;
+        i < headers.length;
+        i++
+    ){
 
-        const header =
+        const current =
             normalizeHeader(headers[i]);
 
-        for(const name of possibleNames){
+        for(const name of names){
 
-            if(header === normalizeHeader(name)){
+            if(
+                current ===
+                normalizeHeader(name)
+            ){
+
                 return i;
+
             }
 
         }
@@ -822,7 +799,7 @@ function findColumn(headers, possibleNames){
 
 
 /* =========================================
-   FIND PRODUCT
+   LOAD PRODUCT
 ========================================= */
 
 async function loadProduct(){
@@ -836,16 +813,24 @@ async function loadProduct(){
             );
 
             return;
+
         }
 
 
         const response =
-            await fetch(sheetURL);
+            await fetch(
+                sheetURL,
+                {
+                    cache:"no-store"
+                }
+            );
+
 
         if(!response.ok){
 
             throw new Error(
-                "Google Sheet could not be loaded."
+                "Google Sheet could not be loaded. HTTP " +
+                response.status
             );
 
         }
@@ -854,6 +839,19 @@ async function loadProduct(){
         const csv =
             await response.text();
 
+
+        if(
+            !csv ||
+            csv.trim() === ""
+        ){
+
+            throw new Error(
+                "Google Sheet returned empty data."
+            );
+
+        }
+
+
         const rows =
             parseCSV(csv);
 
@@ -861,7 +859,7 @@ async function loadProduct(){
         if(rows.length < 2){
 
             throw new Error(
-                "No products found in Google Sheet."
+                "No product rows found in Google Sheet."
             );
 
         }
@@ -869,6 +867,17 @@ async function loadProduct(){
 
         const headers =
             rows[0];
+
+
+        console.log(
+            "Product ID from URL:",
+            productIdFromURL
+        );
+
+        console.log(
+            "Google Sheet headers:",
+            headers
+        );
 
 
         /* COLUMN DETECTION */
@@ -884,6 +893,7 @@ async function loadProduct(){
                 ]
             );
 
+
         const nameCol =
             findColumn(
                 headers,
@@ -895,6 +905,7 @@ async function loadProduct(){
                 ]
             );
 
+
         const categoryCol =
             findColumn(
                 headers,
@@ -902,6 +913,7 @@ async function loadProduct(){
                     "Category"
                 ]
             );
+
 
         const priceCol =
             findColumn(
@@ -912,6 +924,7 @@ async function loadProduct(){
                     "Sale Price"
                 ]
             );
+
 
         const mainImageCol =
             findColumn(
@@ -924,6 +937,7 @@ async function loadProduct(){
                 ]
             );
 
+
         const sizeCol =
             findColumn(
                 headers,
@@ -933,6 +947,7 @@ async function loadProduct(){
                 ]
             );
 
+
         const stockCol =
             findColumn(
                 headers,
@@ -941,6 +956,7 @@ async function loadProduct(){
                     "Availability"
                 ]
             );
+
 
         const descriptionCol =
             findColumn(
@@ -957,82 +973,113 @@ async function loadProduct(){
 
         const imageColumns = [];
 
-        for(let i = 0; i < headers.length; i++){
+
+        for(
+            let i = 0;
+            i < headers.length;
+            i++
+        ){
 
             const header =
                 normalizeHeader(headers[i]);
+
 
             if(
                 header.includes("main image") ||
                 header === "image" ||
                 header === "image url" ||
                 header === "product image" ||
-                header.match(/^image [2-9]$/)
+                /^image [2-9]$/.test(header)
             ){
 
-                imageColumns.push(i);
+                if(
+                    !imageColumns.includes(i)
+                ){
+
+                    imageColumns.push(i);
+
+                }
 
             }
 
         }
 
 
-        /* FIND PRODUCT ROW */
+        if(
+            mainImageCol !== -1 &&
+            !imageColumns.includes(mainImageCol)
+        ){
+
+            imageColumns.unshift(mainImageCol);
+
+        }
+
+
+        /* FIND PRODUCT */
 
         let productRow = null;
 
-        for(let i = 1; i < rows.length; i++){
 
-            const row = rows[i];
+        if(idCol !== -1){
 
-            if(!row || row.length === 0){
-                continue;
-            }
-
-
-            let rowId = "";
-
-            if(idCol !== -1){
-
-                rowId =
-                    String(row[idCol] || "")
-                    .trim();
-
-            }
-
-
-            if(
-                rowId.toLowerCase() ===
-                productIdFromURL.toLowerCase()
+            for(
+                let i = 1;
+                i < rows.length;
+                i++
             ){
-
-                productRow = row;
-                break;
-
-            }
-
-        }
-
-
-        /* FALLBACK:
-           If ID column does not exist,
-           search by product name.
-        */
-
-        if(!productRow && nameCol !== -1){
-
-            for(let i = 1; i < rows.length; i++){
 
                 const row = rows[i];
 
+                const rowId =
+                    String(
+                        row[idCol] || ""
+                    ).trim();
+
+
                 if(
-                    String(row[nameCol] || "")
-                    .trim()
-                    .toLowerCase() ===
+                    rowId.toLowerCase() ===
                     productIdFromURL.toLowerCase()
                 ){
 
                     productRow = row;
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+
+        /* FALLBACK BY PRODUCT NAME */
+
+        if(
+            !productRow &&
+            nameCol !== -1
+        ){
+
+            for(
+                let i = 1;
+                i < rows.length;
+                i++
+            ){
+
+                const row = rows[i];
+
+                const rowName =
+                    String(
+                        row[nameCol] || ""
+                    ).trim();
+
+
+                if(
+                    rowName.toLowerCase() ===
+                    productIdFromURL.toLowerCase()
+                ){
+
+                    productRow = row;
+
                     break;
 
                 }
@@ -1044,10 +1091,15 @@ async function loadProduct(){
 
         if(!productRow){
 
+            console.error(
+                "Product not found:",
+                productIdFromURL
+            );
+
             showError(
                 "Product \"" +
                 productIdFromURL +
-                "\" was not found in the Google Sheet."
+                "\" was not found in the published Products sheet."
             );
 
             return;
@@ -1059,56 +1111,66 @@ async function loadProduct(){
 
         const productName =
             nameCol !== -1
-            ? String(productRow[nameCol] || "").trim()
+            ? String(
+                productRow[nameCol] || ""
+              ).trim()
             : "Product";
 
 
         const category =
             categoryCol !== -1
-            ? String(productRow[categoryCol] || "").trim()
+            ? String(
+                productRow[categoryCol] || ""
+              ).trim()
             : "Product";
 
 
         const price =
             priceCol !== -1
-            ? String(productRow[priceCol] || "").trim()
+            ? String(
+                productRow[priceCol] || ""
+              ).trim()
             : "";
 
 
         const size =
             sizeCol !== -1
-            ? String(productRow[sizeCol] || "").trim()
+            ? String(
+                productRow[sizeCol] || ""
+              ).trim()
             : "";
 
 
         const stock =
             stockCol !== -1
-            ? String(productRow[stockCol] || "").trim()
+            ? String(
+                productRow[stockCol] || ""
+              ).trim()
             : "Available";
 
 
         const description =
             descriptionCol !== -1
-            ? String(productRow[descriptionCol] || "").trim()
+            ? String(
+                productRow[descriptionCol] || ""
+              ).trim()
             : "Product details will be updated soon.";
-
-
-        /* PRODUCT ID */
-
-        const actualProductId =
-            idCol !== -1
-            ? String(productRow[idCol] || "").trim()
-            : productIdFromURL;
 
 
         /* IMAGES */
 
         const images = [];
 
-        for(const col of imageColumns){
+
+        for(
+            const col of imageColumns
+        ){
 
             const imageURL =
-                String(productRow[col] || "").trim();
+                String(
+                    productRow[col] || ""
+                ).trim();
+
 
             if(
                 imageURL &&
@@ -1122,7 +1184,7 @@ async function loadProduct(){
         }
 
 
-        /* OLD SHEET COMPATIBILITY */
+        /* OLD IMAGE COLUMN FALLBACK */
 
         if(
             images.length === 0 &&
@@ -1130,10 +1192,15 @@ async function loadProduct(){
         ){
 
             const oldImage =
-                String(productRow[8] || "").trim();
+                String(
+                    productRow[8] || ""
+                ).trim();
+
 
             if(oldImage){
+
                 images.push(oldImage);
+
             }
 
         }
@@ -1141,31 +1208,41 @@ async function loadProduct(){
 
         displayProduct({
 
-            id: actualProductId,
+            id:
+                idCol !== -1
+                ? String(
+                    productRow[idCol] || ""
+                  ).trim()
+                : productIdFromURL,
 
-            name: productName,
+            name:productName,
 
-            category: category,
+            category:category,
 
-            price: price,
+            price:price,
 
-            size: size,
+            size:size,
 
-            stock: stock,
+            stock:stock,
 
-            description: description,
+            description:description,
 
-            images: images
+            images:images
 
         });
 
     }
     catch(error){
 
-        console.error(error);
+        console.error(
+            "PRODUCT LOAD ERROR:",
+            error
+        );
+
 
         showError(
-            "Product load nahi ho saka. Google Sheet aur product ID check karein."
+            "Product load nahi ho saka. " +
+            "Google Sheet CSV ya product ID check karein."
         );
 
     }
@@ -1179,66 +1256,92 @@ async function loadProduct(){
 
 function displayProduct(product){
 
+    window.currentProduct =
+        product;
+
+
     document.title =
         product.name +
         " | ShaziOnlineStore";
 
 
-    document.getElementById("productTitle")
-        .textContent =
+    document.getElementById(
+        "productTitle"
+    ).textContent =
         product.name;
 
 
-    document.getElementById("productCategory")
-        .textContent =
-        product.category || "Product";
+    document.getElementById(
+        "productCategory"
+    ).textContent =
+        product.category ||
+        "Product";
 
 
-   
+    document.getElementById(
+        "productStock"
+    ).textContent =
+        product.stock ||
+        "Available";
 
 
-    document.getElementById("productStock")
-        .textContent =
-        product.stock || "Available";
-
-
-    document.getElementById("productDescription")
-        .textContent =
+    document.getElementById(
+        "productDescription"
+    ).textContent =
         product.description ||
         "Product details will be updated soon.";
 
 
     /* PRICE */
 
-  /* PRICE */
+    const rawPrice =
+        String(
+            product.price || ""
+        );
 
-const rawPrice = String(product.price || "");
 
-const numericPrice =
-    parseInt(rawPrice.replace(/\D/g, ""), 10) || 0;
+    const numericPrice =
+        parseInt(
+            rawPrice.replace(/\D/g,""),
+            10
+        ) || 0;
 
-document.getElementById("productPrice")
-    .textContent =
-    numericPrice > 0
-    ? "Rs " + numericPrice.toLocaleString("en-PK")
-    : rawPrice || "Price available";
+
+    document.getElementById(
+        "productPrice"
+    ).textContent =
+        numericPrice > 0
+        ? "Rs " +
+          numericPrice.toLocaleString("en-PK")
+        : rawPrice ||
+          "Price available";
+
 
     /* IMAGES */
 
     const thumbnails =
-        document.getElementById("thumbnails");
+        document.getElementById(
+            "thumbnails"
+        );
+
 
     const mainImage =
-        document.getElementById("mainProductImage");
+        document.getElementById(
+            "mainProductImage"
+        );
 
 
     thumbnails.innerHTML = "";
 
 
-    if(product.images.length > 0){
+    if(
+        product.images &&
+        product.images.length > 0
+    ){
 
         mainImage.src =
             product.images[0];
+
 
         mainImage.alt =
             product.name;
@@ -1248,20 +1351,37 @@ document.getElementById("productPrice")
             (imageURL,index) => {
 
                 const thumbnail =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
+
 
                 thumbnail.className =
                     "thumbnail" +
-                    (index === 0 ? " active" : "");
+                    (
+                        index === 0
+                        ? " active"
+                        : ""
+                    );
 
 
-                thumbnail.innerHTML =
-                    `
-                    <img
-                        src="${imageURL}"
-                        alt="${product.name}"
-                    >
-                    `;
+                const img =
+                    document.createElement(
+                        "img"
+                    );
+
+
+                img.src =
+                    imageURL;
+
+
+                img.alt =
+                    product.name;
+
+
+                thumbnail.appendChild(
+                    img
+                );
 
 
                 thumbnail.onclick =
@@ -1270,24 +1390,36 @@ document.getElementById("productPrice")
                         mainImage.src =
                             imageURL;
 
+
                         document
-                            .querySelectorAll(".thumbnail")
+                            .querySelectorAll(
+                                ".thumbnail"
+                            )
                             .forEach(
                                 item =>
-                                item.classList.remove("active")
+                                item.classList
+                                    .remove(
+                                        "active"
+                                    )
                             );
 
-                        thumbnail.classList.add("active");
+
+                        thumbnail.classList.add(
+                            "active"
+                        );
 
                     };
 
 
-                thumbnails.appendChild(thumbnail);
+                thumbnails.appendChild(
+                    thumbnail
+                );
 
             }
         );
 
-    }else{
+    }
+    else{
 
         mainImage.src =
             "https://via.placeholder.com/600x600?text=No+Image";
@@ -1295,22 +1427,21 @@ document.getElementById("productPrice")
     }
 
 
-    /* SIZE */
-
-    setupSizes(product.size);
-
-
-    /* SAVE PRODUCT */
-
-    window.currentProduct =
-        product;
+    setupSizes(
+        product.size
+    );
 
 
-    document.getElementById("loading")
-        .style.display = "none";
+    document.getElementById(
+        "loading"
+    ).style.display =
+        "none";
 
-    document.getElementById("productContent")
-        .style.display = "block";
+
+    document.getElementById(
+        "productContent"
+    ).style.display =
+        "block";
 
 }
 
@@ -1322,10 +1453,15 @@ document.getElementById("productPrice")
 function setupSizes(sizeText){
 
     const section =
-        document.getElementById("sizeSection");
+        document.getElementById(
+            "sizeSection"
+        );
+
 
     const container =
-        document.getElementById("sizeOptions");
+        document.getElementById(
+            "sizeOptions"
+        );
 
 
     container.innerHTML = "";
@@ -1333,7 +1469,8 @@ function setupSizes(sizeText){
 
     if(!sizeText){
 
-        section.style.display = "none";
+        section.style.display =
+            "none";
 
         return;
 
@@ -1343,30 +1480,48 @@ function setupSizes(sizeText){
     const sizes =
         sizeText
         .split(/[,|\/]/)
-        .map(size => size.trim())
+        .map(
+            size =>
+            size.trim()
+        )
         .filter(Boolean);
 
 
     if(sizes.length === 0){
 
-        section.style.display = "none";
+        section.style.display =
+            "none";
 
         return;
 
     }
 
 
+    section.style.display =
+        "block";
+
+
     sizes.forEach(
         (size,index) => {
 
             const button =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
-            button.type = "button";
+
+            button.type =
+                "button";
+
 
             button.className =
                 "size-option" +
-                (index === 0 ? " active" : "");
+                (
+                    index === 0
+                    ? " active"
+                    : ""
+                );
+
 
             button.textContent =
                 size;
@@ -1376,18 +1531,28 @@ function setupSizes(sizeText){
                 function(){
 
                     document
-                        .querySelectorAll(".size-option")
+                        .querySelectorAll(
+                            ".size-option"
+                        )
                         .forEach(
                             item =>
-                            item.classList.remove("active")
+                            item.classList
+                                .remove(
+                                    "active"
+                                )
                         );
 
-                    button.classList.add("active");
+
+                    button.classList.add(
+                        "active"
+                    );
 
                 };
 
 
-            container.appendChild(button);
+            container.appendChild(
+                button
+            );
 
         }
     );
@@ -1408,12 +1573,15 @@ function changeQuantity(amount){
 
 
     if(quantity < 1){
+
         quantity = 1;
+
     }
 
 
-    document.getElementById("quantity")
-        .textContent =
+    document.getElementById(
+        "quantity"
+    ).textContent =
         quantity;
 
 }
@@ -1426,41 +1594,66 @@ function changeQuantity(amount){
 function orderProduct(){
 
     if(!window.currentProduct){
+
         return;
+
     }
 
-    const product = window.currentProduct;
+
+    const product =
+        window.currentProduct;
+
 
     const selectedSize =
-        document.querySelector(".size-option.active");
+        document.querySelector(
+            ".size-option.active"
+        );
+
 
     const size =
         selectedSize
         ? selectedSize.textContent
         : "";
 
+
     const price =
         parseInt(
-            String(product.price || "").replace(/\D/g, ""),
+            String(
+                product.price || ""
+            ).replace(/\D/g,""),
             10
         ) || 0;
+
 
     const total =
         price * quantity;
 
+
     const oldModal =
-        document.getElementById("productOrderModal");
+        document.getElementById(
+            "productOrderModal"
+        );
+
 
     if(oldModal){
+
         oldModal.remove();
+
     }
 
-    const modal =
-        document.createElement("div");
 
-    modal.id = "productOrderModal";
+    const modal =
+        document.createElement(
+            "div"
+        );
+
+
+    modal.id =
+        "productOrderModal";
+
 
     modal.innerHTML = `
+
         <div style="
             position:fixed;
             inset:0;
@@ -1500,7 +1693,13 @@ function orderProduct(){
 
                     <button
                         type="button"
-                        onclick="document.getElementById('productOrderModal').remove()"
+                        onclick="
+                            document
+                            .getElementById(
+                                'productOrderModal'
+                            )
+                            .remove()
+                        "
                         style="
                             border:none;
                             background:#f3f4f6;
@@ -1515,6 +1714,7 @@ function orderProduct(){
                     </button>
 
                 </div>
+
 
                 <div style="
                     background:#f8fafc;
@@ -1541,14 +1741,16 @@ function orderProduct(){
 
                     ${
                         size
-                        ? `<span style="
+                        ? `
+                        <span style="
                             display:block;
                             color:#6b7280;
                             font-size:13px;
                             margin-top:5px;
                         ">
                             Size: ${size}
-                        </span>`
+                        </span>
+                        `
                         : ""
                     }
 
@@ -1571,6 +1773,7 @@ function orderProduct(){
 
                 </div>
 
+
                 <form id="productOrderForm">
 
                     <input
@@ -1589,6 +1792,7 @@ function orderProduct(){
                         "
                     >
 
+
                     <input
                         type="tel"
                         id="customerPhone"
@@ -1604,6 +1808,7 @@ function orderProduct(){
                             outline:none;
                         "
                     >
+
 
                     <input
                         type="text"
@@ -1621,6 +1826,7 @@ function orderProduct(){
                         "
                     >
 
+
                     <textarea
                         id="customerAddress"
                         placeholder="Complete Delivery Address"
@@ -1635,9 +1841,10 @@ function orderProduct(){
                             font-size:14px;
                             resize:vertical;
                             outline:none;
-                            font-family:Arial, sans-serif;
+                            font-family:Arial,sans-serif;
                         "
                     ></textarea>
+
 
                     <button
                         type="submit"
@@ -1658,6 +1865,7 @@ function orderProduct(){
 
                 </form>
 
+
                 <p style="
                     text-align:center;
                     color:#6b7280;
@@ -1672,18 +1880,30 @@ function orderProduct(){
         </div>
     `;
 
-    document.body.appendChild(modal);
+
+    document.body.appendChild(
+        modal
+    );
 
 
-    document.getElementById("productOrderForm")
-        .addEventListener("submit", async function(event){
+    document.getElementById(
+        "productOrderForm"
+    ).addEventListener(
+        "submit",
+        async function(event){
 
             event.preventDefault();
 
-            const submitButton =
-                this.querySelector("button[type='submit']");
 
-            submitButton.disabled = true;
+            const submitButton =
+                this.querySelector(
+                    "button[type='submit']"
+                );
+
+
+            submitButton.disabled =
+                true;
+
 
             submitButton.textContent =
                 "Submitting Order...";
@@ -1691,25 +1911,49 @@ function orderProduct(){
 
             const orderData = {
 
-                product: product.name,
+                product:
+                    product.name,
 
-                quantity: quantity,
+                quantity:
+                    quantity,
 
-                price: price,
+                price:
+                    price,
 
-                total: total,
+                total:
+                    total,
 
                 name:
-                    document.getElementById("customerName").value.trim(),
+                    document
+                        .getElementById(
+                            "customerName"
+                        )
+                        .value
+                        .trim(),
 
                 phone:
-                    document.getElementById("customerPhone").value.trim(),
+                    document
+                        .getElementById(
+                            "customerPhone"
+                        )
+                        .value
+                        .trim(),
 
                 city:
-                    document.getElementById("customerCity").value.trim(),
+                    document
+                        .getElementById(
+                            "customerCity"
+                        )
+                        .value
+                        .trim(),
 
                 address:
-                    document.getElementById("customerAddress").value.trim(),
+                    document
+                        .getElementById(
+                            "customerAddress"
+                        )
+                        .value
+                        .trim(),
 
                 payment:
                     "Cash on Delivery"
@@ -1719,17 +1963,24 @@ function orderProduct(){
 
             try{
 
-              await fetch(
-    "https://script.google.com/macros/s/AKfycbwUcgvB-Otwoqs8wZlBuFVHGF7YQVR9CCPfJLSaLxb8_2giAM6TujhGUAOt9yo4RVihxA/exec",
-    {
-        method:"POST",
-        mode:"no-cors",
-        headers:{
-            "Content-Type":"text/plain;charset=utf-8"
-        },
-        body:JSON.stringify(orderData)
-    }
-);
+                await fetch(
+                    orderScriptURL,
+                    {
+                        method:"POST",
+
+                        mode:"no-cors",
+
+                        headers:{
+                            "Content-Type":
+                                "text/plain;charset=utf-8"
+                        },
+
+                        body:
+                            JSON.stringify(
+                                orderData
+                            )
+                    }
+                );
 
 
                 document.getElementById(
@@ -1775,13 +2026,18 @@ function orderProduct(){
                                 margin-bottom:22px;
                             ">
                                 Thank you for your order.
-                                We will contact you soon to confirm
-                                your Cash on Delivery order.
+                                We will contact you soon
+                                to confirm your Cash on
+                                Delivery order.
                             </p>
 
                             <button
                                 onclick="
-                                    document.getElementById('productOrderModal').remove()
+                                    document
+                                    .getElementById(
+                                        'productOrderModal'
+                                    )
+                                    .remove()
                                 "
                                 style="
                                     border:none;
@@ -1804,12 +2060,19 @@ function orderProduct(){
             }
             catch(error){
 
-                console.error(error);
+                console.error(
+                    "ORDER ERROR:",
+                    error
+                );
 
-                submitButton.disabled = false;
+
+                submitButton.disabled =
+                    false;
+
 
                 submitButton.textContent =
                     "Try Again — Place Order";
+
 
                 alert(
                     "Order submit nahi ho saka. Please dobara try karein."
@@ -1817,9 +2080,11 @@ function orderProduct(){
 
             }
 
-        });
+        }
+    );
 
 }
+
 
 /* =========================================
    ERROR
@@ -1827,20 +2092,27 @@ function orderProduct(){
 
 function showError(message){
 
-    document.getElementById("loading")
-        .style.display = "none";
+    document.getElementById(
+        "loading"
+    ).style.display =
+        "none";
 
 
-    document.getElementById("productContent")
-        .style.display = "none";
+    document.getElementById(
+        "productContent"
+    ).style.display =
+        "none";
 
 
-    document.getElementById("errorBox")
-        .style.display = "block";
+    document.getElementById(
+        "errorBox"
+    ).style.display =
+        "block";
 
 
-    document.getElementById("errorMessage")
-        .textContent =
+    document.getElementById(
+        "errorMessage"
+    ).textContent =
         message;
 
 }
@@ -1856,3 +2128,4 @@ loadProduct();
 
 </body>
 </html>
+```
