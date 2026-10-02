@@ -709,13 +709,7 @@ header{
 
     </section>
 
-</div>
-
-</div>
-
-</div>
-
-<!-- Similar Products yahan -->
+<!-- Similar Products -->
 
 <section class="similar-section">
 
@@ -732,6 +726,8 @@ header{
     </div>
 
 </section>
+
+</div>
 
 <div
     id="errorBox"
@@ -2303,21 +2299,14 @@ async function loadSimilarProducts(currentProduct){
                 ]
             );
 
-        if(
-            nameCol === -1 ||
-            categoryCol === -1
-        ){
+        if(nameCol === -1){
             section.style.display = "none";
             return;
         }
 
         const imageColumns = [];
 
-        for(
-            let i = 0;
-            i < headers.length;
-            i++
-        ){
+        for(let i = 0; i < headers.length; i++){
 
             const header =
                 normalizeHeader(headers[i]);
@@ -2330,7 +2319,9 @@ async function loadSimilarProducts(currentProduct){
                 /^image [2-9]$/.test(header)
             ){
 
-                imageColumns.push(i);
+                if(!imageColumns.includes(i)){
+                    imageColumns.push(i);
+                }
 
             }
 
@@ -2350,13 +2341,10 @@ async function loadSimilarProducts(currentProduct){
             .trim()
             .toLowerCase();
 
-        const similarProducts = [];
+        const sameCategory = [];
+        const otherProducts = [];
 
-        for(
-            let i = 1;
-            i < rows.length;
-            i++
-        ){
+        for(let i = 1; i < rows.length; i++){
 
             const row = rows[i];
 
@@ -2365,27 +2353,25 @@ async function loadSimilarProducts(currentProduct){
                     row[nameCol] || ""
                 ).trim();
 
+            if(!name){
+                continue;
+            }
+
             const category =
-                String(
+                categoryCol !== -1
+                ? String(
                     row[categoryCol] || ""
                 )
                 .trim()
-                .toLowerCase();
+                .toLowerCase()
+                : "";
 
             const id =
                 idCol !== -1
                 ? String(
                     row[idCol] || ""
-                  ).trim()
+                ).trim()
                 : name;
-
-            if(!name){
-                continue;
-            }
-
-            if(category !== currentCategory){
-                continue;
-            }
 
             if(
                 id.toLowerCase() === currentId
@@ -2395,9 +2381,7 @@ async function loadSimilarProducts(currentProduct){
 
             let image = "";
 
-            for(
-                const col of imageColumns
-            ){
+            for(const col of imageColumns){
 
                 const imageURL =
                     String(
@@ -2415,31 +2399,37 @@ async function loadSimilarProducts(currentProduct){
                 priceCol !== -1
                 ? String(
                     row[priceCol] || ""
-                  ).trim()
+                ).trim()
                 : "";
 
-            similarProducts.push({
+            const item = {
                 id:id,
                 name:name,
                 image:image,
                 price:price
-            });
+            };
 
             if(
-                similarProducts.length >= 4
+                categoryCol !== -1 &&
+                category === currentCategory
             ){
-                break;
+                sameCategory.push(item);
+            }
+            else{
+                otherProducts.push(item);
             }
 
         }
 
-        if(
-            similarProducts.length === 0
-        ){
+        // Same-category products first.
+        const similarProducts = [
+            ...sameCategory,
+            ...otherProducts
+        ].slice(0,4);
 
+        if(similarProducts.length === 0){
             section.style.display = "none";
             return;
-
         }
 
         container.innerHTML = "";
@@ -2505,9 +2495,18 @@ async function loadSimilarProducts(currentProduct){
 
                 if(product.price){
 
+                    const numericPrice =
+                        parseInt(
+                            String(product.price)
+                                .replace(/\D/g,""),
+                            10
+                        ) || 0;
+
                     price.textContent =
-                        "Rs " +
-                        product.price;
+                        numericPrice > 0
+                        ? "Rs " +
+                          numericPrice.toLocaleString("en-PK")
+                        : "Rs " + product.price;
 
                 }
 
