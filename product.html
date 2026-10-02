@@ -1563,7 +1563,7 @@ function displayProduct(product){
     setupSizes(
         product.size
     );
-// loadSimilarProducts(product);
+loadSimilarProducts(product);
 
     document.getElementById(
         "loading"
@@ -2226,161 +2226,216 @@ function orderProduct(){
 
 async function loadSimilarProducts(currentProduct){
 
-    const section = document.querySelector(".similar-section");
-    const container = document.getElementById("similarProducts");
+    const section =
+        document.querySelector(".similar-section");
 
-    if(!section || !container) return;
+    const container =
+        document.getElementById("similarProducts");
+
+    if(!section || !container){
+        return;
+    }
 
     try{
 
-        const response = await fetch(sheetURL);
-        const csvText = await response.text();
+        const response =
+            await fetch(
+                sheetURL,
+                {cache:"no-store"}
+            );
 
-        const rows = parseCSV(csvText);
+        if(!response.ok){
+            section.style.display = "none";
+            return;
+        }
+
+        const csvText =
+            await response.text();
+
+        const rows =
+            parseCSV(csvText);
 
         if(!rows || rows.length < 2){
             section.style.display = "none";
             return;
         }
 
-        const headers = rows[0].map(h => normalizeHeader(h));
+        const headers = rows[0];
 
-        const idCol = findColumn(headers, [
-            "SKU",
-            "Product ID",
-            "ID"
-        ]);
+        const idCol =
+            findColumn(
+                headers,
+                [
+                    "SKU",
+                    "Product ID",
+                    "ID",
+                    "Product Code"
+                ]
+            );
 
-        const nameCol = findColumn(headers, [
-            "Product",
-            "Product Name",
-            "Name",
-            "Title"
-        ]);
+        const nameCol =
+            findColumn(
+                headers,
+                [
+                    "Product",
+                    "Product Name",
+                    "Name",
+                    "Title"
+                ]
+            );
 
-        const categoryCol = findColumn(headers, [
-            "Category",
-            "Categories"
-        ]);
+        const categoryCol =
+            findColumn(
+                headers,
+                [
+                    "Category",
+                    "Categories"
+                ]
+            );
 
-        const priceCol = findColumn(headers, [
-            "Selling Price",
-            "Price",
-            "Sale Price"
-        ]);
+        const priceCol =
+            findColumn(
+                headers,
+                [
+                    "Selling Price",
+                    "Price",
+                    "Sale Price"
+                ]
+            );
 
-        let imageCol = -1;
+        if(
+            nameCol === -1 ||
+            categoryCol === -1
+        ){
+            section.style.display = "none";
+            return;
+        }
 
-        for(let i = 0; i < headers.length; i++){
+        const imageColumns = [];
+
+        for(
+            let i = 0;
+            i < headers.length;
+            i++
+        ){
+
+            const header =
+                normalizeHeader(headers[i]);
 
             if(
-                headers[i].includes("image") ||
-                headers[i].includes("photo") ||
-                headers[i].includes("picture")
+                header.includes("main image") ||
+                header === "image" ||
+                header === "image url" ||
+                header === "product image" ||
+                /^image [2-9]$/.test(header)
             ){
-                imageCol = i;
-                break;
+
+                imageColumns.push(i);
+
             }
 
         }
 
-        if(
-            categoryCol === -1 ||
-            nameCol === -1
-        ){
+        const currentCategory =
+            String(
+                currentProduct.category || ""
+            )
+            .trim()
+            .toLowerCase();
 
-            section.style.display = "none";
-            return;
-
-        }
-
-        const currentCategory = String(
-            currentProduct.category || ""
-        ).trim().toLowerCase();
-
-        const currentId = String(
-            currentProduct.id || ""
-        ).trim().toLowerCase();
+        const currentId =
+            String(
+                currentProduct.id || ""
+            )
+            .trim()
+            .toLowerCase();
 
         const similarProducts = [];
 
-        for(let i = 1; i < rows.length; i++){
+        for(
+            let i = 1;
+            i < rows.length;
+            i++
+        ){
 
             const row = rows[i];
 
-            const productName = String(
-                row[nameCol] || ""
-            ).trim();
+            const name =
+                String(
+                    row[nameCol] || ""
+                ).trim();
 
-            const category = String(
-                row[categoryCol] || ""
-            ).trim().toLowerCase();
+            const category =
+                String(
+                    row[categoryCol] || ""
+                )
+                .trim()
+                .toLowerCase();
 
-            const productId = idCol !== -1
-                ? String(row[idCol] || "").trim()
-                : productName;
+            const id =
+                idCol !== -1
+                ? String(
+                    row[idCol] || ""
+                  ).trim()
+                : name;
 
-            if(!productName) continue;
+            if(!name){
+                continue;
+            }
 
-            if(category !== currentCategory) continue;
+            if(category !== currentCategory){
+                continue;
+            }
 
             if(
-                productId.toLowerCase() === currentId
+                id.toLowerCase() === currentId
             ){
                 continue;
             }
 
             let image = "";
 
-            if(imageCol !== -1){
-                image = String(
-                    row[imageCol] || ""
-                ).trim();
-            }
+            for(
+                const col of imageColumns
+            ){
 
-            if(!image){
+                const imageURL =
+                    String(
+                        row[col] || ""
+                    ).trim();
 
-                for(let c = 0; c < headers.length; c++){
-
-                    if(
-                        headers[c].includes("image") ||
-                        headers[c].includes("photo") ||
-                        headers[c].includes("picture")
-                    ){
-
-                        const possibleImage = String(
-                            row[c] || ""
-                        ).trim();
-
-                        if(possibleImage){
-                            image = possibleImage;
-                            break;
-                        }
-
-                    }
-
+                if(imageURL){
+                    image = imageURL;
+                    break;
                 }
 
             }
 
-            const price = priceCol !== -1
-                ? String(row[priceCol] || "").trim()
+            const price =
+                priceCol !== -1
+                ? String(
+                    row[priceCol] || ""
+                  ).trim()
                 : "";
 
             similarProducts.push({
-                id: productId,
-                name: productName,
-                image: image,
-                price: price
+                id:id,
+                name:name,
+                image:image,
+                price:price
             });
 
-            if(similarProducts.length >= 4){
+            if(
+                similarProducts.length >= 4
+            ){
                 break;
             }
 
         }
 
-        if(similarProducts.length === 0){
+        if(
+            similarProducts.length === 0
+        ){
 
             section.style.display = "none";
             return;
@@ -2389,58 +2444,88 @@ async function loadSimilarProducts(currentProduct){
 
         container.innerHTML = "";
 
-        similarProducts.forEach(product => {
+        similarProducts.forEach(
+            function(product){
 
-            const card = document.createElement("div");
-            card.className = "similar-card";
+                const card =
+                    document.createElement("div");
 
-            card.addEventListener("click", function(){
+                card.className =
+                    "similar-card";
 
-                window.location.href =
-                    "product.html?id=" +
-                    encodeURIComponent(product.id);
+                card.onclick =
+                    function(){
 
-            });
+                        window.location.href =
+                            "product.html?id=" +
+                            encodeURIComponent(
+                                product.id
+                            );
 
-            const img = document.createElement("img");
+                    };
 
-            img.src = product.image ||
-                "https://via.placeholder.com/400x400?text=Product";
+                const img =
+                    document.createElement("img");
 
-            img.alt = product.name;
-
-            img.onerror = function(){
-                this.src =
+                img.src =
+                    product.image ||
                     "https://via.placeholder.com/400x400?text=Product";
-            };
 
-            const info = document.createElement("div");
-            info.className = "similar-card-info";
+                img.alt =
+                    product.name;
 
-            const title = document.createElement("div");
-            title.className = "similar-card-title";
-            title.textContent = product.name;
+                img.onerror =
+                    function(){
 
-            const price = document.createElement("div");
-            price.className = "similar-card-price";
+                        this.src =
+                            "https://via.placeholder.com/400x400?text=Product";
 
-            if(product.price){
-                price.textContent = "Rs. " + product.price;
+                    };
+
+                const info =
+                    document.createElement("div");
+
+                info.className =
+                    "similar-card-info";
+
+                const title =
+                    document.createElement("div");
+
+                title.className =
+                    "similar-card-title";
+
+                title.textContent =
+                    product.name;
+
+                const price =
+                    document.createElement("div");
+
+                price.className =
+                    "similar-card-price";
+
+                if(product.price){
+
+                    price.textContent =
+                        "Rs " +
+                        product.price;
+
+                }
+
+                info.appendChild(title);
+                info.appendChild(price);
+
+                card.appendChild(img);
+                card.appendChild(info);
+
+                container.appendChild(card);
+
             }
-
-            info.appendChild(title);
-            info.appendChild(price);
-
-            card.appendChild(img);
-            card.appendChild(info);
-
-            container.appendChild(card);
-
-        });
+        );
 
         section.style.display = "block";
 
-    }catch(error){
+    }
+    catch(error){
 
         console.error(
             "Similar products error:",
@@ -2453,7 +2538,7 @@ async function loadSimilarProducts(currentProduct){
 
 }
 
-    
+
 function showError(message){
 
     document.getElementById(
