@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Product Details | ShaziOnlineStore</title>
 
@@ -13,17 +18,31 @@
 
 <style>
 
+/* =========================================
+   RESET
+========================================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+
+/* =========================================
+   BODY
+========================================= */
+
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:#f8fafc;
     color:#111827;
 }
+
+
+/* =========================================
+   HEADER
+========================================= */
 
 header{
     background:#fff;
@@ -38,6 +57,7 @@ header{
     min-height:76px;
     margin:auto;
     padding:0 20px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -70,6 +90,11 @@ header{
     color:#fff;
 }
 
+
+/* =========================================
+   PRODUCT PAGE
+========================================= */
+
 .product-page{
     max-width:1200px;
     margin:45px auto;
@@ -81,11 +106,18 @@ header{
     border:1px solid #e5e7eb;
     border-radius:22px;
     padding:30px;
+
     display:grid;
     grid-template-columns:1.05fr .95fr;
     gap:45px;
+
     box-shadow:0 10px 35px rgba(17,24,39,.06);
 }
+
+
+/* =========================================
+   GALLERY
+========================================= */
 
 .gallery{
     display:grid;
@@ -102,8 +134,10 @@ header{
 .thumbnail{
     width:82px;
     height:82px;
+
     border:2px solid #e5e7eb;
     border-radius:12px;
+
     overflow:hidden;
     cursor:pointer;
     background:#f8fafc;
@@ -122,9 +156,11 @@ header{
 .main-image{
     width:100%;
     height:520px;
+
     background:#f8fafc;
     border-radius:18px;
     overflow:hidden;
+
     display:flex;
     align-items:center;
     justify-content:center;
@@ -136,20 +172,30 @@ header{
     object-fit:contain;
 }
 
+
+/* =========================================
+   PRODUCT INFORMATION
+========================================= */
+
 .product-info{
     padding:10px 5px;
 }
 
 .product-category{
     display:inline-block;
+
     background:#fff1f2;
     color:#be123c;
+
     padding:7px 12px;
     border-radius:30px;
+
     font-size:10px;
     font-weight:900;
+
     text-transform:uppercase;
     letter-spacing:.7px;
+
     margin-bottom:15px;
 }
 
@@ -157,6 +203,7 @@ header{
     font-size:34px;
     line-height:1.25;
     font-weight:900;
+
     margin-bottom:15px;
 }
 
@@ -164,13 +211,16 @@ header{
     color:#e11d48;
     font-size:30px;
     font-weight:900;
+
     margin-bottom:20px;
 }
 
 .info-line{
     display:flex;
     gap:8px;
+
     margin-bottom:10px;
+
     font-size:14px;
     color:#4b5563;
 }
@@ -190,9 +240,15 @@ header{
     margin:22px 0;
 }
 
+
+/* =========================================
+   SIZE
+========================================= */
+
 .option-title{
     font-size:14px;
     font-weight:800;
+
     margin-bottom:10px;
 }
 
@@ -200,14 +256,18 @@ header{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
+
     margin-bottom:22px;
 }
 
 .size-option{
     border:1px solid #d1d5db;
     background:#fff;
+
     padding:9px 15px;
+
     border-radius:9px;
+
     font-size:13px;
     cursor:pointer;
 }
@@ -219,40 +279,64 @@ header{
     border-color:#111827;
 }
 
+
+/* =========================================
+   QUANTITY
+========================================= */
+
 .quantity-box{
     display:flex;
     align-items:center;
+
     width:max-content;
+
     border:1px solid #d1d5db;
     border-radius:10px;
+
     overflow:hidden;
+
     margin-bottom:20px;
 }
 
 .quantity-box button{
     width:42px;
     height:42px;
+
     border:none;
     background:#f8fafc;
+
     font-size:20px;
     cursor:pointer;
 }
 
 .quantity-box span{
     width:45px;
+
     text-align:center;
+
     font-weight:800;
 }
 
+
+/* =========================================
+   ORDER BUTTON
+========================================= */
+
 .order-now{
     width:100%;
+
     border:none;
+
     background:#e11d48;
     color:#fff;
+
     padding:16px;
+
     border-radius:12px;
+
     font-size:15px;
     font-weight:900;
+
     cursor:pointer;
 }
 
@@ -260,18 +344,29 @@ header{
     background:#be123c;
 }
 
+
+/* =========================================
+   DELIVERY
+========================================= */
+
 .delivery-box{
     margin-top:18px;
+
     padding:16px;
+
     border-radius:14px;
+
     background:#f8fafc;
+
     border:1px solid #e5e7eb;
 }
 
 .delivery-item{
     display:flex;
     gap:10px;
+
     margin-bottom:10px;
+
     font-size:13px;
     color:#4b5563;
 }
@@ -284,64 +379,97 @@ header{
     color:#111827;
 }
 
+
+/* =========================================
+   DETAILS
+========================================= */
+
 .details-section,
 .similar-section{
     max-width:1200px;
+
     margin:30px auto 60px;
+
     padding:0 20px;
 }
 
 .details-box,
 .similar-container{
     background:#fff;
+
     border:1px solid #e5e7eb;
+
     border-radius:20px;
+
     padding:30px;
 }
 
 .details-box h2,
 .similar-container h2{
     font-size:23px;
+
     margin-bottom:15px;
 }
 
 #productDescription{
     color:#6b7280;
+
     line-height:1.8;
+
     font-size:14px;
+
     white-space:pre-line;
 }
 
+
+/* =========================================
+   SIMILAR PRODUCTS
+========================================= */
+
 .similar-subtitle{
     color:#6b7280;
+
     font-size:14px;
+
     margin-bottom:22px;
 }
 
 .similar-grid{
     display:grid;
+
     grid-template-columns:repeat(4,1fr);
+
     gap:18px;
 }
 
 .similar-card{
     border:1px solid #e5e7eb;
+
     border-radius:14px;
+
     overflow:hidden;
+
     background:#fff;
+
     cursor:pointer;
+
     transition:.2s;
 }
 
 .similar-card:hover{
     transform:translateY(-4px);
-    box-shadow:0 10px 25px rgba(17,24,39,.10);
+
+    box-shadow:
+        0 10px 25px
+        rgba(17,24,39,.10);
 }
 
 .similar-card img{
     width:100%;
     height:220px;
+
     object-fit:contain;
+
     background:#f8fafc;
 }
 
@@ -351,49 +479,82 @@ header{
 
 .similar-card-title{
     font-size:14px;
+
     font-weight:800;
+
     line-height:1.4;
+
     margin-bottom:8px;
 }
 
 .similar-card-price{
     color:#e11d48;
+
     font-size:16px;
+
     font-weight:900;
 }
 
+
+/* =========================================
+   LOADING
+========================================= */
+
 .loading{
     max-width:1200px;
+
     margin:80px auto;
+
     text-align:center;
+
     font-size:18px;
+
     font-weight:700;
 }
 
+
+/* =========================================
+   ERROR
+========================================= */
+
 .error{
     max-width:700px;
+
     margin:80px auto;
+
     padding:30px;
+
     text-align:center;
+
     background:#fff;
+
     border:1px solid #fecdd3;
+
     border-radius:18px;
 }
 
 .error h2{
     color:#be123c;
+
     margin-bottom:10px;
 }
 
 .error p{
     color:#6b7280;
+
     line-height:1.6;
 }
+
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:800px){
 
     .navbar{
         min-height:65px;
+
         padding:0 15px;
     }
 
@@ -403,17 +564,21 @@ header{
 
     .product-page{
         margin:20px auto;
+
         padding:0 12px;
     }
 
     .product-box{
         grid-template-columns:1fr;
+
         gap:25px;
+
         padding:16px;
     }
 
     .gallery{
         grid-template-columns:65px 1fr;
+
         gap:10px;
     }
 
@@ -440,6 +605,7 @@ header{
     }
 
 }
+
 
 @media(max-width:500px){
 
@@ -471,20 +637,33 @@ header{
 }
 
 </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header>
 
 <nav class="navbar">
 
-<a href="index.html" class="logo">
-Shazi<span>OnlineStore</span>
+<a
+    href="index.html"
+    class="logo"
+>
+    Shazi<span>OnlineStore</span>
 </a>
 
-<a href="index.html#products" class="back-btn">
-← Back to Shop
+<a
+    href="index.html#products"
+    class="back-btn"
+>
+    ← Back to Shop
 </a>
 
 </nav>
@@ -492,28 +671,53 @@ Shazi<span>OnlineStore</span>
 </header>
 
 
-<div id="loading" class="loading">
-Loading product...
+<!-- =========================================
+     LOADING
+========================================= -->
+
+<div
+    id="loading"
+    class="loading"
+>
+    Loading product...
 </div>
 
 
-<div id="productContent" style="display:none;">
+<!-- =========================================
+     PRODUCT CONTENT
+========================================= -->
+
+<div
+    id="productContent"
+    style="display:none;"
+>
+
 
 <main class="product-page">
+
 
 <div class="product-box">
 
 
+<!-- =========================================
+     GALLERY
+========================================= -->
+
 <div class="gallery">
 
-<div class="thumbnails" id="thumbnails"></div>
+<div
+    class="thumbnails"
+    id="thumbnails"
+>
+</div>
+
 
 <div class="main-image">
 
 <img
-id="mainProductImage"
-src=""
-alt="Product"
+    id="mainProductImage"
+    src=""
+    alt="Product"
 >
 
 </div>
@@ -521,110 +725,169 @@ alt="Product"
 </div>
 
 
+<!-- =========================================
+     PRODUCT INFO
+========================================= -->
+
 <div class="product-info">
 
+
 <span
-id="productCategory"
-class="product-category">
-Product
+    id="productCategory"
+    class="product-category"
+>
+    Product
 </span>
 
+
 <h1
-id="productTitle"
-class="product-title">
+    id="productTitle"
+    class="product-title"
+>
 </h1>
 
+
 <div
-id="productPrice"
-class="product-price">
+    id="productPrice"
+    class="product-price"
+>
 </div>
+
 
 <div class="info-line">
 
-<strong>Stock:</strong>
+<strong>
+    Stock:
+</strong>
 
 <span
-id="productStock"
-class="stock">
-Available
+    id="productStock"
+    class="stock"
+>
+    Available
 </span>
 
 </div>
+
 
 <div class="divider"></div>
 
 
+<!-- SIZE -->
+
 <div id="sizeSection">
 
 <div class="option-title">
-Select Size
+    Select Size
 </div>
 
 <div
-id="sizeOptions"
-class="size-box">
+    id="sizeOptions"
+    class="size-box"
+>
 </div>
 
 </div>
 
+
+<!-- QUANTITY -->
 
 <div class="option-title">
-Quantity
+    Quantity
 </div>
+
 
 <div class="quantity-box">
 
 <button
-type="button"
-onclick="changeQuantity(-1)">
-−
+    type="button"
+    onclick="changeQuantity(-1)"
+>
+    −
 </button>
 
-<span id="quantity">1</span>
+<span id="quantity">
+    1
+</span>
 
 <button
-type="button"
-onclick="changeQuantity(1)">
-+
+    type="button"
+    onclick="changeQuantity(1)"
+>
+    +
 </button>
 
 </div>
 
 
+<!-- ORDER -->
+
 <button
-class="order-now"
-onclick="orderProduct()">
-🛒 Order Now
+    class="order-now"
+    onclick="orderProduct()"
+>
+    🛒 Order Now
 </button>
 
+
+<!-- DELIVERY -->
 
 <div class="delivery-box">
 
+
 <div class="delivery-item">
+
 🚚
+
 <span>
-<strong>Delivery:</strong>
+
+<strong>
+    Delivery:
+</strong>
+
 Delivery available across Pakistan
+
 </span>
+
 </div>
 
+
 <div class="delivery-item">
+
 💵
+
 <span>
-<strong>Payment:</strong>
+
+<strong>
+    Payment:
+</strong>
+
 Cash on Delivery Available
+
 </span>
+
 </div>
+
 
 <div class="delivery-item">
+
 📦
+
 <span>
-<strong>Easy Ordering:</strong>
+
+<strong>
+    Easy Ordering:
+</strong>
+
 Place your order directly online
+
 </span>
-</div>
 
 </div>
+
+
+</div>
+
 
 </div>
 
@@ -633,60 +896,80 @@ Place your order directly online
 </main>
 
 
+<!-- =========================================
+     PRODUCT DETAILS
+========================================= -->
+
 <section class="details-section">
 
 <div class="details-box">
 
-<h2>Product Details</h2>
+<h2>
+    Product Details
+</h2>
 
 <div id="productDescription">
-Product details will appear here.
+    Product details will appear here.
 </div>
 
 </div>
 
 </section>
 
+
+<!-- =========================================
+     SIMILAR PRODUCTS
+========================================= -->
 
 <section class="similar-section">
 
 <div class="similar-container">
 
-<h2>Similar Products</h2>
+<h2>
+    Similar Products
+</h2>
 
 <p class="similar-subtitle">
-You may also like these products
+    You may also like these products
 </p>
 
 <div
-id="similarProducts"
-class="similar-grid">
+    id="similarProducts"
+    class="similar-grid"
+>
 </div>
 
 </div>
 
 </section>
 
+
 </div>
 
 
-<!-- IMPORTANT: Error box is complete and properly closed -->
+<!-- =========================================
+     ERROR BOX
+========================================= -->
 
 <div
-id="errorBox"
-class="error"
-style="display:none;">
+    id="errorBox"
+    class="error"
+    style="display:none;"
+>
 
-<h2>Product Not Found</h2>
+<h2>
+    Product Not Found
+</h2>
 
 <p id="errorMessage">
-The requested product could not be loaded.
+    The requested product could not be loaded.
 </p>
 
 </div>
 
 
 <script>
+
 
 /* =========================================
    GOOGLE SHEET
@@ -709,7 +992,9 @@ const orderScriptURL =
 ========================================= */
 
 const urlParams =
-new URLSearchParams(window.location.search);
+new URLSearchParams(
+    window.location.search
+);
 
 const productIdFromURL =
 urlParams.get("id");
@@ -722,42 +1007,79 @@ urlParams.get("id");
 function parseCSV(text){
 
     const rows = [];
+
     let row = [];
+
     let value = "";
+
     let insideQuotes = false;
 
-    for(let i = 0; i < text.length; i++){
 
-        const char = text[i];
-        const next = text[i + 1];
+    for(
+        let i = 0;
+        i < text.length;
+        i++
+    ){
 
-        if(char === '"' && insideQuotes && next === '"'){
+        const char =
+            text[i];
+
+        const next =
+            text[i + 1];
+
+
+        if(
+            char === '"' &&
+            insideQuotes &&
+            next === '"'
+        ){
 
             value += '"';
+
             i++;
 
         }
-        else if(char === '"'){
 
-            insideQuotes = !insideQuotes;
-
-        }
-        else if(char === "," && !insideQuotes){
-
-            row.push(value);
-            value = "";
-
-        }
         else if(
-            (char === "\n" || char === "\r") &&
+            char === '"'
+        ){
+
+            insideQuotes =
+                !insideQuotes;
+
+        }
+
+        else if(
+            char === "," &&
             !insideQuotes
         ){
 
-            if(char === "\r" && next === "\n"){
+            row.push(value);
+
+            value = "";
+
+        }
+
+        else if(
+            (
+                char === "\n" ||
+                char === "\r"
+            ) &&
+            !insideQuotes
+        ){
+
+            if(
+                char === "\r" &&
+                next === "\n"
+            ){
+
                 i++;
+
             }
 
+
             row.push(value);
+
 
             if(
                 row.some(
@@ -770,10 +1092,13 @@ function parseCSV(text){
 
             }
 
+
             row = [];
+
             value = "";
 
         }
+
         else{
 
             value += char;
@@ -782,9 +1107,14 @@ function parseCSV(text){
 
     }
 
-    if(value !== "" || row.length > 0){
+
+    if(
+        value !== "" ||
+        row.length > 0
+    ){
 
         row.push(value);
+
 
         if(
             row.some(
@@ -799,7 +1129,9 @@ function parseCSV(text){
 
     }
 
+
     return rows;
+
 }
 
 
@@ -822,14 +1154,26 @@ function normalizeHeader(value){
    FIND COLUMN
 ========================================= */
 
-function findColumn(headers,names){
+function findColumn(
+    headers,
+    names
+){
 
-    for(let i = 0; i < headers.length; i++){
+    for(
+        let i = 0;
+        i < headers.length;
+        i++
+    ){
 
         const current =
-            normalizeHeader(headers[i]);
+            normalizeHeader(
+                headers[i]
+            );
 
-        for(const name of names){
+
+        for(
+            const name of names
+        ){
 
             if(
                 current ===
@@ -844,7 +1188,90 @@ function findColumn(headers,names){
 
     }
 
+
     return -1;
+
+}
+
+
+/* =========================================
+   IMAGE COLUMNS
+========================================= */
+
+function getImageColumns(headers){
+
+    const columns = [];
+
+
+    for(
+        let i = 0;
+        i < headers.length;
+        i++
+    ){
+
+        const header =
+            normalizeHeader(
+                headers[i]
+            );
+
+
+        if(
+            header.includes("main image") ||
+            header === "image" ||
+            header === "image url" ||
+            header === "product image" ||
+            header.startsWith("image ") ||
+            header.includes("image url")
+        ){
+
+            if(
+                !columns.includes(i)
+            ){
+
+                columns.push(i);
+
+            }
+
+        }
+
+    }
+
+
+    return columns;
+
+}
+
+
+/* =========================================
+   GET FIRST IMAGE
+========================================= */
+
+function getFirstImage(
+    row,
+    imageColumns
+){
+
+    for(
+        const col of imageColumns
+    ){
+
+        const image =
+            String(
+                row[col] || ""
+            ).trim();
+
+
+        if(image){
+
+            return image;
+
+        }
+
+    }
+
+
+    return "";
+
 }
 
 
@@ -854,367 +1281,390 @@ function findColumn(headers,names){
 
 async function loadProduct(){
 
-try{
+    try{
 
-    if(!productIdFromURL){
+        if(
+            !productIdFromURL
+        ){
 
-        showError(
-            "Product ID is missing from the page URL."
-        );
+            showError(
+                "Product ID is missing from the page URL."
+            );
 
-        return;
+            return;
 
-    }
-
-
-    const response =
-        await fetch(
-            sheetURL,
-            {
-                cache:"no-store"
-            }
-        );
+        }
 
 
-    if(!response.ok){
-
-        throw new Error(
-            "Google Sheet could not be loaded."
-        );
-
-    }
-
-
-    const csv =
-        await response.text();
-
-
-    if(!csv || csv.trim() === ""){
-
-        throw new Error(
-            "Google Sheet returned empty data."
-        );
-
-    }
-
-
-    const rows =
-        parseCSV(csv);
-
-
-    if(rows.length < 2){
-
-        throw new Error(
-            "No product rows found."
-        );
-
-    }
-
-
-    const headers =
-        rows[0];
-
-
-    /* COLUMN DETECTION */
-
-    const idCol =
-        findColumn(
-            headers,
-            [
-                "SKU",
-                "Product ID",
-                "ID",
-                "Product Code"
-            ]
-        );
-
-
-    const nameCol =
-        findColumn(
-            headers,
-            [
-                "Product",
-                "Product Name",
-                "Name",
-                "Title"
-            ]
-        );
-
-
-    const categoryCol =
-        findColumn(
-            headers,
-            [
-                "Category",
-                "Categories"
-            ]
-        );
-
-
-    const priceCol =
-        findColumn(
-            headers,
-            [
-                "Selling Price",
-                "Price",
-                "Sale Price"
-            ]
-        );
-
-
-    const sizeCol =
-        findColumn(
-            headers,
-            [
-                "Size",
-                "Sizes"
-            ]
-        );
-
-
-    const stockCol =
-        findColumn(
-            headers,
-            [
-                "Stock",
-                "Availability"
-            ]
-        );
-
-
-    const descriptionCol =
-        findColumn(
-            headers,
-            [
-                "Extended Description",
-                "Description",
-                "Product Description",
-                "Details"
-            ]
-        );
-
-
-    /* IMAGE COLUMNS */
-
-    const imageColumns = [];
-
-
-    for(let i = 0; i < headers.length; i++){
-
-        const header =
-            normalizeHeader(headers[i]);
+        const response =
+            await fetch(
+                sheetURL,
+                {
+                    cache:"no-store"
+                }
+            );
 
 
         if(
-            header.includes("main image") ||
-            header === "image" ||
-            header === "image url" ||
-            header === "product image" ||
-            /^image [2-9]$/.test(header)
+            !response.ok
         ){
 
-            if(!imageColumns.includes(i)){
-
-                imageColumns.push(i);
-
-            }
+            throw new Error(
+                "Google Sheet could not be loaded."
+            );
 
         }
 
-    }
+
+        const csv =
+            await response.text();
 
 
-    /* FIND PRODUCT */
+        if(
+            !csv ||
+            csv.trim() === ""
+        ){
 
-    let productRow = null;
+            throw new Error(
+                "Google Sheet returned empty data."
+            );
 
-
-    if(idCol !== -1){
-
-        for(let i = 1; i < rows.length; i++){
-
-            const row = rows[i];
-
-            const rowId =
-                String(
-                    row[idCol] || ""
-                ).trim();
+        }
 
 
-            if(
-                rowId.toLowerCase() ===
-                productIdFromURL.toLowerCase()
+        const rows =
+            parseCSV(csv);
+
+
+        if(
+            rows.length < 2
+        ){
+
+            throw new Error(
+                "No product rows found."
+            );
+
+        }
+
+
+        const headers =
+            rows[0];
+
+
+        /* COLUMN DETECTION */
+
+        const idCol =
+            findColumn(
+                headers,
+                [
+                    "SKU",
+                    "Product ID",
+                    "ID",
+                    "Product Code"
+                ]
+            );
+
+
+        const nameCol =
+            findColumn(
+                headers,
+                [
+                    "Product",
+                    "Product Name",
+                    "Name",
+                    "Title"
+                ]
+            );
+
+
+        const categoryCol =
+            findColumn(
+                headers,
+                [
+                    "Category",
+                    "Categories"
+                ]
+            );
+
+
+        const priceCol =
+            findColumn(
+                headers,
+                [
+                    "Selling Price",
+                    "Price",
+                    "Sale Price"
+                ]
+            );
+
+
+        const sizeCol =
+            findColumn(
+                headers,
+                [
+                    "Size",
+                    "Sizes"
+                ]
+            );
+
+
+        const stockCol =
+            findColumn(
+                headers,
+                [
+                    "Stock",
+                    "Availability"
+                ]
+            );
+
+
+        const descriptionCol =
+            findColumn(
+                headers,
+                [
+                    "Extended Description",
+                    "Description",
+                    "Product Description",
+                    "Details"
+                ]
+            );
+
+
+        const imageColumns =
+            getImageColumns(
+                headers
+            );
+
+
+        /* FIND PRODUCT */
+
+        let productRow = null;
+
+
+        if(
+            idCol !== -1
+        ){
+
+            for(
+                let i = 1;
+                i < rows.length;
+                i++
             ){
 
-                productRow = row;
-                break;
+                const row =
+                    rows[i];
+
+
+                const rowId =
+                    String(
+                        row[idCol] || ""
+                    ).trim();
+
+
+                if(
+                    rowId.toLowerCase() ===
+                    productIdFromURL.toLowerCase()
+                ){
+
+                    productRow =
+                        row;
+
+                    break;
+
+                }
 
             }
 
         }
 
-    }
 
+        /* FALLBACK BY PRODUCT NAME */
 
-    /* FALLBACK PRODUCT NAME */
+        if(
+            !productRow &&
+            nameCol !== -1
+        ){
 
-    if(!productRow && nameCol !== -1){
-
-        for(let i = 1; i < rows.length; i++){
-
-            const row = rows[i];
-
-            const rowName =
-                String(
-                    row[nameCol] || ""
-                ).trim();
-
-
-            if(
-                rowName.toLowerCase() ===
-                productIdFromURL.toLowerCase()
+            for(
+                let i = 1;
+                i < rows.length;
+                i++
             ){
 
-                productRow = row;
-                break;
+                const row =
+                    rows[i];
+
+
+                const rowName =
+                    String(
+                        row[nameCol] || ""
+                    ).trim();
+
+
+                if(
+                    rowName.toLowerCase() ===
+                    productIdFromURL.toLowerCase()
+                ){
+
+                    productRow =
+                        row;
+
+                    break;
+
+                }
 
             }
 
         }
 
-    }
+
+        if(
+            !productRow
+        ){
+
+            showError(
+                "Product \"" +
+                productIdFromURL +
+                "\" was not found in the Products sheet."
+            );
+
+            return;
+
+        }
 
 
-    if(!productRow){
+        /* PRODUCT DATA */
 
-        showError(
-            "Product \"" +
-            productIdFromURL +
-            "\" was not found in the Products sheet."
-        );
-
-        return;
-
-    }
+        const productName =
+            nameCol !== -1
+            ? String(
+                productRow[nameCol] || ""
+            ).trim()
+            : "Product";
 
 
-    /* PRODUCT DATA */
-
-    const productName =
-        nameCol !== -1
-        ? String(
-            productRow[nameCol] || ""
-          ).trim()
-        : "Product";
+        const category =
+            categoryCol !== -1
+            ? String(
+                productRow[categoryCol] || ""
+            ).trim()
+            : "Product";
 
 
-    const category =
-        categoryCol !== -1
-        ? String(
-            productRow[categoryCol] || ""
-          ).trim()
-        : "Product";
+        const price =
+            priceCol !== -1
+            ? String(
+                productRow[priceCol] || ""
+            ).trim()
+            : "";
 
 
-    const price =
-        priceCol !== -1
-        ? String(
-            productRow[priceCol] || ""
-          ).trim()
-        : "";
+        const size =
+            sizeCol !== -1
+            ? String(
+                productRow[sizeCol] || ""
+            ).trim()
+            : "";
 
 
-    const size =
-        sizeCol !== -1
-        ? String(
-            productRow[sizeCol] || ""
-          ).trim()
-        : "";
+        const stock =
+            stockCol !== -1
+            ? String(
+                productRow[stockCol] || ""
+            ).trim()
+            : "Available";
 
 
-    const stock =
-        stockCol !== -1
-        ? String(
-            productRow[stockCol] || ""
-          ).trim()
-        : "Available";
-
-
-    const description =
-        descriptionCol !== -1
-        ? String(
-            productRow[descriptionCol] || ""
-          )
+        const description =
+            descriptionCol !== -1
+            ? String(
+                productRow[descriptionCol] || ""
+            )
             .replace(/\\n/g,"\n")
             .replace(/\r\n/g,"\n")
             .replace(/\r/g,"\n")
             .trim()
-        : "Product details will be updated soon.";
+            : "Product details will be updated soon.";
 
 
-    /* IMAGES */
+        /* IMAGES */
 
-    const images = [];
-
-
-    for(const col of imageColumns){
-
-        const imageURL =
-            String(
-                productRow[col] || ""
-            ).trim();
+        const images = [];
 
 
-        if(
-            imageURL &&
-            !images.includes(imageURL)
+        for(
+            const col of imageColumns
         ){
 
-            images.push(imageURL);
+            const imageURL =
+                String(
+                    productRow[col] || ""
+                ).trim();
+
+
+            if(
+                imageURL &&
+                !images.includes(imageURL)
+            ){
+
+                images.push(
+                    imageURL
+                );
+
+            }
 
         }
 
+
+        /* DISPLAY */
+
+        displayProduct({
+
+            id:
+                idCol !== -1
+                ? String(
+                    productRow[idCol] || ""
+                ).trim()
+                : productIdFromURL,
+
+            name:
+                productName,
+
+            category:
+                category,
+
+            price:
+                price,
+
+            size:
+                size,
+
+            stock:
+                stock,
+
+            description:
+                description,
+
+            images:
+                images
+
+        });
+
     }
 
+    catch(error){
 
-    displayProduct({
+        console.error(
+            "PRODUCT LOAD ERROR:",
+            error
+        );
 
-        id:
-            idCol !== -1
-            ? String(
-                productRow[idCol] || ""
-              ).trim()
-            : productIdFromURL,
 
-        name:productName,
+        showError(
+            "Product load nahi ho saka. Google Sheet ya product ID check karein."
+        );
 
-        category:category,
-
-        price:price,
-
-        size:size,
-
-        stock:stock,
-
-        description:description,
-
-        images:images
-
-    });
-
-}
-catch(error){
-
-    console.error(
-        "PRODUCT LOAD ERROR:",
-        error
-    );
-
-    showError(
-        "Product load nahi ho saka. Google Sheet ya product ID check karein."
-    );
-
-}
+    }
 
 }
 
@@ -1271,7 +1721,10 @@ function displayProduct(product){
 
     const numericPrice =
         parseInt(
-            rawPrice.replace(/\D/g,""),
+            rawPrice.replace(
+                /\D/g,
+                ""
+            ),
             10
         ) || 0;
 
@@ -1281,7 +1734,9 @@ function displayProduct(product){
     ).textContent =
         numericPrice > 0
         ? "Rs " +
-          numericPrice.toLocaleString("en-PK")
+          numericPrice.toLocaleString(
+              "en-PK"
+          )
         : rawPrice ||
           "Price available";
 
@@ -1300,7 +1755,8 @@ function displayProduct(product){
         );
 
 
-    thumbnails.innerHTML = "";
+    thumbnails.innerHTML =
+        "";
 
 
     if(
@@ -1317,7 +1773,10 @@ function displayProduct(product){
 
 
         product.images.forEach(
-            (imageURL,index) => {
+            (
+                imageURL,
+                index
+            ) => {
 
                 const thumbnail =
                     document.createElement(
@@ -1343,11 +1802,14 @@ function displayProduct(product){
                 img.src =
                     imageURL;
 
+
                 img.alt =
                     product.name;
 
 
-                thumbnail.appendChild(img);
+                thumbnail.appendChild(
+                    img
+                );
 
 
                 thumbnail.onclick =
@@ -1364,7 +1826,9 @@ function displayProduct(product){
                             .forEach(
                                 item =>
                                 item.classList
-                                    .remove("active")
+                                    .remove(
+                                        "active"
+                                    )
                             );
 
 
@@ -1383,21 +1847,34 @@ function displayProduct(product){
         );
 
     }
+
     else{
 
         mainImage.src =
             "https://via.placeholder.com/600x600?text=No+Image";
 
+
+        mainImage.alt =
+            "No product image";
+
     }
 
 
-    setupSizes(product.size);
+    /* SIZE */
+
+    setupSizes(
+        product.size
+    );
 
 
-    /* Similar Products */
+    /* SIMILAR PRODUCTS */
 
-    loadSimilarProducts(product);
+    loadSimilarProducts(
+        product
+    );
 
+
+    /* SHOW PAGE */
 
     document.getElementById(
         "loading"
@@ -1417,7 +1894,9 @@ function displayProduct(product){
    SIZE OPTIONS
 ========================================= */
 
-function setupSizes(sizeText){
+function setupSizes(
+    sizeText
+){
 
     const section =
         document.getElementById(
@@ -1431,10 +1910,13 @@ function setupSizes(sizeText){
         );
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
-    if(!sizeText){
+    if(
+        !sizeText
+    ){
 
         section.style.display =
             "none";
@@ -1454,7 +1936,9 @@ function setupSizes(sizeText){
         .filter(Boolean);
 
 
-    if(!sizes.length){
+    if(
+        !sizes.length
+    ){
 
         section.style.display =
             "none";
@@ -1469,7 +1953,10 @@ function setupSizes(sizeText){
 
 
     sizes.forEach(
-        (size,index) => {
+        (
+            size,
+            index
+        ) => {
 
             const button =
                 document.createElement(
@@ -1504,7 +1991,9 @@ function setupSizes(sizeText){
                         .forEach(
                             item =>
                             item.classList
-                                .remove("active")
+                                .remove(
+                                    "active"
+                                )
                         );
 
 
@@ -1532,12 +2021,16 @@ function setupSizes(sizeText){
 let quantity = 1;
 
 
-function changeQuantity(amount){
+function changeQuantity(
+    amount
+){
 
     quantity += amount;
 
 
-    if(quantity < 1){
+    if(
+        quantity < 1
+    ){
 
         quantity = 1;
 
@@ -1558,7 +2051,9 @@ function changeQuantity(amount){
 
 function orderProduct(){
 
-    if(!window.currentProduct){
+    if(
+        !window.currentProduct
+    ){
 
         return;
 
@@ -1585,7 +2080,10 @@ function orderProduct(){
         parseInt(
             String(
                 product.price || ""
-            ).replace(/\D/g,""),
+            ).replace(
+                /\D/g,
+                ""
+            ),
             10
         ) || 0;
 
@@ -1641,6 +2139,7 @@ padding:25px;
 box-shadow:0 20px 60px rgba(0,0,0,.25);
 ">
 
+
 <div style="
 display:flex;
 justify-content:space-between;
@@ -1655,6 +2154,7 @@ font-size:22px;
 ">
 Complete Your Order
 </h2>
+
 
 <button
 type="button"
@@ -1686,6 +2186,7 @@ padding:15px;
 margin-bottom:18px;
 ">
 
+
 <strong style="
 display:block;
 color:#111827;
@@ -1694,12 +2195,14 @@ margin-bottom:6px;
 ${product.name}
 </strong>
 
+
 <span style="
 color:#e11d48;
 font-weight:800;
 ">
 Rs ${price.toLocaleString("en-PK")}
 </span>
+
 
 ${
 size
@@ -1718,6 +2221,7 @@ Size: ${size}
 ""
 }
 
+
 <span style="
 display:block;
 color:#6b7280;
@@ -1727,6 +2231,7 @@ margin-top:5px;
 Quantity: ${quantity}
 </span>
 
+
 <strong style="
 display:block;
 margin-top:8px;
@@ -1735,10 +2240,12 @@ color:#111827;
 Total: Rs ${total.toLocaleString("en-PK")}
 </strong>
 
+
 </div>
 
 
 <form id="productOrderForm">
+
 
 <input
 type="text"
@@ -1822,6 +2329,7 @@ cursor:pointer;
 🛒 Place Order — Cash on Delivery
 </button>
 
+
 </form>
 
 
@@ -1833,6 +2341,7 @@ margin-top:12px;
 ">
 Cash on Delivery available across Pakistan
 </p>
+
 
 </div>
 
@@ -1927,11 +2436,14 @@ Cash on Delivery available across Pakistan
                     orderScriptURL,
                     {
                         method:"POST",
+
                         mode:"no-cors",
+
                         headers:{
                             "Content-Type":
                             "text/plain;charset=utf-8"
                         },
+
                         body:
                             JSON.stringify(
                                 orderData
@@ -1963,6 +2475,7 @@ padding:35px 25px;
 text-align:center;
 ">
 
+
 <div style="
 font-size:55px;
 margin-bottom:15px;
@@ -1970,12 +2483,14 @@ margin-bottom:15px;
 ✅
 </div>
 
+
 <h2 style="
 color:#111827;
 margin-bottom:10px;
 ">
 Order Received!
 </h2>
+
 
 <p style="
 color:#6b7280;
@@ -1987,6 +2502,7 @@ We will contact you soon
 to confirm your Cash on
 Delivery order.
 </p>
+
 
 <button
 onclick="
@@ -2006,6 +2522,7 @@ cursor:pointer;
 Continue Shopping
 </button>
 
+
 </div>
 
 </div>
@@ -2013,6 +2530,7 @@ Continue Shopping
 `;
 
             }
+
             catch(error){
 
                 console.error(
@@ -2045,7 +2563,9 @@ Continue Shopping
    SIMILAR PRODUCTS
 ========================================= */
 
-async function loadSimilarProducts(currentProduct){
+async function loadSimilarProducts(
+    currentProduct
+){
 
     const section =
         document.querySelector(
@@ -2059,7 +2579,10 @@ async function loadSimilarProducts(currentProduct){
         );
 
 
-    if(!section || !container){
+    if(
+        !section ||
+        !container
+    ){
 
         return;
 
@@ -2077,10 +2600,16 @@ async function loadSimilarProducts(currentProduct){
             );
 
 
-        if(!response.ok){
+        if(
+            !response.ok
+        ){
 
             container.innerHTML =
-                "<p>No similar products available.</p>";
+                `
+                <p style="color:#6b7280;">
+                    More products will be available here soon.
+                </p>
+                `;
 
             return;
 
@@ -2092,7 +2621,9 @@ async function loadSimilarProducts(currentProduct){
 
 
         const rows =
-            parseCSV(csvText);
+            parseCSV(
+                csvText
+            );
 
 
         if(
@@ -2101,7 +2632,11 @@ async function loadSimilarProducts(currentProduct){
         ){
 
             container.innerHTML =
-                "<p>No similar products available.</p>";
+                `
+                <p style="color:#6b7280;">
+                    More products will be available here soon.
+                </p>
+                `;
 
             return;
 
@@ -2157,44 +2692,26 @@ async function loadSimilarProducts(currentProduct){
             );
 
 
-        if(nameCol === -1){
+        if(
+            nameCol === -1
+        ){
 
             container.innerHTML =
-                "<p>No similar products available.</p>";
+                `
+                <p style="color:#6b7280;">
+                    More products will be available here soon.
+                </p>
+                `;
 
             return;
 
         }
 
 
-        const imageColumns = [];
-
-
-        for(
-            let i = 0;
-            i < headers.length;
-            i++
-        ){
-
-            const header =
-                normalizeHeader(
-                    headers[i]
-                );
-
-
-            if(
-                header.includes("main image") ||
-                header === "image" ||
-                header === "image url" ||
-                header === "product image" ||
-                /^image [2-9]$/.test(header)
-            ){
-
-                imageColumns.push(i);
-
-            }
-
-        }
+        const imageColumns =
+            getImageColumns(
+                headers
+            );
 
 
         const currentCategory =
@@ -2214,8 +2731,13 @@ async function loadSimilarProducts(currentProduct){
 
 
         const sameCategory = [];
+
         const otherProducts = [];
 
+
+        /* =========================================
+           READ ALL PRODUCTS
+        ========================================= */
 
         for(
             let i = 1;
@@ -2233,7 +2755,33 @@ async function loadSimilarProducts(currentProduct){
                 ).trim();
 
 
-            if(!name){
+            if(
+                !name
+            ){
+
+                continue;
+
+            }
+
+
+            const id =
+                idCol !== -1
+                ? String(
+                    row[idCol] || ""
+                ).trim()
+                : name;
+
+
+            const normalizedId =
+                id.toLowerCase();
+
+
+            /* EXCLUDE CURRENT PRODUCT */
+
+            if(
+                normalizedId ===
+                currentId
+            ){
 
                 continue;
 
@@ -2244,60 +2792,24 @@ async function loadSimilarProducts(currentProduct){
                 categoryCol !== -1
                 ? String(
                     row[categoryCol] || ""
-                  )
-                  .trim()
-                  .toLowerCase()
+                )
+                .trim()
+                .toLowerCase()
                 : "";
 
 
-            const id =
-                idCol !== -1
-                ? String(
-                    row[idCol] || ""
-                  ).trim()
-                : name;
-
-
-            if(
-                id.toLowerCase() ===
-                currentId
-            ){
-
-                continue;
-
-            }
-
-
-            let image = "";
-
-
-            for(
-                const col of imageColumns
-            ){
-
-                const imageURL =
-                    String(
-                        row[col] || ""
-                    ).trim();
-
-
-                if(imageURL){
-
-                    image =
-                        imageURL;
-
-                    break;
-
-                }
-
-            }
+            const image =
+                getFirstImage(
+                    row,
+                    imageColumns
+                );
 
 
             const price =
                 priceCol !== -1
                 ? String(
                     row[priceCol] || ""
-                  ).trim()
+                ).trim()
                 : "";
 
 
@@ -2306,6 +2818,8 @@ async function loadSimilarProducts(currentProduct){
                 id:id,
 
                 name:name,
+
+                category:category,
 
                 image:image,
 
@@ -2316,6 +2830,7 @@ async function loadSimilarProducts(currentProduct){
 
             if(
                 category &&
+                currentCategory &&
                 category === currentCategory
             ){
 
@@ -2324,6 +2839,7 @@ async function loadSimilarProducts(currentProduct){
                 );
 
             }
+
             else{
 
                 otherProducts.push(
@@ -2335,25 +2851,62 @@ async function loadSimilarProducts(currentProduct){
         }
 
 
-        const similarProducts =
-            [
-                ...sameCategory,
-                ...otherProducts
-            ].slice(0,4);
+        /* =========================================
+           COMBINE
+        ========================================= */
+
+        const similarProducts = [
+
+            ...sameCategory,
+
+            ...otherProducts
+
+        ]
+        .filter(
+            (
+                item,
+                index,
+                array
+            ) =>
+            array.findIndex(
+                other =>
+                String(
+                    other.id
+                ).toLowerCase() ===
+                String(
+                    item.id
+                ).toLowerCase()
+            ) === index
+        )
+        .slice(
+            0,
+            4
+        );
 
 
-        container.innerHTML = "";
+        container.innerHTML =
+            "";
 
 
-        if(!similarProducts.length){
+        if(
+            !similarProducts.length
+        ){
 
             container.innerHTML =
-                "<p style='color:#6b7280;'>More products will be available here soon.</p>";
+                `
+                <p style="color:#6b7280;">
+                    More products will be available here soon.
+                </p>
+                `;
 
             return;
 
         }
 
+
+        /* =========================================
+           CREATE CARDS
+        ========================================= */
 
         similarProducts.forEach(
             function(product){
@@ -2380,6 +2933,8 @@ async function loadSimilarProducts(currentProduct){
                     };
 
 
+                /* IMAGE */
+
                 const img =
                     document.createElement(
                         "img"
@@ -2395,14 +2950,23 @@ async function loadSimilarProducts(currentProduct){
                     product.name;
 
 
+                img.loading =
+                    "lazy";
+
+
                 img.onerror =
                     function(){
+
+                        this.onerror =
+                            null;
 
                         this.src =
                             "https://via.placeholder.com/400x400?text=Product";
 
                     };
 
+
+                /* INFO */
 
                 const info =
                     document.createElement(
@@ -2413,6 +2977,8 @@ async function loadSimilarProducts(currentProduct){
                 info.className =
                     "similar-card-info";
 
+
+                /* TITLE */
 
                 const title =
                     document.createElement(
@@ -2428,13 +2994,15 @@ async function loadSimilarProducts(currentProduct){
                     product.name;
 
 
-                const price =
+                /* PRICE */
+
+                const priceElement =
                     document.createElement(
                         "div"
                     );
 
 
-                price.className =
+                priceElement.className =
                     "similar-card-price";
 
 
@@ -2443,12 +3011,15 @@ async function loadSimilarProducts(currentProduct){
                         String(
                             product.price || ""
                         )
-                        .replace(/\D/g,""),
+                        .replace(
+                            /\D/g,
+                            ""
+                        ),
                         10
                     ) || 0;
 
 
-                price.textContent =
+                priceElement.textContent =
                     numericPrice > 0
                     ? "Rs " +
                       numericPrice.toLocaleString(
@@ -2463,7 +3034,7 @@ async function loadSimilarProducts(currentProduct){
 
 
                 info.appendChild(
-                    price
+                    priceElement
                 );
 
 
@@ -2485,6 +3056,7 @@ async function loadSimilarProducts(currentProduct){
         );
 
     }
+
     catch(error){
 
         console.error(
@@ -2493,8 +3065,17 @@ async function loadSimilarProducts(currentProduct){
         );
 
 
+        /* IMPORTANT:
+           Similar Products error should
+           never break main product page.
+        */
+
         container.innerHTML =
-            "<p style='color:#6b7280;'>More products will be available here soon.</p>";
+            `
+            <p style="color:#6b7280;">
+                More products will be available here soon.
+            </p>
+            `;
 
     }
 
@@ -2505,30 +3086,64 @@ async function loadSimilarProducts(currentProduct){
    SHOW ERROR
 ========================================= */
 
-function showError(message){
+function showError(
+    message
+){
 
-    document.getElementById(
-        "loading"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "productContent"
-    ).style.display =
-        "none";
+    const loading =
+        document.getElementById(
+            "loading"
+        );
 
 
-    document.getElementById(
-        "errorBox"
-    ).style.display =
-        "block";
+    const content =
+        document.getElementById(
+            "productContent"
+        );
 
 
-    document.getElementById(
-        "errorMessage"
-    ).textContent =
-        message;
+    const errorBox =
+        document.getElementById(
+            "errorBox"
+        );
+
+
+    const errorMessage =
+        document.getElementById(
+            "errorMessage"
+        );
+
+
+    if(loading){
+
+        loading.style.display =
+            "none";
+
+    }
+
+
+    if(content){
+
+        content.style.display =
+            "none";
+
+    }
+
+
+    if(errorBox){
+
+        errorBox.style.display =
+            "block";
+
+    }
+
+
+    if(errorMessage){
+
+        errorMessage.textContent =
+            message;
+
+    }
 
 }
 
