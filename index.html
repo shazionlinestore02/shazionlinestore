@@ -693,6 +693,118 @@ header{
     }
 }
 
+
+   /* =========================================================
+   PRODUCT CARDS - MARKETPLACE STYLE UPGRADE
+   ========================================================= */
+
+.product{
+    overflow:hidden;
+    position:relative;
+    background:#fff;
+    transition:all .3s ease;
+}
+
+.product-image{
+    position:relative;
+    background:#f8fafc;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .45s ease;
+}
+
+.product:hover .product-image img{
+    transform:scale(1.06);
+}
+
+/* Product badge */
+.product-tag{
+    position:absolute;
+    top:12px;
+    left:12px;
+    z-index:3;
+    font-weight:700;
+    border-radius:20px;
+    padding:6px 10px;
+}
+
+/* Product information */
+.product-info{
+    background:#fff;
+}
+
+.product h3{
+    color:#111827;
+    line-height:1.45;
+}
+
+.product-description{
+    color:#6b7280;
+    line-height:1.5;
+}
+
+/* Price area */
+.price{
+    font-weight:900;
+    letter-spacing:-.4px;
+}
+
+/* Product buttons */
+.product .order-btn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    font-weight:700;
+    transition:all .25s ease;
+}
+
+.product .order-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* View details */
+.product a{
+    transition:all .25s ease;
+}
+
+.product a:hover{
+    color:#be123c !important;
+}
+
+/* Product hover glow */
+.product::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:22px;
+    pointer-events:none;
+    box-shadow:inset 0 0 0 1px rgba(225,29,72,0);
+    transition:.3s ease;
+}
+
+.product:hover::after{
+    box-shadow:inset 0 0 0 1px rgba(225,29,72,.12);
+}
+
+/* Mobile */
+@media(max-width:760px){
+
+    .product-image img{
+        object-fit:cover;
+    }
+
+    .product-tag{
+        top:8px;
+        left:8px;
+        padding:5px 8px;
+    }
+}
+   /* end */
 /* =========================================================
    RESET
 ========================================================= */
