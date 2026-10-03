@@ -2357,6 +2357,26 @@ header{
   }
 }
 
+  /* =========================================
+   PRODUCT IMAGE POLISH
+   ========================================= */
+
+.product-image {
+    border-radius: 18px 18px 0 0;
+}
+
+.product-image img {
+    object-position: center;
+    backface-visibility: hidden;
+}
+
+.product-image::after {
+    transition: transform .25s ease, color .25s ease;
+}
+
+.product:hover .product-image::after {
+    transform: scale(1.08);
+}
 
 </style>
 
