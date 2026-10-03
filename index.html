@@ -3139,6 +3139,140 @@ header {
     }
 }
 
+  /* =========================================
+   PREMIUM WHY US SECTION
+   ========================================= */
+
+.why-us-section {
+    position: relative;
+}
+
+.why-us-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+}
+
+.why-us-card {
+    position: relative;
+    min-height: 235px;
+    padding: 28px 20px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #edf0f5;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, .06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.why-us-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #e11d48;
+    transform: scaleX(0);
+    transition: transform .25s ease;
+}
+
+.why-us-card:hover {
+    transform: translateY(-6px);
+    border-color: #f5c2d0;
+    box-shadow: 0 16px 35px rgba(15, 23, 42, .11);
+}
+
+.why-us-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Icon */
+
+.why-us-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 18px;
+    border-radius: 20px;
+    background: #fff1f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 8px 20px rgba(225, 29, 72, .08);
+    transition: transform .25s ease, background .25s ease;
+}
+
+.why-us-card:hover .why-us-icon {
+    transform: scale(1.08);
+    background: #ffe4ec;
+}
+
+/* Text */
+
+.why-us-card h3 {
+    margin: 0 0 9px;
+    color: #111827;
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 800;
+}
+
+.why-us-card p {
+    max-width: 230px;
+    margin: 0;
+    color: #6b7280;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+    .why-us-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .why-us-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+    }
+
+    .why-us-card {
+        min-height: 215px;
+        padding: 22px 13px;
+        border-radius: 15px;
+    }
+
+    .why-us-icon {
+        width: 58px;
+        height: 58px;
+        margin-bottom: 14px;
+        border-radius: 17px;
+        font-size: 27px;
+    }
+
+    .why-us-card h3 {
+        font-size: 13px;
+    }
+
+    .why-us-card p {
+        font-size: 10px;
+        line-height: 1.6;
+    }
+}
+
 </style>
 
 </head>
