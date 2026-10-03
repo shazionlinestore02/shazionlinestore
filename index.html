@@ -2328,6 +2328,39 @@ header{
 }
 
 
+   /* =========================================
+   ORDER NOW BUTTON
+   ========================================= */
+
+.product .order-now-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid #111827 !important;
+  border-radius: 10px;
+  background: #111827 !important;
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.product .order-now-btn:hover {
+  background: #e11d48 !important;
+  border-color: #e11d48 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(225, 29, 72, 0.18);
+}
+
+.product .order-now-btn:active {
+  transform: translateY(0);
+}
+
 </style>
 
 </head>
@@ -3927,7 +3960,7 @@ async function loadProducts() {
 
 
                         <button
-                            class="order-btn"
+                            class="order-btn order-now-btn"
                             type="button"
                             style="flex:1;"
                         >
