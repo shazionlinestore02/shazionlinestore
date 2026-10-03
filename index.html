@@ -3674,6 +3674,107 @@ header {
 </section>
 
 
+  <!-- =========================================
+     WHY US SECTION
+     ========================================= -->
+
+<section class="section why-us-section" id="why-us">
+
+    <div class="section-heading">
+
+        <span>
+            Why Choose Us
+        </span>
+
+        <h2>
+            Shopping Made Simple
+        </h2>
+
+        <p>
+            We focus on easy ordering, reliable delivery and a smooth
+            shopping experience for customers across Pakistan.
+        </p>
+
+    </div>
+
+
+    <div class="why-us-grid">
+
+        <div class="why-us-card">
+
+            <div class="why-us-icon">
+                🚚
+            </div>
+
+            <h3>
+                Fast Delivery
+            </h3>
+
+            <p>
+                Get your orders delivered conveniently to your doorstep
+                across Pakistan.
+            </p>
+
+        </div>
+
+
+        <div class="why-us-card">
+
+            <div class="why-us-icon">
+                💵
+            </div>
+
+            <h3>
+                Cash on Delivery
+            </h3>
+
+            <p>
+                Pay when you receive your order. Simple and convenient
+                shopping for you.
+            </p>
+
+        </div>
+
+
+        <div class="why-us-card">
+
+            <div class="why-us-icon">
+                🛒
+            </div>
+
+            <h3>
+                Easy Ordering
+            </h3>
+
+            <p>
+                Place your order easily through our website without
+                complicated steps.
+            </p>
+
+        </div>
+
+
+        <div class="why-us-card">
+
+            <div class="why-us-icon">
+                ⭐
+            </div>
+
+            <h3>
+                Quality Products
+            </h3>
+
+            <p>
+                Explore useful and stylish products selected for your
+                everyday shopping needs.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
 <!-- =========================================================
      OFFER
 ========================================================= -->
@@ -3711,85 +3812,147 @@ header {
      WHY US
 ========================================================= -->
 
-<section class="section" id="why-us">
+/* =========================================
+   PREMIUM CATEGORY CARDS
+   ========================================= */
 
-<div class="section-heading">
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+}
 
-    <span>
-        Why ShaziOnlineStore?
-    </span>
+.category {
+    position: relative;
+    min-height: 205px;
+    padding: 24px 18px;
+    box-sizing: border-box;
+    border: 1px solid #edf0f5;
+    border-radius: 18px;
+    background: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, .06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
 
-    <h2>
-        Shopping Made Simple
-    </h2>
+.category::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #e11d48;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease;
+}
 
-    <p>
-        We make online shopping easy, convenient and straightforward.
-    </p>
+.category:hover {
+    transform: translateY(-6px);
+    border-color: #f5c2d0;
+    box-shadow: 0 16px 35px rgba(15, 23, 42, .11);
+}
 
-</div>
+.category:hover::before {
+    transform: scaleX(1);
+}
 
+/* Category icon */
 
-<div class="why-grid">
+.category-icon {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 16px;
+    border-radius: 20px;
+    background: #fff1f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 31px;
+    box-shadow: 0 8px 20px rgba(225, 29, 72, .08);
+    transition: transform .25s ease, background .25s ease;
+}
 
+.category:hover .category-icon {
+    transform: scale(1.08);
+    background: #ffe4ec;
+}
 
-    <div class="why-card">
+.category h3 {
+    min-height: 42px;
+    margin: 0 0 8px;
+    color: #111827;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 800;
+}
 
-        <div class="why-icon">
-            🚚
-        </div>
+.category p {
+    min-height: 36px;
+    margin: 0;
+    color: #6b7280;
+    font-size: 11px;
+    line-height: 1.6;
+}
 
-        <h3>
-            Home Delivery
-        </h3>
+/* Tablet */
 
-        <p>
-            Order from the comfort of your home and get your products
-            delivered to your doorstep.
-        </p>
+@media (max-width: 1000px) {
+    .categories {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
 
-    </div>
+/* Mobile */
 
+@media (max-width: 700px) {
+    .categories {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+    }
 
-    <div class="why-card">
+    .category {
+        min-height: 190px;
+        padding: 20px 13px;
+        border-radius: 15px;
+    }
 
-        <div class="why-icon">
-            💵
-        </div>
+    .category-icon {
+        width: 58px;
+        height: 58px;
+        margin-bottom: 13px;
+        border-radius: 17px;
+        font-size: 27px;
+    }
 
-        <h3>
-            Cash on Delivery
-        </h3>
+    .category h3 {
+        font-size: 13px;
+    }
 
-        <p>
-            Convenient COD ordering allows you to pay when your order
-            is delivered.
-        </p>
+    .category p {
+        font-size: 10px;
+    }
+}
 
-    </div>
+/* Small mobile */
 
+@media (max-width: 450px) {
+    .categories {
+        grid-template-columns: 1fr 1fr;
+    }
 
-    <div class="why-card">
-
-        <div class="why-icon">
-            🛍️
-        </div>
-
-        <h3>
-            Easy Ordering
-        </h3>
-
-        <p>
-            Choose your product, enter your details and place your
-            order in just a few simple steps.
-        </p>
-
-    </div>
-
-</div>
-
-</section>
-
+    .category {
+        min-height: 180px;
+    }
+}
 
 <!-- =========================================================
      FOOTER
