@@ -1732,6 +1732,372 @@ footer{
         height:300px;
     }
 }
+
+
+   
+/* =========================================
+   PREMIUM HOMEPAGE SECTIONS
+   ========================================= */
+
+.premium-section {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.premium-section.alt {
+    background: #f8fafc;
+}
+
+.premium-heading {
+    max-width: 700px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.premium-heading span {
+    display: inline-block;
+    color: #e11d48;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.premium-heading h2 {
+    margin: 0 0 12px;
+    font-size: 36px;
+    line-height: 1.2;
+    color: #111827;
+}
+
+.premium-heading p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* ---------- HOW IT WORKS ---------- */
+
+.how-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.how-card {
+    position: relative;
+    padding: 30px 22px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    text-align: center;
+    transition: .3s ease;
+}
+
+.how-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(17, 24, 39, .10);
+}
+
+.how-number {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e11d48;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.how-card h3 {
+    margin: 0 0 10px;
+    font-size: 19px;
+    color: #111827;
+}
+
+.how-card p {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+
+/* ---------- TRUST STATS ---------- */
+
+.stats-section {
+    background: #111827;
+    color: #fff;
+    padding: 55px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 15px;
+}
+
+.stat-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.stat-card h3 {
+    margin: 0 0 5px;
+    font-size: 28px;
+    color: #fff;
+}
+
+.stat-card p {
+    margin: 0;
+    color: #d1d5db;
+    font-size: 14px;
+}
+
+
+/* ---------- TESTIMONIALS ---------- */
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.review-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 28px;
+    transition: .3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(17, 24, 39, .08);
+}
+
+.review-stars {
+    color: #f59e0b;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.review-card p {
+    color: #4b5563;
+    line-height: 1.7;
+    margin: 0 0 20px;
+    font-size: 14px;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.reviewer-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #fee2e2;
+    color: #e11d48;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.reviewer strong {
+    display: block;
+    color: #111827;
+    font-size: 14px;
+}
+
+.reviewer span {
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+
+/* ---------- FAQ ---------- */
+
+.faq-list {
+    max-width: 850px;
+    margin: auto;
+}
+
+.faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.faq-item summary {
+    cursor: pointer;
+    padding: 20px 22px;
+    font-weight: 700;
+    color: #111827;
+    list-style: none;
+    position: relative;
+    padding-right: 50px;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 22px;
+    top: 16px;
+    font-size: 25px;
+    color: #e11d48;
+}
+
+.faq-item[open] summary::after {
+    content: "−";
+}
+
+.faq-answer {
+    padding: 0 22px 20px;
+    color: #6b7280;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+
+/* ---------- FINAL CTA ---------- */
+
+.final-cta {
+    padding: 75px 20px;
+    background: linear-gradient(135deg, #111827, #1f2937);
+    color: #fff;
+    text-align: center;
+}
+
+.final-cta h2 {
+    margin: 0 0 12px;
+    font-size: 36px;
+}
+
+.final-cta p {
+    margin: 0 auto 25px;
+    max-width: 650px;
+    color: #d1d5db;
+    line-height: 1.7;
+}
+
+.final-cta .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 10px;
+    background: #e11d48;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 800;
+    transition: .3s ease;
+}
+
+.final-cta .cta-btn:hover {
+    background: #be123c;
+    transform: translateY(-2px);
+}
+
+
+/* ---------- BACK TO TOP ---------- */
+
+#backToTop {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: #e11d48;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+
+#backToTop:hover {
+    background: #be123c;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 900px) {
+
+    .how-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .premium-heading h2,
+    .final-cta h2 {
+        font-size: 30px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .premium-section {
+        padding: 60px 0;
+    }
+
+    .how-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .stat-card h3 {
+        font-size: 23px;
+    }
+
+    .premium-heading h2,
+    .final-cta h2 {
+        font-size: 26px;
+    }
+
+    .final-cta {
+        padding: 60px 18px;
+    }
+}
 </style>
 </head>
 
