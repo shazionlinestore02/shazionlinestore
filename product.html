@@ -2050,7 +2050,6 @@ function setupSizes(
             "sizeSection"
         );
 
-
     const container =
         document.getElementById(
             "sizeOptions"
@@ -2061,8 +2060,13 @@ function setupSizes(
         "";
 
 
+    /* =====================================
+       CHECK SIZE DATA
+    ===================================== */
+
     if(
-        !sizeText
+        !sizeText ||
+        !String(sizeText).trim()
     ){
 
         section.style.display =
@@ -2073,18 +2077,46 @@ function setupSizes(
     }
 
 
+    /* =====================================
+       CLEAN SIZE TEXT
+    ===================================== */
+
     const sizes =
-        sizeText
-        .split(/[,|\/]/)
+        String(sizeText)
+            .split(/[,|\/]+/)
+            .map(
+                size =>
+                size.trim()
+            )
+            .filter(Boolean);
+
+
+    /* =====================================
+       REMOVE DUPLICATES
+    ===================================== */
+
+    const uniqueSizes =
+        [
+            ...new Set(
+                sizes.map(
+                    size =>
+                    size.toLowerCase()
+                )
+            )
+        ]
         .map(
-            size =>
-            size.trim()
+            lowerSize =>
+            sizes.find(
+                original =>
+                original.toLowerCase() ===
+                lowerSize
+            )
         )
         .filter(Boolean);
 
 
     if(
-        !sizes.length
+        !uniqueSizes.length
     ){
 
         section.style.display =
@@ -2095,11 +2127,19 @@ function setupSizes(
     }
 
 
+    /* =====================================
+       SHOW SIZE SECTION
+    ===================================== */
+
     section.style.display =
         "block";
 
 
-    sizes.forEach(
+    /* =====================================
+       CREATE SIZE BUTTONS
+    ===================================== */
+
+    uniqueSizes.forEach(
         (
             size,
             index
@@ -2159,7 +2199,6 @@ function setupSizes(
     );
 
 }
-
 
 /* =========================================
    QUANTITY
