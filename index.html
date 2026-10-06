@@ -2100,9 +2100,8 @@ footer{
 }
 
 
-
-   /* =========================================
-   CATEGORY-WISE HORIZONTAL PRODUCTS
+/* =========================================
+   PREMIUM CATEGORY PRODUCT CARDS
    ========================================= */
 
 .category-shop-section {
@@ -2124,8 +2123,8 @@ footer{
 .category-label {
     display: block;
     color: #e11d48;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 5px;
@@ -2134,17 +2133,18 @@ footer{
 .category-section-header h3 {
     margin: 0;
     color: #111827;
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -.4px;
 }
 
 .see-all-link {
     flex-shrink: 0;
     color: #e11d48;
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 800;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all .2s ease;
 }
 
 .see-all-link:hover {
@@ -2153,67 +2153,412 @@ footer{
 }
 
 
-/* Horizontal product row */
+/* =========================================
+   PRODUCT ROW
+   ========================================= */
 
 .category-products-row {
     display: flex;
-    gap: 18px;
+    gap: 16px;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 5px 4px 18px;
+    padding: 5px 3px 18px;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
 }
 
 
-/* Hide scrollbar but keep scrolling */
-
-.category-products-row::-webkit-scrollbar {
-    height: 6px;
-}
-
-.category-products-row::-webkit-scrollbar-track {
-    background: #f3f4f6;
-    border-radius: 10px;
-}
-
-.category-products-row::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 10px;
-}
-
-.category-products-row::-webkit-scrollbar-thumb:hover {
-    background: #9ca3af;
-}
-
-
-/* Product cards inside horizontal rows */
+/* =========================================
+   SIX CARDS PER ROW - DESKTOP
+   ========================================= */
 
 .category-products-row .product-card {
-    flex: 0 0 245px;
-    width: 245px;
+    flex: 0 0 calc((100% - 80px) / 6);
+    width: calc((100% - 80px) / 6);
+    min-width: 0;
     scroll-snap-align: start;
+
+    background: #ffffff;
+    border: 1px solid #edf0f5;
+    border-radius: 16px;
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 18px rgba(15, 23, 42, .055);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+.category-products-row .product-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #f1c4d0;
+
+    box-shadow:
+        0 14px 30px rgba(15, 23, 42, .11);
 }
 
 
-/* Empty category message */
+/* =========================================
+   PRODUCT IMAGE
+   ========================================= */
+
+.category-products-row .product-image {
+    position: relative;
+
+    width: 100%;
+    height: 215px;
+
+    overflow: hidden;
+
+    background: #f8fafc;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Image link must fill complete image area */
+
+.category-products-row .product-image a {
+    width: 100%;
+    height: 100%;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+}
+
+
+/* Actual product image */
+
+.category-products-row .product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 7px;
+
+    display: block;
+
+    transition: transform .35s ease;
+}
+
+
+/* Image zoom */
+
+.category-products-row .product-card:hover
+.product-image img {
+    transform: scale(1.045);
+}
+
+
+/* =========================================
+   REMOVE OLD HEART FROM IMAGE
+   ========================================= */
+
+.category-products-row .product-image::before,
+.category-products-row .product-image::after {
+    display: none;
+}
+
+
+/* =========================================
+   ONLY 1 LEFT BADGE
+   ========================================= */
+
+.stock-badge {
+    position: absolute;
+
+    top: 10px;
+    left: 10px;
+
+    z-index: 5;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: #e11d48;
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    line-height: 1;
+
+    box-shadow:
+        0 5px 12px rgba(225, 29, 72, .20);
+}
+
+
+/* =========================================
+   PRODUCT INFORMATION
+   ========================================= */
+
+.category-products-row .product-info {
+    padding: 13px 13px 14px;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+/* Category tag */
+
+.category-products-row .product-tag {
+    display: inline-flex;
+
+    align-self: flex-start;
+
+    max-width: 100%;
+
+    margin-bottom: 7px;
+
+    padding: 4px 7px;
+
+    border-radius: 20px;
+
+    background: #fff1f5;
+    color: #e11d48;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: .35px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================
+   PRODUCT NAME - MAX 2 LINES
+   ========================================= */
+
+.category-products-row .product h3 {
+    min-height: 40px;
+
+    margin: 0 0 6px;
+
+    color: #111827;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    font-weight: 800;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   DESCRIPTION
+   ========================================= */
+
+.category-products-row .product-description {
+    display: none;
+}
+
+
+/* =========================================
+   PRICE
+   ========================================= */
+
+.category-products-row .product .price {
+    min-height: auto;
+
+    margin: 2px 0 12px;
+
+    color: #111827;
+
+    font-size: 17px;
+
+    line-height: 1.2;
+
+    font-weight: 900;
+}
+
+
+/* PKR emphasis */
+
+.category-products-row .product .price::first-letter {
+    color: #e11d48;
+}
+
+
+/* =========================================
+   PRODUCT BUTTONS
+   ========================================= */
+
+.category-products-row .product-actions {
+    display: flex;
+
+    width: 100%;
+
+    gap: 6px;
+
+    margin-top: auto;
+}
+
+.category-products-row .product-actions > * {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* View Details */
+
+.category-products-row .view-details-btn {
+    min-height: 36px;
+
+    padding: 8px 5px;
+
+    border: 1px solid #e11d48 !important;
+    border-radius: 8px;
+
+    background: #ffffff !important;
+    color: #e11d48 !important;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    transition: all .2s ease;
+}
+
+.category-products-row .view-details-btn:hover {
+    background: #e11d48 !important;
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 12px rgba(225, 29, 72, .16);
+}
+
+
+/* Order Now */
+
+.category-products-row .order-now-btn {
+    min-height: 36px;
+
+    padding: 8px 5px;
+
+    border: 1px solid #111827 !important;
+    border-radius: 8px;
+
+    background: #111827 !important;
+    color: #ffffff !important;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition: all .2s ease;
+}
+
+.category-products-row .order-now-btn:hover {
+    background: #e11d48 !important;
+    border-color: #e11d48 !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 12px rgba(225, 29, 72, .16);
+}
+
+
+/* =========================================
+   EMPTY CATEGORY
+   ========================================= */
 
 .category-empty {
     width: 100%;
+
     padding: 30px 20px;
+
     background: #f9fafb;
+
     border: 1px dashed #d1d5db;
     border-radius: 14px;
+
     text-align: center;
+
     color: #6b7280;
-    font-size: 14px;
+
+    font-size: 13px;
 }
 
 
-/* Mobile */
+/* =========================================
+   TABLET
+   ========================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
+
+    .category-products-row .product-card {
+        flex: 0 0 calc((100% - 48px) / 4);
+        width: calc((100% - 48px) / 4);
+    }
+
+    .category-products-row .product-image {
+        height: 210px;
+    }
+}
+
+
+/* =========================================
+   TABLET / SMALL LAPTOP
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    .category-products-row .product-card {
+        flex: 0 0 190px;
+        width: 190px;
+    }
+
+    .category-products-row .product-image {
+        height: 200px;
+    }
+
+    .category-products-row .product h3 {
+        font-size: 13px;
+    }
+
+    .category-products-row .product .price {
+        font-size: 16px;
+    }
+}
+
+
+/* =========================================
+   MOBILE - HORIZONTAL SCROLL
+   ========================================= */
+
+@media (max-width: 600px) {
 
     .category-product-section {
         margin-top: 40px;
@@ -2221,44 +2566,80 @@ footer{
 
     .category-section-header {
         align-items: center;
+
         margin-bottom: 15px;
     }
 
     .category-section-header h3 {
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .category-label {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .see-all-link {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .category-products-row {
-        gap: 14px;
-        padding-bottom: 14px;
+        gap: 12px;
+
+        padding:
+            4px
+            2px
+            15px;
     }
 
     .category-products-row .product-card {
-        flex: 0 0 210px;
-        width: 210px;
+        flex: 0 0 185px;
+        width: 185px;
+    }
+
+    .category-products-row .product-image {
+        height: 200px;
+    }
+
+    .category-products-row .product-info {
+        padding: 12px;
+    }
+
+    .category-products-row .product h3 {
+        font-size: 13px;
+        min-height: 39px;
+    }
+
+    .category-products-row .product .price {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .category-products-row .view-details-btn,
+    .category-products-row .order-now-btn {
+        min-height: 35px;
+
+        font-size: 8.5px;
     }
 }
 
 
-/* Small mobile */
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
 
-@media (max-width: 480px) {
-
-    .category-section-header h3 {
-        font-size: 20px;
-    }
+@media (max-width: 400px) {
 
     .category-products-row .product-card {
-        flex: 0 0 190px;
-        width: 190px;
+        flex: 0 0 175px;
+        width: 175px;
+    }
+
+    .category-products-row .product-image {
+        height: 190px;
+    }
+
+    .category-products-row .product-info {
+        padding: 11px;
     }
 }
 </style>
@@ -4119,23 +4500,23 @@ function categoryMatches(sheetCategory, websiteCategory){
    CREATE PRODUCT CARD
 ========================================================= */
 
+/* =========================================================
+   CREATE PREMIUM PRODUCT CARD
+   ========================================================= */
+
 function createProductCard(row){
 
     const productName =
         (row[0] || "").trim();
 
-
     const category =
         (row[1] || "").trim();
-
 
     const sellingPrice =
         (row[5] || "").trim();
 
-
     const sku =
         (row[7] || "").trim();
-
 
     const imageURL =
         (row[8] || "").trim();
@@ -4146,12 +4527,54 @@ function createProductCard(row){
     }
 
 
+    /* =========================================
+       PRICE
+       ========================================= */
+
     const priceNumber =
         parseInt(
             sellingPrice.replace(/[^\d]/g,""),
             10
         ) || 0;
 
+
+    /* =========================================
+       STOCK
+       ========================================= */
+
+    let stockValue = "";
+
+    /*
+       Your current Google Sheet structure does
+       not require a stock column.
+
+       If a stock column is added later, the code
+       will safely read it when available.
+    */
+
+    if(row.length > 9){
+
+        stockValue =
+            String(row[9] || "")
+                .trim();
+    }
+
+
+    const numericStock =
+        parseInt(
+            stockValue.replace(/[^\d]/g,""),
+            10
+        );
+
+
+    const showOnlyOneLeft =
+        !isNaN(numericStock) &&
+        numericStock === 1;
+
+
+    /* =========================================
+       CREATE CARD
+       ========================================= */
 
     const product =
         document.createElement("div");
@@ -4173,20 +4596,22 @@ function createProductCard(row){
         sku;
 
 
+    /* =========================================
+       PRODUCT IMAGE
+       ========================================= */
+
     let imageHTML = "";
 
 
     if(imageURL){
 
         imageHTML = `
-
             <img
                 src="${escapeHTML(imageURL)}"
                 alt="${escapeHTML(productName)}"
                 loading="lazy"
                 onerror="this.style.display='none';"
             >
-
         `;
 
     }
@@ -4194,19 +4619,37 @@ function createProductCard(row){
     else{
 
         imageHTML = `
-
             <div class="product-placeholder">
                 🛍️
             </div>
-
         `;
 
     }
 
 
+    /* =========================================
+       STOCK BADGE
+       ========================================= */
+
+    const stockBadge =
+        showOnlyOneLeft
+            ? `
+                <span class="stock-badge">
+                    Only 1 left
+                </span>
+            `
+            : "";
+
+
+    /* =========================================
+       CARD HTML
+       ========================================= */
+
     product.innerHTML = `
 
         <div class="product-image">
+
+            ${stockBadge}
 
             <a
                 href="product.html?id=${encodeURIComponent(sku)}"
@@ -4222,33 +4665,48 @@ function createProductCard(row){
 
         <div class="product-info">
 
+
             <span class="product-tag">
-                ${escapeHTML(category || "New")}
+
+                ${escapeHTML(
+                    category || "New"
+                )}
+
             </span>
 
 
             <h3>
+
                 ${escapeHTML(productName)}
+
             </h3>
 
 
             <p class="product-description">
+
                 Brand new quality product.
+
             </p>
 
 
             <div class="price">
-                Rs. ${priceNumber.toLocaleString("en-PK")}
+
+                PKR
+                ${priceNumber.toLocaleString("en-PK")}
+
             </div>
 
 
             <div class="product-actions">
 
+
                 <a
                     href="product.html?id=${encodeURIComponent(sku)}"
                     class="view-details-btn"
                 >
+
                     View Details
+
                 </a>
 
 
@@ -4256,15 +4714,23 @@ function createProductCard(row){
                     class="order-now-btn"
                     type="button"
                 >
+
                     Order Now
+
                 </button>
 
+
             </div>
+
 
         </div>
 
     `;
 
+
+    /* =========================================
+       ORDER BUTTON
+       ========================================= */
 
     const orderButton =
         product.querySelector(
@@ -4292,7 +4758,6 @@ function createProductCard(row){
     return product;
 
 }
-
 
 /* =========================================================
    RENDER CATEGORY
