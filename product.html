@@ -1768,122 +1768,244 @@ function displayProduct(product){
 
     /* IMAGES */
 
-    const thumbnails =
-        document.getElementById(
-            "thumbnails"
-        );
+   /* =========================================
+   PRODUCT IMAGES
+========================================= */
+
+const thumbnails =
+    document.getElementById(
+        "thumbnails"
+    );
+
+const mainImage =
+    document.getElementById(
+        "mainProductImage"
+    );
 
 
-    const mainImage =
-        document.getElementById(
-            "mainProductImage"
-        );
+thumbnails.innerHTML = "";
 
 
-    thumbnails.innerHTML =
-        "";
+/* =========================================
+   IMAGE FALLBACK
+========================================= */
+
+function setImageFallback(
+    image,
+    text = "Image unavailable"
+){
+
+    image.onerror = null;
+
+    image.src =
+        "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(`
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="600"
+                height="600"
+                viewBox="0 0 600 600"
+            >
+                <rect
+                    width="600"
+                    height="600"
+                    fill="#f8fafc"
+                />
+
+                <text
+                    x="300"
+                    y="285"
+                    text-anchor="middle"
+                    font-family="Arial"
+                    font-size="24"
+                    fill="#9ca3af"
+                >
+                    ${text}
+                </text>
+
+                <text
+                    x="300"
+                    y="325"
+                    text-anchor="middle"
+                    font-family="Arial"
+                    font-size="16"
+                    fill="#d1d5db"
+                >
+                    ShaziOnlineStore
+                </text>
+            </svg>
+        `);
+
+}
 
 
-    if(
-        product.images &&
-        product.images.length
-    ){
+/* =========================================
+   SHOW PRODUCT IMAGES
+========================================= */
 
-        mainImage.src =
-            product.images[0];
+if(
+    product.images &&
+    product.images.length
+){
 
+    /* MAIN IMAGE */
 
-        mainImage.alt =
-            product.name;
+    mainImage.src =
+        product.images[0];
 
+    mainImage.alt =
+        product.name;
 
-        product.images.forEach(
-            (
-                imageURL,
-                index
-            ) => {
+    mainImage.loading =
+        "eager";
 
-                const thumbnail =
-                    document.createElement(
-                        "div"
-                    );
+    mainImage.decoding =
+        "async";
 
+    mainImage.referrerPolicy =
+        "no-referrer";
 
-                thumbnail.className =
-                    "thumbnail" +
-                    (
-                        index === 0
-                        ? " active"
-                        : ""
-                    );
+    mainImage.onerror =
+        function(){
 
+            setImageFallback(
+                this
+            );
 
-                const img =
-                    document.createElement(
-                        "img"
-                    );
+        };
 
 
-                img.src =
-                    imageURL;
+    /* =====================================
+       THUMBNAILS
+    ===================================== */
 
+    product.images.forEach(
+        (
+            imageURL,
+            index
+        ) => {
 
-                img.alt =
-                    product.name;
-
-
-                thumbnail.appendChild(
-                    img
+            const thumbnail =
+                document.createElement(
+                    "div"
                 );
 
 
-                thumbnail.onclick =
-                    function(){
+            thumbnail.className =
+                "thumbnail" +
+                (
+                    index === 0
+                    ? " active"
+                    : ""
+                );
 
-                        mainImage.src =
-                            imageURL;
+
+            const img =
+                document.createElement(
+                    "img"
+                );
 
 
-                        document
-                            .querySelectorAll(
-                                ".thumbnail"
-                            )
-                            .forEach(
-                                item =>
-                                item.classList
-                                    .remove(
-                                        "active"
-                                    )
+            img.src =
+                imageURL;
+
+            img.alt =
+                product.name;
+
+            img.loading =
+                "lazy";
+
+            img.decoding =
+                "async";
+
+            img.referrerPolicy =
+                "no-referrer";
+
+
+            img.onerror =
+                function(){
+
+                    setImageFallback(
+                        this,
+                        "Image unavailable"
+                    );
+
+                };
+
+
+            thumbnail.appendChild(
+                img
+            );
+
+
+            /* =================================
+               THUMBNAIL CLICK
+            ================================= */
+
+            thumbnail.onclick =
+                function(){
+
+                    mainImage.src =
+                        imageURL;
+
+                    mainImage.alt =
+                        product.name;
+
+                    mainImage.onerror =
+                        function(){
+
+                            setImageFallback(
+                                this
                             );
 
+                        };
 
-                        thumbnail.classList.add(
-                            "active"
+
+                    document
+                        .querySelectorAll(
+                            ".thumbnail"
+                        )
+                        .forEach(
+                            item =>
+                            item.classList
+                                .remove(
+                                    "active"
+                                )
                         );
 
-                    };
+
+                    thumbnail.classList.add(
+                        "active"
+                    );
+
+                };
 
 
-                thumbnails.appendChild(
-                    thumbnail
-                );
+            thumbnails.appendChild(
+                thumbnail
+            );
 
-            }
-        );
+        }
+    );
 
-    }
-
-    else{
-
-        mainImage.src =
-            "https://via.placeholder.com/600x600?text=No+Image";
+}
 
 
-        mainImage.alt =
-            "No product image";
+/* =========================================
+   NO IMAGE
+========================================= */
 
-    }
+else{
 
+    setImageFallback(
+        mainImage,
+        "No product image"
+    );
+
+    mainImage.alt =
+        "No product image";
+
+}
 
     /* SIZE */
 
