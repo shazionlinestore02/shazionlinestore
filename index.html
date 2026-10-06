@@ -2205,9 +2205,7 @@ footer{
 }
 
 
-/* =========================================
-   PRODUCT IMAGE
-   ========================================= */
+
 
 /* =========================================
    PRODUCT IMAGE - MINIMUM EMPTY SPACE
@@ -2218,7 +2216,7 @@ footer{
     width: 100%;
     height: 245px;
     overflow: hidden;
-    background: #ffffff;
+    background: #f8f8fa;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2230,22 +2228,21 @@ footer{
     display: flex !important;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
 }
 
 .category-products-row .product-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
-    padding: 0;
+    padding: 3px;
     margin: 0;
     display: block;
     transition: transform .4s ease;
 }
 
 .category-products-row .product-card:hover .product-image img {
-    transform: scale(1.03);
+    transform: scale(1.035);
 }
 
 
