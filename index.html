@@ -4533,9 +4533,7 @@ function categoryMatches(sheetCategory, websiteCategory){
 }
 
 
-/* =========================================================
-   CREATE PRODUCT CARD
-========================================================= */
+
 
 /* =========================================================
    CREATE PREMIUM PRODUCT CARD
@@ -4555,8 +4553,17 @@ function createProductCard(row){
     const sku =
         (row[7] || "").trim();
 
+    /*
+        Image URL
+
+        We do NOT check the file extension.
+        This allows JPG, JPEG, PNG, WEBP, GIF,
+        SVG, AVIF, BMP and direct image URLs.
+    */
     const imageURL =
-        (row[8] || "").trim();
+        String(row[8] || "")
+            .trim()
+            .replace(/^['"]|['"]$/g, "");
 
 
     if(!productName){
@@ -4580,14 +4587,6 @@ function createProductCard(row){
        ========================================= */
 
     let stockValue = "";
-
-    /*
-       Your current Google Sheet structure does
-       not require a stock column.
-
-       If a stock column is added later, the code
-       will safely read it when available.
-    */
 
     if(row.length > 9){
 
@@ -4647,7 +4646,9 @@ function createProductCard(row){
                 src="${escapeHTML(imageURL)}"
                 alt="${escapeHTML(productName)}"
                 loading="lazy"
-                onerror="this.style.display='none';"
+                decoding="async"
+                referrerpolicy="no-referrer"
+                class="product-main-image"
             >
         `;
 
@@ -4657,7 +4658,8 @@ function createProductCard(row){
 
         imageHTML = `
             <div class="product-placeholder">
-                🛍️
+                <span>🛍️</span>
+                <small>No image</small>
             </div>
         `;
 
@@ -4766,6 +4768,91 @@ function createProductCard(row){
 
 
     /* =========================================
+       IMAGE ERROR HANDLING
+       ========================================= */
+
+    const productImage =
+        product.querySelector(
+            ".product-main-image"
+        );
+
+
+    if(productImage){
+
+        productImage.addEventListener(
+            "error",
+            function(){
+
+                /*
+                    Prevent infinite error loop.
+                */
+
+                if(
+                    this.dataset.imageFailed === "true"
+                ){
+                    return;
+                }
+
+
+                this.dataset.imageFailed =
+                    "true";
+
+
+                /*
+                    Replace broken image with
+                    a clean inline SVG placeholder.
+                */
+
+                this.src =
+                    "data:image/svg+xml;charset=UTF-8," +
+                    encodeURIComponent(`
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="600"
+                            height="600"
+                            viewBox="0 0 600 600"
+                        >
+
+                            <rect
+                                width="600"
+                                height="600"
+                                fill="#f8f9fb"
+                            />
+
+                            <text
+                                x="300"
+                                y="280"
+                                text-anchor="middle"
+                                font-family="Arial, sans-serif"
+                                font-size="70"
+                                fill="#d1d5db"
+                            >
+                                🛍️
+                            </text>
+
+                            <text
+                                x="300"
+                                y="350"
+                                text-anchor="middle"
+                                font-family="Arial, sans-serif"
+                                font-size="22"
+                                fill="#9ca3af"
+                            >
+                                Image unavailable
+                            </text>
+
+                        </svg>
+
+                    `);
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
        ORDER BUTTON
        ========================================= */
 
@@ -4795,7 +4882,6 @@ function createProductCard(row){
     return product;
 
 }
-
 /* =========================================================
    RENDER CATEGORY
 ========================================================= */
