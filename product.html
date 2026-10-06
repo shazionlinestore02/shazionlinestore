@@ -1198,10 +1198,13 @@ function findColumn(
    IMAGE COLUMNS
 ========================================= */
 
+/* =========================================
+   IMAGE COLUMNS
+========================================= */
+
 function getImageColumns(headers){
 
     const columns = [];
-
 
     for(
         let i = 0;
@@ -1214,14 +1217,27 @@ function getImageColumns(headers){
                 headers[i]
             );
 
+        /*
+         * Detect all common image column names:
+         *
+         * Image
+         * Image URL
+         * Image URL 1
+         * Image URL 2
+         * Image URL 3
+         * Main Image
+         * Product Image
+         */
 
         if(
-            header.includes("main image") ||
             header === "image" ||
             header === "image url" ||
+            header.startsWith("image url ") ||
+            header === "main image" ||
+            header.startsWith("main image ") ||
             header === "product image" ||
-            header.startsWith("image ") ||
-            header.includes("image url")
+            header.startsWith("product image ") ||
+            header.startsWith("image ")
         ){
 
             if(
@@ -1235,7 +1251,6 @@ function getImageColumns(headers){
         }
 
     }
-
 
     return columns;
 
@@ -1255,9 +1270,20 @@ function getFirstImage(
         const col of imageColumns
     ){
 
-        const image =
+        let image =
             String(
                 row[col] || ""
+            ).trim();
+
+        /*
+         * Remove accidental quotes
+         * around image URLs.
+         */
+
+        image =
+            image.replace(
+                /^['"]|['"]$/g,
+                ""
             ).trim();
 
 
@@ -1273,7 +1299,6 @@ function getFirstImage(
     return "";
 
 }
-
 
 /* =========================================
    LOAD PRODUCT
