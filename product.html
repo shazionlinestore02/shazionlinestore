@@ -328,37 +328,57 @@ header{
    QUANTITY
 ========================================= */
 
-.quantity-box{
-    display:flex;
-    align-items:center;
+/* =========================================
+   PREMIUM QUANTITY BOX
+========================================= */
 
-    width:max-content;
+.quantity-box {
+    display: flex;
+    align-items: center;
 
-    border:1px solid #d1d5db;
-    border-radius:10px;
+    width: max-content;
 
-    overflow:hidden;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
 
-    margin-bottom:20px;
+    overflow: hidden;
+
+    margin-bottom: 20px;
+
+    background: #ffffff;
 }
 
-.quantity-box button{
-    width:42px;
-    height:42px;
+.quantity-box button {
+    width: 44px;
+    height: 44px;
 
-    border:none;
-    background:#f8fafc;
+    border: none;
+    background: #f8fafc;
 
-    font-size:20px;
-    cursor:pointer;
+    color: #111827;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
 }
 
-.quantity-box span{
-    width:45px;
+.quantity-box button:hover {
+    background: #e11d48;
+    color: #ffffff;
+}
 
-    text-align:center;
+.quantity-box span {
+    width: 48px;
 
-    font-weight:800;
+    text-align: center;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    color: #111827;
 }
 
 
