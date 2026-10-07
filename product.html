@@ -2490,6 +2490,10 @@ function orderProduct(){
         : "";
 
 
+    /* =========================================
+       PRODUCT PRICE
+    ========================================= */
+
     const price =
         parseInt(
             String(
@@ -2502,9 +2506,41 @@ function orderProduct(){
         ) || 0;
 
 
-    const total =
+    /* =========================================
+       DELIVERY CHARGES
+    ========================================= */
+
+    const delivery =
+        parseInt(
+            String(
+                product.delivery || ""
+            ).replace(
+                /\D/g,
+                ""
+            ),
+            10
+        ) || 0;
+
+
+    /* =========================================
+       PRODUCT SUBTOTAL
+    ========================================= */
+
+    const subtotal =
         price * quantity;
 
+
+    /* =========================================
+       FINAL PAYABLE TOTAL
+    ========================================= */
+
+    const total =
+        subtotal + delivery;
+
+
+    /* =========================================
+       REMOVE OLD MODAL
+    ========================================= */
 
     const oldModal =
         document.getElementById(
@@ -2518,6 +2554,10 @@ function orderProduct(){
 
     }
 
+
+    /* =========================================
+       CREATE ORDER MODAL
+    ========================================= */
 
     const modal =
         document.createElement(
@@ -2553,6 +2593,10 @@ padding:25px;
 box-shadow:0 20px 60px rgba(0,0,0,.25);
 ">
 
+
+<!-- =====================================
+     MODAL HEADER
+===================================== -->
 
 <div style="
 display:flex;
@@ -2592,6 +2636,10 @@ cursor:pointer;
 </div>
 
 
+<!-- =====================================
+     PRODUCT SUMMARY
+===================================== -->
+
 <div style="
 background:#f8fafc;
 border:1px solid #e5e7eb;
@@ -2604,59 +2652,153 @@ margin-bottom:18px;
 <strong style="
 display:block;
 color:#111827;
-margin-bottom:6px;
+margin-bottom:8px;
+font-size:15px;
 ">
 ${product.name}
 </strong>
-
-
-<span style="
-color:#e11d48;
-font-weight:800;
-">
-Rs ${price.toLocaleString("en-PK")}
-</span>
 
 
 ${
 size
 ?
 `
-<span style="
-display:block;
-color:#6b7280;
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:7px;
 font-size:13px;
-margin-top:5px;
+color:#6b7280;
 ">
-Size: ${size}
-</span>
+
+<span>Size</span>
+
+<strong style="
+color:#374151;
+">
+${size}
+</strong>
+
+</div>
 `
 :
 ""
 }
 
 
-<span style="
-display:block;
-color:#6b7280;
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:7px;
 font-size:13px;
-margin-top:5px;
+color:#6b7280;
 ">
-Quantity: ${quantity}
-</span>
 
+<span>Product Price</span>
 
 <strong style="
-display:block;
-margin-top:8px;
+color:#374151;
+">
+Rs ${price.toLocaleString("en-PK")}
+</strong>
+
+</div>
+
+
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:7px;
+font-size:13px;
+color:#6b7280;
+">
+
+<span>Quantity</span>
+
+<strong style="
+color:#374151;
+">
+${quantity}
+</strong>
+
+</div>
+
+
+<div style="
+display:flex;
+justify-content:space-between;
+margin-bottom:10px;
+font-size:13px;
+color:#6b7280;
+">
+
+<span>Delivery Charges</span>
+
+<strong style="
+color:#374151;
+">
+${
+delivery > 0
+? "Rs " + delivery.toLocaleString("en-PK")
+: "Free"
+}
+</strong>
+
+</div>
+
+
+<!-- =====================================
+     TOTAL
+===================================== -->
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding-top:12px;
+border-top:1px solid #e5e7eb;
+font-size:16px;
+font-weight:900;
 color:#111827;
 ">
-Total: Rs ${total.toLocaleString("en-PK")}
+
+<span>
+Total Payable
+</span>
+
+<strong style="
+color:#e11d48;
+font-size:18px;
+">
+Rs ${total.toLocaleString("en-PK")}
 </strong>
+
+</div>
+
+
+<!-- COD BADGE -->
+
+<div style="
+margin-top:12px;
+padding:8px 10px;
+border-radius:8px;
+background:#ecfdf5;
+border:1px solid #bbf7d0;
+color:#15803d;
+font-size:12px;
+font-weight:700;
+text-align:center;
+">
+Cash on Delivery
+</div>
 
 
 </div>
 
+
+<!-- =====================================
+     CUSTOMER FORM
+===================================== -->
 
 <form id="productOrderForm">
 
@@ -2673,6 +2815,7 @@ margin-bottom:12px;
 border:1px solid #d1d5db;
 border-radius:10px;
 font-size:14px;
+box-sizing:border-box;
 "
 >
 
@@ -2689,6 +2832,7 @@ margin-bottom:12px;
 border:1px solid #d1d5db;
 border-radius:10px;
 font-size:14px;
+box-sizing:border-box;
 "
 >
 
@@ -2705,6 +2849,7 @@ margin-bottom:12px;
 border:1px solid #d1d5db;
 border-radius:10px;
 font-size:14px;
+box-sizing:border-box;
 "
 >
 
@@ -2723,9 +2868,14 @@ border-radius:10px;
 font-size:14px;
 resize:vertical;
 font-family:Arial,sans-serif;
+box-sizing:border-box;
 "
 ></textarea>
 
+
+<!-- =====================================
+     PLACE ORDER BUTTON
+===================================== -->
 
 <button
 type="submit"
@@ -2769,6 +2919,10 @@ Cash on Delivery available across Pakistan
     );
 
 
+    /* =========================================
+       ORDER FORM SUBMIT
+    ========================================= */
+
     document.getElementById(
         "productOrderForm"
     ).addEventListener(
@@ -2791,6 +2945,10 @@ Cash on Delivery available across Pakistan
             submitButton.textContent =
                 "Submitting Order...";
 
+
+            /* =====================================
+               ORDER DATA
+            ===================================== */
 
             const orderData = {
 
@@ -2844,6 +3002,10 @@ Cash on Delivery available across Pakistan
             };
 
 
+            /* =====================================
+               SEND ORDER
+            ===================================== */
+
             try{
 
                 await fetch(
@@ -2866,6 +3028,10 @@ Cash on Delivery available across Pakistan
                 );
 
 
+                /* =================================
+                   SUCCESS MESSAGE
+                ================================= */
+
                 document.getElementById(
                     "productOrderModal"
                 ).innerHTML = `
@@ -2887,6 +3053,7 @@ background:#fff;
 border-radius:20px;
 padding:35px 25px;
 text-align:center;
+box-shadow:0 20px 60px rgba(0,0,0,.25);
 ">
 
 
@@ -2945,6 +3112,7 @@ Continue Shopping
 
             }
 
+
             catch(error){
 
                 console.error(
@@ -2971,7 +3139,6 @@ Continue Shopping
     );
 
 }
-
 
 /* =========================================
    SIMILAR PRODUCTS
