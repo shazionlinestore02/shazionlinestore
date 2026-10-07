@@ -351,6 +351,356 @@ header {
 
 </main>
 
+<script>
+
+/* =========================================
+   SHAZI ONLINE STORE CART
+   ========================================= */
+
+function getCart() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem("shaziCart")
+        ) || [];
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================
+   SAVE CART
+   ========================================= */
+
+function saveCart(cart) {
+
+    localStorage.setItem(
+        "shaziCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+/* =========================================
+   RENDER CART
+   ========================================= */
+
+function renderCart() {
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const cartSubtotal =
+        document.getElementById("cartSubtotal");
+
+    const cartDelivery =
+        document.getElementById("cartDelivery");
+
+    const cartTotal =
+        document.getElementById("cartTotal");
+
+
+    if (!cartItems) {
+        return;
+    }
+
+
+    const cart = getCart();
+
+
+    /* EMPTY CART */
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+
+            <div class="empty-cart">
+
+                <div class="empty-cart-icon">
+                    🛒
+                </div>
+
+                <h3>Your cart is empty</h3>
+
+                <p>
+                    Add products to your cart
+                    and they will appear here.
+                </p>
+
+                <a
+                    href="index.html#products"
+                    class="continue-shopping-btn"
+                >
+                    Continue Shopping
+                </a>
+
+            </div>
+
+        `;
+
+
+        cartSubtotal.textContent =
+            "Rs 0";
+
+        cartDelivery.textContent =
+            "Rs 0";
+
+        cartTotal.textContent =
+            "Rs 0";
+
+        return;
+
+    }
+
+
+    let subtotal = 0;
+
+
+    cartItems.innerHTML =
+        cart.map(
+            (item, index) => {
+
+                const price =
+                    Number(item.price) || 0;
+
+                const quantity =
+                    Number(item.quantity) || 1;
+
+                const itemTotal =
+                    price * quantity;
+
+
+                subtotal += itemTotal;
+
+
+                return `
+
+                    <div class="cart-item">
+
+                        <div class="cart-item-image">
+
+                            ${
+                                item.image
+                                ?
+                                `
+                                <img
+                                    src="${escapeCartHTML(item.image)}"
+                                    alt="${escapeCartHTML(item.name)}"
+                                >
+                                `
+                                :
+                                `
+                                <div class="cart-no-image">
+                                    🛍️
+                                </div>
+                                `
+                            }
+
+                        </div>
+
+
+                        <div class="cart-item-info">
+
+                            <span class="cart-item-category">
+
+                                ${escapeCartHTML(
+                                    item.category || "Product"
+                                )}
+
+                            </span>
+
+
+                            <h3>
+
+                                ${escapeCartHTML(
+                                    item.name
+                                )}
+
+                            </h3>
+
+
+                            <div class="cart-item-price">
+
+                                PKR
+                                ${price.toLocaleString("en-PK")}
+
+                            </div>
+
+
+                            <div class="cart-item-controls">
+
+                                <button
+                                    type="button"
+                                    onclick="changeQuantity(${index}, -1)"
+                                >
+                                    −
+                                </button>
+
+                                <span>
+                                    ${quantity}
+                                </span>
+
+                                <button
+                                    type="button"
+                                    onclick="changeQuantity(${index}, 1)"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="remove-cart-item"
+                                onclick="removeCartItem(${index})"
+                            >
+                                Remove
+                            </button>
+
+                        </div>
+
+
+                        <div class="cart-item-total">
+
+                            PKR
+                            ${itemTotal.toLocaleString("en-PK")}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+
+    /*
+       Delivery will be connected
+       with product delivery data later.
+    */
+
+    const delivery = 0;
+
+
+    const total =
+        subtotal + delivery;
+
+
+    cartSubtotal.textContent =
+        "Rs " +
+        subtotal.toLocaleString("en-PK");
+
+
+    cartDelivery.textContent =
+        "Rs " +
+        delivery.toLocaleString("en-PK");
+
+
+    cartTotal.textContent =
+        "Rs " +
+        total.toLocaleString("en-PK");
+
+}
+
+
+/* =========================================
+   CHANGE QUANTITY
+   ========================================= */
+
+function changeQuantity(index, change) {
+
+    const cart = getCart();
+
+
+    if (!cart[index]) {
+        return;
+    }
+
+
+    cart[index].quantity =
+        (Number(cart[index].quantity) || 1)
+        + change;
+
+
+    if (cart[index].quantity < 1) {
+
+        cart[index].quantity = 1;
+
+    }
+
+
+    saveCart(cart);
+
+    renderCart();
+
+}
+
+
+/* =========================================
+   REMOVE ITEM
+   ========================================= */
+
+function removeCartItem(index) {
+
+    const cart = getCart();
+
+
+    if (!cart[index]) {
+        return;
+    }
+
+
+    cart.splice(index, 1);
+
+
+    saveCart(cart);
+
+    renderCart();
+
+}
+
+
+/* =========================================
+   HTML ESCAPE
+   ========================================= */
+
+function escapeCartHTML(value) {
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================
+   LOAD CART
+   ========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        renderCart();
+
+    }
+);
+
+</script>
+
+    
 
 </body>
 
