@@ -220,6 +220,40 @@ header{
     margin-bottom:15px;
 }
 
+    .category-sku-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.product-sku {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 7px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+@media (max-width: 500px) {
+
+    .category-sku-row {
+        align-items: flex-start;
+    }
+
+    .product-sku {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+
+}
+
 /* =========================================
    PREMIUM PRICE
 ========================================= */
@@ -862,13 +896,19 @@ header{
 <div class="product-info">
 
 
-<span
-    id="productCategory"
-    class="product-category"
->
-    Product
-</span>
+<div class="category-sku-row">
 
+    <div
+        class="product-category"
+        id="productCategory"
+    ></div>
+
+    <div
+        class="product-sku"
+        id="productSKU"
+    ></div>
+
+</div>
 
 <h1
     id="productTitle"
@@ -1875,6 +1915,39 @@ function displayProduct(product){
     ).textContent =
         product.stock ||
         "Available";
+
+    /* =========================================
+   PRODUCT SKU
+========================================= */
+
+const skuElement =
+    document.getElementById(
+        "productSKU"
+    );
+
+if(skuElement){
+
+    const sku =
+        String(
+            product.id || ""
+        ).trim();
+
+    if(sku){
+
+        skuElement.textContent =
+            "SKU: " + sku;
+
+        skuElement.style.display =
+            "inline-flex";
+
+    } else {
+
+        skuElement.style.display =
+            "none";
+
+    }
+
+}
 
 
     document.getElementById(
