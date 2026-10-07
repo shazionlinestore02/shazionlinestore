@@ -382,32 +382,40 @@ header{
 }
 
 
+
 /* =========================================
-   ORDER BUTTON
+   PREMIUM ORDER NOW BUTTON
 ========================================= */
 
-.order-now{
-    width:100%;
+.order-now {
+    width: 100%;
 
-    border:none;
+    border: none;
+    border-radius: 10px;
 
-    background:#e11d48;
-    color:#fff;
+    background: #e11d48;
+    color: #ffffff;
 
-    padding:16px;
+    padding: 15px 20px;
 
-    border-radius:12px;
+    font-size: 16px;
+    font-weight: 800;
 
-    font-size:15px;
-    font-weight:900;
+    cursor: pointer;
 
-    cursor:pointer;
+    box-shadow: 0 6px 18px rgba(225, 29, 72, 0.20);
+
+    transition: all 0.2s ease;
 }
 
-.order-now:hover{
-    background:#be123c;
+.order-now:hover {
+    background: #be123c;
+    transform: translateY(-1px);
 }
 
+.order-now:active {
+    transform: translateY(0);
+}
 
 /* =========================================
    DELIVERY
