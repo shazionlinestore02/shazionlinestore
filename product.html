@@ -833,6 +833,24 @@ header{
     class="product-price"
 >
 </div>
+    <div class="price-summary">
+
+    <div class="price-row">
+        <span>Product Price</span>
+        <strong id="summaryProductPrice">Rs 0</strong>
+    </div>
+
+    <div class="price-row">
+        <span>Delivery Charges</span>
+        <strong id="deliveryCharge">Rs 0</strong>
+    </div>
+
+    <div class="price-row total-row">
+        <span>Total Payable</span>
+        <strong id="totalPayable">Rs 0</strong>
+    </div>
+
+</div>
 
 
 <div class="info-line">
@@ -1845,6 +1863,86 @@ function displayProduct(product){
           )
         : rawPrice ||
           "Price available";
+
+    /* =========================================
+   PRICE SUMMARY
+========================================= */
+
+const deliveryRaw =
+    String(
+        product.delivery || ""
+    );
+
+
+const deliveryAmount =
+    parseInt(
+        deliveryRaw.replace(
+            /\D/g,
+            ""
+        ),
+        10
+    ) || 0;
+
+
+const totalAmount =
+    numericPrice +
+    deliveryAmount;
+
+
+/* PRODUCT PRICE */
+
+const summaryProductPrice =
+    document.getElementById(
+        "summaryProductPrice"
+    );
+
+if(summaryProductPrice){
+
+    summaryProductPrice.textContent =
+        "Rs " +
+        numericPrice.toLocaleString(
+            "en-PK"
+        );
+
+}
+
+
+/* DELIVERY CHARGES */
+
+const deliveryCharge =
+    document.getElementById(
+        "deliveryCharge"
+    );
+
+if(deliveryCharge){
+
+    deliveryCharge.textContent =
+        deliveryAmount > 0
+        ? "Rs " +
+          deliveryAmount.toLocaleString(
+              "en-PK"
+          )
+        : "Free";
+
+}
+
+
+/* TOTAL PAYABLE */
+
+const totalPayable =
+    document.getElementById(
+        "totalPayable"
+    );
+
+if(totalPayable){
+
+    totalPayable.textContent =
+        "Rs " +
+        totalAmount.toLocaleString(
+            "en-PK"
+        );
+
+}
 
 
     /* IMAGES */
