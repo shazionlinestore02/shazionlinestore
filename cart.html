@@ -1,1 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Shopping Cart | ShaziOnlineStore
+</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #111827;
+}
+
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 18px 20px;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.logo {
+    text-decoration: none;
+    color: #111827;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #e11d48;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cart-page {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.cart-heading {
+    margin-bottom: 25px;
+}
+
+.cart-heading h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.cart-heading p {
+    color: #6b7280;
+}
+
+.cart-container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 25px;
+}
+
+.cart-items,
+.cart-summary {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #f3f4f6;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.cart-item-price {
+    color: #e11d48;
+    font-weight: 800;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 50px 20px;
+    color: #6b7280;
+}
+
+.empty-cart-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.shop-btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 12px 20px;
+    border-radius: 9px;
+    background: #e11d48;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.cart-summary h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    color: #6b7280;
+}
+
+.summary-total {
+    border-top: 1px solid #e5e7eb;
+    margin-top: 10px;
+    padding-top: 15px;
+    color: #111827;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.checkout-btn {
+    width: 100%;
+    border: none;
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    background: #e11d48;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+
+    .cart-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .cart-page {
+        margin-top: 25px;
+        padding: 0 12px;
+    }
+
+    .cart-heading h1 {
+        font-size: 26px;
+    }
+
+    .cart-items,
+    .cart-summary {
+        padding: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<nav class="navbar">
+
+<a
+    href="index.html"
+    class="logo"
+>
+    Shazi<span>OnlineStore</span>
+</a>
+
+<a
+    href="index.html#products"
+    class="back-btn"
+>
+    ← Continue Shopping
+</a>
+
+</nav>
+
+</header>
+
+
+<main class="cart-page">
+
+
+<div class="cart-heading">
+
+<h1>
+    Your Shopping Cart
+</h1>
+
+<p>
+    Review your products before placing your order.
+</p>
+
+</div>
+
+
+<div class="cart-container">
+
+
+<div
+    id="cartItems"
+    class="cart-items"
+>
+
+<div class="empty-cart">
+
+<div class="empty-cart-icon">
+    🛒
+</div>
+
+<h2>
+    Your cart is empty
+</h2>
+
+<p>
+    Add products to your cart to see them here.
+</p>
+
+<a
+    href="index.html#products"
+    class="shop-btn"
+>
+    Start Shopping
+</a>
+
+</div>
+
+</div>
+
+
+<div class="cart-summary">
+
+<h2>
+    Order Summary
+</h2>
+
+
+<div class="summary-row">
+
+<span>
+    Products
+</span>
+
+<strong id="cartSubtotal">
+    Rs 0
+</strong>
+
+</div>
+
+
+<div class="summary-row">
+
+<span>
+    Delivery
+</span>
+
+<strong id="cartDelivery">
+    Rs 0
+</strong>
+
+</div>
+
+
+<div class="summary-row summary-total">
+
+<span>
+    Total
+</span>
+
+<strong id="cartTotal">
+    Rs 0
+</strong>
+
+</div>
+
+
+<button
+    class="checkout-btn"
+    type="button"
+    disabled
+>
+    Proceed to Checkout
+</button>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+</body>
+
+</html>
