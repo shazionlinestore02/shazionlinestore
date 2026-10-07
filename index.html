@@ -4585,13 +4585,6 @@ function createProductCard(row){
     const sku =
         (row[7] || "").trim();
 
-    /*
-        Image URL
-
-        We do NOT check the file extension.
-        This allows JPG, JPEG, PNG, WEBP, GIF,
-        SVG, AVIF, BMP and direct image URLs.
-    */
     const imageURL =
         String(row[8] || "")
             .trim()
@@ -4605,7 +4598,7 @@ function createProductCard(row){
 
     /* =========================================
        PRICE
-       ========================================= */
+    ========================================= */
 
     const priceNumber =
         parseInt(
@@ -4616,7 +4609,7 @@ function createProductCard(row){
 
     /* =========================================
        STOCK
-       ========================================= */
+    ========================================= */
 
     let stockValue = "";
 
@@ -4625,6 +4618,7 @@ function createProductCard(row){
         stockValue =
             String(row[9] || "")
                 .trim();
+
     }
 
 
@@ -4642,7 +4636,7 @@ function createProductCard(row){
 
     /* =========================================
        CREATE CARD
-       ========================================= */
+    ========================================= */
 
     const product =
         document.createElement("div");
@@ -4666,7 +4660,7 @@ function createProductCard(row){
 
     /* =========================================
        PRODUCT IMAGE
-       ========================================= */
+    ========================================= */
 
     let imageHTML = "";
 
@@ -4700,7 +4694,7 @@ function createProductCard(row){
 
     /* =========================================
        STOCK BADGE
-       ========================================= */
+    ========================================= */
 
     const stockBadge =
         showOnlyOneLeft
@@ -4714,13 +4708,16 @@ function createProductCard(row){
 
     /* =========================================
        CARD HTML
-       ========================================= */
+    ========================================= */
 
     product.innerHTML = `
 
         <div class="product-image">
 
             ${stockBadge}
+
+
+            <!-- PRODUCT IMAGE -->
 
             <a
                 href="product.html?id=${encodeURIComponent(sku)}"
@@ -4730,6 +4727,18 @@ function createProductCard(row){
                 ${imageHTML}
 
             </a>
+
+
+            <!-- ADD TO CART -->
+
+            <button
+                class="image-cart-btn"
+                type="button"
+                aria-label="Add ${escapeHTML(productName)} to cart"
+                title="Add to Cart"
+            >
+                🛒
+            </button>
 
         </div>
 
@@ -4801,7 +4810,7 @@ function createProductCard(row){
 
     /* =========================================
        IMAGE ERROR HANDLING
-       ========================================= */
+    ========================================= */
 
     const productImage =
         product.querySelector(
@@ -4815,25 +4824,18 @@ function createProductCard(row){
             "error",
             function(){
 
-                /*
-                    Prevent infinite error loop.
-                */
-
                 if(
                     this.dataset.imageFailed === "true"
                 ){
+
                     return;
+
                 }
 
 
                 this.dataset.imageFailed =
                     "true";
 
-
-                /*
-                    Replace broken image with
-                    a clean inline SVG placeholder.
-                */
 
                 this.src =
                     "data:image/svg+xml;charset=UTF-8," +
@@ -4886,7 +4888,7 @@ function createProductCard(row){
 
     /* =========================================
        ORDER BUTTON
-       ========================================= */
+    ========================================= */
 
     const orderButton =
         product.querySelector(
@@ -4911,9 +4913,61 @@ function createProductCard(row){
     }
 
 
+    /* =========================================
+       ADD TO CART BUTTON
+    ========================================= */
+
+    const cartButton =
+        product.querySelector(
+            ".image-cart-btn"
+        );
+
+
+    if(cartButton){
+
+        cartButton.addEventListener(
+            "click",
+            function(event){
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                addToCart({
+
+                    id:
+                        sku,
+
+                    name:
+                        productName,
+
+                    category:
+                        category,
+
+                    price:
+                        priceNumber,
+
+                    image:
+                        imageURL,
+
+                    quantity:
+                        1
+
+                });
+
+            }
+        );
+
+    }
+
+
     return product;
 
 }
+
+
+   
 /* =========================================================
    RENDER CATEGORY
 ========================================================= */
