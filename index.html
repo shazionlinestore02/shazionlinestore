@@ -2679,6 +2679,29 @@ footer{
         font-size: 17px;
     }
 }
+
+
+   .cart-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.cart-count {
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #e11d48;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+}
 </style>
 </head>
 
@@ -2739,9 +2762,18 @@ footer{
             <li><a href="#contact">Contact</a></li>
 
             <li>
-                <a href="#products" class="nav-order">
-                    Shop Now
-                </a>
+               <a
+    href="cart.html"
+    class="nav-cta cart-nav"
+>
+    🛒 Cart
+    <span
+        id="cartCount"
+        class="cart-count"
+    >
+        0
+    </span>
+</a>
             </li>
 
         </ul>
