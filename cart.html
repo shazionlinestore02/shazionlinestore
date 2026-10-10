@@ -588,7 +588,13 @@ function renderCart() {
        with product delivery data later.
     */
 
-    const delivery = 0;
+ const delivery = cart.reduce(
+    (total, item) => {
+        return total +
+            (Number(item.delivery) || 0);
+    },
+    0
+);
 
 
     const total =
