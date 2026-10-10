@@ -4983,56 +4983,53 @@ function createProductCard(row){
     /* =========================================
        ADD TO CART BUTTON
     ========================================= */
+const cartButton =
+    product.querySelector(
+        ".image-cart-btn"
+    );
 
-    const cartButton =
-        product.querySelector(
-            ".image-cart-btn"
-        );
+if(cartButton){
 
+    cartButton.addEventListener(
+        "click",
+        function(event){
 
-    if(cartButton){
+            event.preventDefault();
+            event.stopPropagation();
 
-        cartButton.addEventListener(
-            "click",
-            function(event){
+            const deliveryCharges =
+                parseInt(
+                    String(row[3] || "")
+                        .replace(/[^\d]/g, ""),
+                    10
+                ) || 0;
 
-                event.preventDefault();
+            addToCart({
 
-                event.stopPropagation();
+                id: sku,
 
+                name: productName,
 
-                addToCart({
+                category: category,
 
-                    id:
-                        sku,
+                price: priceNumber,
 
-                    name:
-                        productName,
+                delivery: deliveryCharges,
 
-                    category:
-                        category,
+                image: imageURL,
 
-                    price:
-                        priceNumber,
+                quantity: 1
 
-                    image:
-                        imageURL,
+            });
 
-                    quantity:
-                        1
-
-                });
-
-            }
-        );
-
-    }
-
-
-    return product;
+        }
+    );
 
 }
 
+return product;
+
+}
 
    
 /* =========================================================
