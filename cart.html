@@ -588,12 +588,10 @@ function renderCart() {
        with product delivery data later.
     */
 
- const delivery = cart.reduce(
-    (total, item) => {
-        return total +
-            (Number(item.delivery) || 0);
-    },
-    0
+const delivery =
+    cart.length > 0
+        ? Number(cart[0].delivery) || 0
+        : 0;
 );
 
 
