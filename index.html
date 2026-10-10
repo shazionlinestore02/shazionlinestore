@@ -4997,12 +4997,14 @@ if(cartButton){
             event.preventDefault();
             event.stopPropagation();
 
-            const deliveryCharges =
-                parseInt(
-                    String(row[3] || "")
-                        .replace(/[^\d]/g, ""),
-                    10
-                ) || 0;
+           
+const deliveryText = String(row[3] || "").trim();
+
+const deliveryCharges =
+    Number(
+        deliveryText.replace(/[^\d]/g, "")
+    ) || 0;
+
 
             addToCart({
 
