@@ -1661,6 +1661,38 @@ function findColumn(
 }
 
 
+/* =========================================
+   GET VALUE FROM MATCHING COLUMN
+   Handles duplicate or alternate specification headers.
+========================================= */
+
+function getValueFromMatchingColumn(headers, row, names){
+
+    let foundValue = "";
+
+    for(let i = 0; i < headers.length; i++){
+
+        const currentHeader = normalizeHeader(headers[i]);
+
+        const matches = names.some(
+            name => currentHeader === normalizeHeader(name)
+        );
+
+        if(matches){
+
+            const cellValue = String(row[i] || "").trim();
+
+            if(cellValue){
+                foundValue = cellValue;
+            }
+
+        }
+
+    }
+
+    return foundValue;
+
+}
 
 
 /* =========================================
@@ -1921,17 +1953,8 @@ async function loadProduct(){
 
 
         
-const materialCol =
-    findColumn(headers, ["Material"]);
-
-const colorCol =
-    findColumn(headers, ["Color"]);
-
-const styleCol =
-    findColumn(headers, ["Style"]);
-
-const packageIncludesCol =
-    findColumn(headers, ["Package Includes"]);
+/* Specification values are read by header name.
+   The helper also supports duplicate columns. */
 
 
 
@@ -2094,24 +2117,32 @@ const packageIncludesCol =
 
         
 const material =
-    materialCol !== -1
-    ? String(productRow[materialCol] || "").trim()
-    : "";
+    getValueFromMatchingColumn(
+        headers,
+        productRow,
+        ["Material"]
+    );
 
 const color =
-    colorCol !== -1
-    ? String(productRow[colorCol] || "").trim()
-    : "";
+    getValueFromMatchingColumn(
+        headers,
+        productRow,
+        ["Color", "Product Color"]
+    );
 
 const style =
-    styleCol !== -1
-    ? String(productRow[styleCol] || "").trim()
-    : "";
+    getValueFromMatchingColumn(
+        headers,
+        productRow,
+        ["Style", "Product Style"]
+    );
 
-const packageIncludes = 
-    packageIncludesCol !== -1
-    ? String(productRow[packageIncludesCol] || "").trim()
-    : "";
+const packageIncludes =
+    getValueFromMatchingColumn(
+        headers,
+        productRow,
+        ["Package Includes", "Package Include"]
+    );
 
 
 
