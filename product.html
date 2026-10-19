@@ -536,6 +536,112 @@ header{
     white-space:pre-line;
 }
 
+    
+/* PRODUCT DETAILS PROFESSIONAL DESIGN */
+
+.details-box {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.details-box h2 {
+    font-size: 26px;
+    color: #111827;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #f3f4f6;
+}
+
+#productDescription {
+    color: #4b5563;
+    font-size: 15px;
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+.product-highlights,
+.product-specifications {
+    margin-top: 30px;
+    padding: 22px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.product-highlights h3,
+.product-specifications h3 {
+    font-size: 19px;
+    color: #111827;
+    margin-bottom: 16px;
+}
+
+.product-highlights ul {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.product-highlights li {
+    color: #4b5563;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.specification-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+}
+
+.specification-row:last-child {
+    border-bottom: none;
+}
+
+.specification-row span:first-child {
+    color: #6b7280;
+    font-weight: 600;
+    min-width: 120px;
+}
+
+.specification-row span:last-child {
+    color: #111827;
+    font-weight: 500;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+    .details-section,
+    .similar-section {
+        padding: 0 12px;
+        margin: 22px auto 35px;
+    }
+
+    .details-box {
+        padding: 18px;
+    }
+
+    .product-highlights,
+    .product-specifications {
+        padding: 16px;
+    }
+
+    .details-box h2 {
+        font-size: 22px;
+    }
+
+    .specification-row {
+        gap: 12px;
+    }
+}
+
+
 
 /* =========================================
    SIMILAR PRODUCTS
