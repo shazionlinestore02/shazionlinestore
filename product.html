@@ -1217,14 +1217,14 @@ Place your order directly online
             Product details will appear here.
         </div>
 
-        <div class="product-highlights">
-            <h3>Product Highlights</h3>
-            <ul>
-                <li>Attractive design and practical use</li>
-                <li>Product details based on available information</li>
-                <li>Please check the product specifications before ordering</li>
-            </ul>
-        </div>
+       
+<div class="product-highlights">
+    <h3>Product Highlights</h3>
+    <ul id="productHighlightsList">
+        <li>Product details based on available information</li>
+    </ul>
+</div>
+
 
         <div class="product-specifications">
             <h3>Product Specifications</h3>
@@ -2140,6 +2140,40 @@ const specStock =
 if (specStock) {
     specStock.textContent =
         product.stock || product.availability || "—";
+}
+
+
+    
+/* PRODUCT HIGHLIGHTS */
+
+const highlightsList =
+    document.getElementById("productHighlightsList");
+
+if (highlightsList) {
+    const description =
+        String(product.description || "");
+
+    const sentences = description
+        .split(/[\n.!]+/)
+        .map(item => item.trim())
+        .filter(item => item.length > 25);
+
+    highlightsList.replaceChildren();
+
+    const highlights = sentences.slice(0, 5);
+
+    if (highlights.length) {
+        highlights.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            highlightsList.appendChild(li);
+        });
+    } else {
+        const li = document.createElement("li");
+        li.textContent =
+            "Product details based on available information";
+        highlightsList.appendChild(li);
+    }
 }
 
 
