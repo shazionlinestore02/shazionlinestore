@@ -2107,6 +2107,42 @@ if(skuElement){
         product.description ||
         "Product details will be updated soon.";
 
+    
+/* PRODUCT SPECIFICATIONS */
+
+const specProductName =
+    document.getElementById("specProductName");
+
+if (specProductName) {
+    specProductName.textContent =
+        product.name || product.title || "—";
+}
+
+const specCategory =
+    document.getElementById("specCategory");
+
+if (specCategory) {
+    specCategory.textContent =
+        product.category || "—";
+}
+
+const specSize =
+    document.getElementById("specSize");
+
+if (specSize) {
+    specSize.textContent =
+        product.size || "—";
+}
+
+const specStock =
+    document.getElementById("specStock");
+
+if (specStock) {
+    specStock.textContent =
+        product.stock || product.availability || "—";
+}
+
+
 
     /* PRICE */
 
