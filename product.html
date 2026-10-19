@@ -1354,6 +1354,28 @@ Place your order directly online
                 <span>Availability</span>
                 <span id="specStock">—</span>
             </div>
+
+            
+<div class="specification-row">
+    <span>Material</span>
+    <span id="specMaterial">—</span>
+</div>
+
+<div class="specification-row">
+    <span>Color</span>
+    <span id="specColor">—</span>
+</div>
+
+<div class="specification-row">
+    <span>Style</span>
+    <span id="specStyle">—</span>
+</div>
+
+<div class="specification-row">
+    <span>Package Includes</span>
+    <span id="specPackageIncludes">—</span>
+</div>
+
         </div>
 
     </div>
@@ -1898,6 +1920,21 @@ async function loadProduct(){
             );
 
 
+        
+const materialCol =
+    findColumn(headers, ["Material"]);
+
+const colorCol =
+    findColumn(headers, ["Color"]);
+
+const styleCol =
+    findColumn(headers, ["Style"]);
+
+const packageIncludesCol =
+    findColumn(headers, ["Package Includes"]);
+
+
+
         const imageColumns =
             getImageColumns(
                 headers
@@ -2055,6 +2092,29 @@ async function loadProduct(){
             : "Product details will be updated soon.";
 
 
+        
+const material =
+    materialCol !== -1
+    ? String(productRow[materialCol] || "").trim()
+    : "";
+
+const color =
+    colorCol !== -1
+    ? String(productRow[colorCol] || "").trim()
+    : "";
+
+const style =
+    styleCol !== -1
+    ? String(productRow[styleCol] || "").trim()
+    : "";
+
+const packageIncludes =
+    packageIncludesCol !== -1
+    ? String(productRow[packageIncludesCol] || "").trim()
+    : "";
+
+
+
         /* IMAGES */
 
         const images = [];
@@ -2112,11 +2172,25 @@ async function loadProduct(){
             stock:
                 stock,
 
-            description:
-                description,
+           
+description:
+    description,
 
-            images:
-                images
+material:
+    material,
+
+color:
+    color,
+
+style:
+    style,
+
+packageIncludes:
+    packageIncludes,
+
+images:
+    images
+
 
         });
 
@@ -2247,6 +2321,24 @@ if (specStock) {
     specStock.textContent =
         product.stock || product.availability || "—";
 }
+
+    
+/* EXTRA PRODUCT SPECIFICATIONS */
+
+const extraSpecifications = [
+    ["specMaterial", product.material],
+    ["specColor", product.color],
+    ["specStyle", product.style],
+    ["specPackageIncludes", product.packageIncludes]
+];
+
+extraSpecifications.forEach(([elementId, value]) => {
+    const element = document.getElementById(elementId);
+
+    if (element) {
+        element.textContent = value || "—";
+    }
+});
 
 
     
