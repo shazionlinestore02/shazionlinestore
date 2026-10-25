@@ -2184,7 +2184,12 @@ footer{
 
     -webkit-overflow-scrolling: touch;
 
-    scrollbar-width: thin;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.category-products-row::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -2769,6 +2774,58 @@ footer{
     }
 
 }
+
+
+/* Category carousel arrow controls */
+.category-section-header { align-items: center; }
+.category-arrows { display:flex; gap:8px; margin-left:auto; }
+.category-arrow {
+    width:36px; height:36px; flex:0 0 36px;
+    border:1px solid #e5e7eb; border-radius:50%;
+    background:#fff; color:#111827; font-size:25px;
+    line-height:1; cursor:pointer; display:inline-flex;
+    align-items:center; justify-content:center;
+    box-shadow:0 3px 10px rgba(15,23,42,.07);
+    transition:all .2s ease;
+}
+.category-arrow:hover { background:#e11d48; border-color:#e11d48; color:#fff; }
+.category-section-header .see-all-link { margin-left:8px; white-space:nowrap; }
+@media(max-width:600px) {
+  .category-section-header { gap:8px; flex-wrap:wrap; }
+  .category-arrows { margin-left:auto; }
+  .category-section-header .see-all-link { margin-left:0; }
+}
+
+
+
+/* Dedicated category page layout */
+body.category-page-mode .hero,
+body.category-page-mode .trust,
+body.category-page-mode #categories,
+body.category-page-mode .why-grid,
+body.category-page-mode .offer,
+body.category-page-mode .premium-section,
+body.category-page-mode .stats-section,
+body.category-page-mode .final-cta,
+body.category-page-mode .review-grid,
+body.category-page-mode .faq-list { display:none !important; }
+body.category-page-mode .category-shop-section { padding-top:45px; min-height:55vh; }
+body.category-page-mode .category-shop-section .section-heading { margin-bottom:35px; }
+body.category-page-mode .category-product-section { margin-top:0; }
+body.category-page-mode .category-products-row { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); overflow:visible; gap:22px; padding:5px 0 20px; }
+body.category-page-mode .category-products-row .product-card { width:auto; min-width:0; }
+body.category-page-mode .category-arrows { display:none; }
+body.category-page-mode .category-section-header .see-all-link { font-size:12px; }
+@media(max-width:1000px) {
+ body.category-page-mode .category-products-row { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:700px) {
+ body.category-page-mode .category-products-row { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+}
+@media(max-width:450px) {
+ body.category-page-mode .category-products-row { grid-template-columns:1fr; }
+}
+
 </style>
 </head>
 
@@ -3082,8 +3139,7 @@ footer{
                 <h3>Women’s Fashion</h3>
             </div>
 
-            <a href="#products" class="see-all-link"
-               onclick="showCategoryProducts('Women’s Fashion'); return false;">
+            <a href="category.html?category=Women%E2%80%99s%20Fashion" class="see-all-link">
                 See All →
             </a>
         </div>
@@ -3102,8 +3158,7 @@ footer{
                 <h3>Men’s Fashion</h3>
             </div>
 
-            <a href="#products" class="see-all-link"
-               onclick="showCategoryProducts('Men’s Fashion'); return false;">
+            <a href="category.html?category=Men%E2%80%99s%20Fashion" class="see-all-link">
                 See All →
             </a>
         </div>
@@ -3122,8 +3177,7 @@ footer{
                 <h3>Beauty &amp; Personal Care</h3>
             </div>
 
-            <a href="#products" class="see-all-link"
-               onclick="showCategoryProducts('Beauty & Personal Care'); return false;">
+            <a href="category.html?category=Beauty%20%26%20Personal%20Care" class="see-all-link">
                 See All →
             </a>
         </div>
@@ -3142,8 +3196,7 @@ footer{
                 <h3>Electronics &amp; Accessories</h3>
             </div>
 
-            <a href="#products" class="see-all-link"
-               onclick="showCategoryProducts('Electronics & Accessories'); return false;">
+            <a href="category.html?category=Electronics%20%26%20Accessories" class="see-all-link">
                 See All →
             </a>
         </div>
@@ -3162,8 +3215,7 @@ footer{
                 <h3>Watch Accessories</h3>
             </div>
 
-            <a href="#products" class="see-all-link"
-               onclick="showCategoryProducts('Watch Accessories'); return false;">
+            <a href="category.html?category=Watch%20Accessories" class="see-all-link">
                 See All →
             </a>
         </div>
@@ -3182,8 +3234,7 @@ footer{
                 <h3>Kids &amp; Baby</h3>
             </div>
 
-            <a href="#products" class="see-all-link"
-               onclick="showCategoryProducts('Kids & Baby'); return false;">
+            <a href="category.html?category=Kids%20%26%20Baby" class="see-all-link">
                 See All →
             </a>
         </div>
@@ -3202,8 +3253,7 @@ footer{
                 <h3>Trending / Best Sellers</h3>
             </div>
 
-            <a href="#products" class="see-all-link"
-               onclick="showCategoryProducts('Trending / Best Sellers'); return false;">
+            <a href="category.html?category=Trending%20%2F%20Best%20Sellers" class="see-all-link">
                 See All →
             </a>
         </div>
@@ -5056,6 +5106,28 @@ function renderCategory(
 
     container.innerHTML = "";
 
+    // Add accessible left/right carousel controls to each category.
+    const categorySection = container.closest(".category-product-section");
+    const sectionHeader = categorySection
+        ? categorySection.querySelector(".category-section-header")
+        : null;
+    if (sectionHeader && !sectionHeader.querySelector(".category-arrows")) {
+        const arrowGroup = document.createElement("div");
+        arrowGroup.className = "category-arrows";
+        arrowGroup.innerHTML = `
+            <button type="button" class="category-arrow category-arrow-left" aria-label="Scroll products left">‹</button>
+            <button type="button" class="category-arrow category-arrow-right" aria-label="Scroll products right">›</button>
+        `;
+        const seeAll = sectionHeader.querySelector(".see-all-link");
+        if (seeAll) sectionHeader.insertBefore(arrowGroup, seeAll);
+        else sectionHeader.appendChild(arrowGroup);
+        arrowGroup.querySelector(".category-arrow-left").addEventListener("click", () => {
+            container.scrollBy({ left: -container.clientWidth * 0.85, behavior: "smooth" });
+        });
+        arrowGroup.querySelector(".category-arrow-right").addEventListener("click", () => {
+            container.scrollBy({ left: container.clientWidth * 0.85, behavior: "smooth" });
+        });
+    }
 
     const rows =
         window.allProductRows || [];
@@ -5085,14 +5157,14 @@ function renderCategory(
 
 
     /*
-        Homepage = maximum 10
+        Homepage = maximum 7
         See All = all products
     */
 
     const rowsToShow =
         showAll
             ? matchingRows
-            : matchingRows.slice(0,10);
+            : matchingRows.slice(0,7);
 
 
     rowsToShow.forEach(function(row){
@@ -5350,7 +5422,7 @@ function showAllCategories(){
 
     /*
         Return each category to
-        maximum 10 products
+        maximum 7 products
     */
 
     renderAllCategories();
@@ -5471,12 +5543,32 @@ console.log("FIRST PRODUCT ROW:", rows[1]);
         window.allProductRows =
             rows.slice(1);
 
-
-        /*
-            Render homepage categories.
-        */
-
-        renderAllCategories();
+        const categoryPageMode = new URLSearchParams(window.location.search).get("category");
+        if (categoryPageMode) {
+            const selectedCategory = categorySettings.find(function(category) {
+                return categoryMatches(category.name, categoryPageMode);
+            });
+            if (selectedCategory) {
+                document.body.classList.add("category-page-mode");
+                document.title = selectedCategory.name + " | ShaziOnlineStore";
+                const heading = document.querySelector(".category-shop-section .section-heading");
+                if (heading) {
+                    heading.querySelector("span").textContent = "Shop Category";
+                    heading.querySelector("h2").textContent = selectedCategory.name;
+                    heading.querySelector("p").textContent = "Explore all products in " + selectedCategory.name + ".";
+                }
+                categorySettings.forEach(function(category) {
+                    const categoryContainer = document.getElementById(category.id);
+                    const section = categoryContainer ? categoryContainer.closest(".category-product-section") : null;
+                    if (section) section.style.display = category.id === selectedCategory.id ? "block" : "none";
+                });
+                renderCategory(selectedCategory, true);
+            } else {
+                renderAllCategories();
+            }
+        } else {
+            renderAllCategories();
+        }
 
 
         /*
@@ -5925,9 +6017,9 @@ function setupCategoryCards(){
 
                 if(matchingCategory){
 
-                    showCategoryProducts(
-                        matchingCategory.name
-                    );
+                    window.location.href =
+                        "category.html?category=" +
+                        encodeURIComponent(matchingCategory.name);
 
                 }
 
