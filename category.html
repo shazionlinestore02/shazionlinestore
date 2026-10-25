@@ -3968,10 +3968,26 @@ body.category-page-mode .category-section-header .see-all-link { font-size:12px;
                 </div>
 
 
+                <div class="order-form-group">
+
+                    <label>
+                        🚚 Delivery + COD Charges
+                    </label>
+
+                    <input
+                        type="text"
+                        id="deliveryChargesDisplay"
+                        value="Rs. 0"
+                        readonly
+                    >
+
+                </div>
+
+
                 <div class="order-total-box">
 
                     <label>
-                        Order Total
+                        Final Order Total (Products + Delivery)
                     </label>
 
                     <input
@@ -4135,7 +4151,7 @@ document
    ORDER MODAL
 ========================================================= */
 
-function openOrder(productName, productPrice){
+function openOrder(productName, productPrice, deliveryCharges){
 
     const productInput =
         document.getElementById("product");
@@ -4149,17 +4165,30 @@ function openOrder(productName, productPrice){
     const modal =
         document.getElementById("orderModal");
 
+    const deliveryDisplay =
+        document.getElementById("deliveryChargesDisplay");
 
     if(!productInput || !priceInput || !quantityInput || !modal){
         return;
     }
 
-
     productInput.value = productName;
 
     priceInput.value =
         "Rs. " +
-        Number(productPrice).toLocaleString("en-PK");
+        (Number(productPrice) || 0).toLocaleString("en-PK");
+
+    // Delivery + COD charges apply once per order, not per item.
+    window.currentDeliveryCharges = Math.max(
+        Number(deliveryCharges) || 0,
+        0
+    );
+
+    if(deliveryDisplay){
+        deliveryDisplay.value =
+            "Rs. " +
+            window.currentDeliveryCharges.toLocaleString("en-PK");
+    }
 
     quantityInput.value = 1;
 
@@ -4172,7 +4201,6 @@ function openOrder(productName, productPrice){
 }
 
 
-
 function updateTotal(){
 
     const priceInput =
@@ -4183,6 +4211,9 @@ function updateTotal(){
 
     const totalInput =
         document.getElementById("total");
+
+    const deliveryDisplay =
+        document.getElementById("deliveryChargesDisplay");
 
     if(!priceInput || !quantityInput || !totalInput){
         return;
@@ -4200,11 +4231,19 @@ function updateTotal(){
             1
         );
 
-    const deliveryCharges =
-        Number(window.currentDeliveryCharges) || 0;
+    const deliveryCharges = Math.max(
+        Number(window.currentDeliveryCharges) || 0,
+        0
+    );
 
-    const total =
-        (price + deliveryCharges) * quantity;
+    // Product subtotal = price × quantity; delivery is added only once.
+    const total = (price * quantity) + deliveryCharges;
+
+    if(deliveryDisplay){
+        deliveryDisplay.value =
+            "Rs. " +
+            deliveryCharges.toLocaleString("en-PK");
+    }
 
     totalInput.value =
         "Rs. " +
@@ -4320,8 +4359,14 @@ if(orderForm){
                 );
 
 
+            // Delivery + COD is charged once for the entire order.
+            const deliveryCharges = Math.max(
+                Number(window.currentDeliveryCharges) || 0,
+                0
+            );
+
             const total =
-                price * quantity;
+                (price * quantity) + deliveryCharges;
 
 
             const orderData = {
@@ -4336,6 +4381,9 @@ if(orderForm){
 
                 price:
                     price,
+
+                delivery:
+                    deliveryCharges,
 
                 total:
                     total,
@@ -4401,6 +4449,14 @@ if(orderForm){
                     totalElement.value = "Rs. 0";
                 }
 
+                const deliveryDisplay =
+                    document.getElementById("deliveryChargesDisplay");
+
+                if(deliveryDisplay){
+                    deliveryDisplay.value = "Rs. 0";
+                }
+
+                window.currentDeliveryCharges = 0;
 
                 closeOrder();
 
