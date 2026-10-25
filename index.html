@@ -4163,6 +4163,7 @@ function openOrder(productName, productPrice, deliveryCharges = 0){
     document.body.style.overflow = "hidden";
 }
 
+
 function updateTotal(){
 
     const priceInput =
@@ -4174,11 +4175,9 @@ function updateTotal(){
     const totalInput =
         document.getElementById("total");
 
-
     if(!priceInput || !quantityInput || !totalInput){
         return;
     }
-
 
     const price =
         parseInt(
@@ -4186,19 +4185,20 @@ function updateTotal(){
             10
         ) || 0;
 
-
     const quantity =
-        parseInt(quantityInput.value,10) || 1;
+        Math.max(
+            parseInt(quantityInput.value,10) || 1,
+            1
+        );
 
+    const deliveryCharges =
+        Number(window.currentDeliveryCharges) || 0;
 
     const total =
-        price * Math.max(quantity,1);
-
+        (price + deliveryCharges) * quantity;
 
     totalInput.value =
-        "Rs. " +
-        total.toLocaleString("en-PK");
-
+        "Rs. " + total.toLocaleString("en-PK");
 }
 
 
