@@ -4723,6 +4723,14 @@ function createProductCard(row){
             10
         ) || 0;
 
+   const deliveryText =
+    String(row[3] || "").trim();
+
+const deliveryCharges =
+    Number(
+        deliveryText.replace(/[^\d]/g, "")
+    ) || 0;
+
 
     /* =========================================
        STOCK
