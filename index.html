@@ -4135,42 +4135,33 @@ document
    ORDER MODAL
 ========================================================= */
 
-function openOrder(productName, productPrice){
+function openOrder(productName, productPrice, deliveryCharges = 0){
 
-    const productInput =
-        document.getElementById("product");
-
-    const priceInput =
-        document.getElementById("price");
-
-    const quantityInput =
-        document.getElementById("quantity");
-
-    const modal =
-        document.getElementById("orderModal");
-
+    const productInput = document.getElementById("product");
+    const priceInput = document.getElementById("price");
+    const quantityInput = document.getElementById("quantity");
+    const modal = document.getElementById("orderModal");
 
     if(!productInput || !priceInput || !quantityInput || !modal){
         return;
     }
 
-
     productInput.value = productName;
 
     priceInput.value =
-        "Rs. " +
-        Number(productPrice).toLocaleString("en-PK");
+        "Rs. " + Number(productPrice).toLocaleString("en-PK");
 
     quantityInput.value = 1;
+
+    // Delivery + COD charges save for total calculation
+    window.currentDeliveryCharges =
+        Number(deliveryCharges) || 0;
 
     updateTotal();
 
     modal.style.display = "block";
-
     document.body.style.overflow = "hidden";
-
 }
-
 
 function updateTotal(){
 
