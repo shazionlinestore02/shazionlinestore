@@ -5007,27 +5007,29 @@ function createProductCard(row){
        ORDER BUTTON
     ========================================= */
 
-    const orderButton =
-        product.querySelector(
-            ".order-now-btn"
-        );
+  
+const orderButton =
+    product.querySelector(
+        ".order-now-btn"
+    );
 
+if(orderButton){
 
-    if(orderButton){
+    orderButton.addEventListener(
+        "click",
+        function(){
 
-        orderButton.addEventListener(
-            "click",
-            function(){
+            openOrder(
+                productName,
+                priceNumber,
+                deliveryCharges
+            );
 
-                openOrder(
-                    productName,
-                    priceNumber
-                );
+        }
+    );
 
-            }
-        );
+}
 
-    }
 
 
     /* =========================================
