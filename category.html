@@ -5008,6 +5008,24 @@ function createProductCard(row){
     ========================================= */
 
   
+
+/* =========================================
+   DELIVERY + COD CHARGES
+========================================= */
+
+const deliveryText =
+    String(row[3] || "").trim();
+
+const deliveryCharges =
+    Number(
+        deliveryText.replace(/[^\d]/g, "")
+    ) || 0;
+
+
+/* =========================================
+   ORDER NOW BUTTON
+========================================= */
+
 const orderButton =
     product.querySelector(
         ".order-now-btn"
@@ -5031,10 +5049,10 @@ if(orderButton){
 }
 
 
+/* =========================================
+   ADD TO CART BUTTON
+========================================= */
 
-    /* =========================================
-       ADD TO CART BUTTON
-    ========================================= */
 const cartButton =
     product.querySelector(
         ".image-cart-btn"
@@ -5048,15 +5066,6 @@ if(cartButton){
 
             event.preventDefault();
             event.stopPropagation();
-
-           
-const deliveryText = String(row[3] || "").trim();
-
-const deliveryCharges =
-    Number(
-        deliveryText.replace(/[^\d]/g, "")
-    ) || 0;
-
 
             addToCart({
 
@@ -5080,6 +5089,7 @@ const deliveryCharges =
     );
 
 }
+
 
 return product;
 
