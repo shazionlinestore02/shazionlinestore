@@ -4314,46 +4314,43 @@ if(orderForm){
                 price * quantity;
 
 
-            const orderData = {
+      
+const deliveryCharges =
+    Number(window.currentDeliveryCharges) || 0;
 
-                product:
-                    document
-                        .getElementById("product")
-                        .value,
+const finalTotal =
+    (price + deliveryCharges) * quantity;
 
-                quantity:
-                    quantity,
+const orderData = {
 
-                price:
-                    price,
+    product:
+        document.getElementById("product").value,
 
-                total:
-                    total,
+    quantity:
+        quantity,
 
-                name:
-                    document
-                        .getElementById("name")
-                        .value,
+    price:
+        price,
 
-                phone:
-                    document
-                        .getElementById("phone")
-                        .value,
+    total:
+        finalTotal,
 
-                city:
-                    document
-                        .getElementById("city")
-                        .value,
+    name:
+        document.getElementById("name").value,
 
-                address:
-                    document
-                        .getElementById("address")
-                        .value,
+    phone:
+        document.getElementById("phone").value,
 
-                payment:
-                    "Cash on Delivery"
+    city:
+        document.getElementById("city").value,
 
-            };
+    address:
+        document.getElementById("address").value,
+
+    payment:
+        "Cash on Delivery"
+
+};
 
 
             fetch(scriptURL, {
